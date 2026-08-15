@@ -1,0 +1,41 @@
+import React from 'react'
+import { Route, Routes } from 'react-router-dom'
+import Home from '../pages/home/Home'
+import About from '../pages/about/About'
+import Services from '../pages/services/Services'
+import OnDemandResource from '../pages/on-demand-resource/OnDemandResource'
+import AppLayout from '../components/layout/AppLayout'
+import Blog from '../pages/blog/Blog'
+import Page from '../pages/testpage/Page'
+import Contactus from '../pages/contact/Contactus'
+import BlogDetails from '../pages/blog/BlogDetails'
+
+function Routing() {
+  return (
+    <>
+    <section className='main'>
+      <Routes>
+        <Route path='/' element={<AppLayout />}>
+            <Route path='/' element={<Home></Home>}></Route>
+            <Route path='/Aboutus' element={<About></About>}></Route>
+            <Route path='/Services' element={<Services></Services>}></Route>
+            <Route path='/OnDemand-Resourse' element={<OnDemandResource></OnDemandResource>}></Route>
+            <Route path='/Blog' element={<Blog></Blog>}></Route>
+            <Route path='/Pages' element={<Page></Page>}></Route>
+            <Route path='/Contact' element={<Contactus></Contactus>}></Route>
+
+            <Route path='/BlogDetails/:id' element={<BlogDetails></BlogDetails>}></Route>
+            <Route path='/EditBlog/:id' element={<Page></Page>}></Route>
+            <Route path='/DeleteBlog/:id' element={<Page></Page>}></Route>
+        </Route>
+
+        <Route path='*' element={<h1>Sorry!, Page not found</h1>}></Route>
+      </Routes>
+    </section>
+
+    {/* <Footer></Footer> */}
+    </>
+  )
+}
+
+export default Routing

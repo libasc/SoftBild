@@ -1,0 +1,157 @@
+.small-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.small-header .sh-email{
+    color: var(--sf-white);
+    display: flex;
+}
+.small-header .sh-email span{
+    display: inline-flex;
+    align-items: center;
+    margin-right: 4px;
+}
+.small-header .sh-email a{
+    color: var(--sf-white);
+    text-decoration: none;
+}
+.small-header img{
+    width: 16px;
+}
+.small-header .sh-social ul{
+    display: flex;
+}
+.small-header .sh-social ul li{
+    list-style-type: none;
+    margin-left: 20px;
+}
+.small-header .sh-social ul li a{
+    text-decoration: none;
+    color: var(--sf-white);
+    width: 16px;
+    height: 16px;
+    display: flex;
+}
+.small-header .sh-social ul li a img{
+    width: 100%;
+    height: auto;
+    vertical-align: middle;
+}
+
+
+
+
+.main-header-menu-wrapper .main-logo{
+    width: 180px;
+}
+.main-header-menu-wrapper ul{
+    padding: 0px;
+}
+.main-header-menu-wrapper ul li{
+    list-style-type: none;
+    margin: 0px 10px;
+}
+.main-header-menu-wrapper ul li a{
+    text-decoration: none;
+    color: #000;
+    text-transform: capitalize;
+    font-size: 16px;
+}
+.main-header-menu-wrapper ul li a.active {
+    font-weight: 600;
+}
+.navbar-toggler:focus {
+    text-decoration: none;
+    outline: 0;
+    box-shadow: none;
+}
+.hamberger-icon svg{
+    color: #000;
+    font-size: 35px;
+}
+
+
+/* 
+@media only screen and (max-width : 992px) {
+    .main-header-wrapper{
+        height: 75px;
+        position: relative;
+    }
+    .header-btn-wrpr{
+        position: absolute;
+        top: 5px;
+        right: 80px;
+    }
+    .main-header-menu-wrapper {
+        background: #fff;
+    }
+    .main-header-menu-wrapper ul li a {
+        padding: 10px 10px;
+        display: block;
+    }
+    .main-header-menu-wrapper{
+        margin-top: 15px;
+    }
+}
+
+
+@media only screen and (max-width : 600px) {
+    .main-logo {
+        width: 100px;
+    }
+    .main-logo img{
+        width: 100%;
+    }
+    .header-btn-wrpr{
+        right: 70px;
+    }
+}
+     */
+
+
+
+
+
+     @media only screen and (max-width : 992px) {
+        .main-header-wrapper {
+            height: 75px;
+            position: sticky;  /* Make sure the header is sticky on small screens */
+            top: 0;
+            z-index: 1000;  /* Ensure it stays above other elements */
+        }
+        .header-btn-wrpr {
+            position: absolute;
+            top: 5px;
+            right: 80px;
+        }
+        .main-header-menu-wrapper {
+            background: #fff;
+        }
+        .main-header-menu-wrapper ul li a {
+            padding: 10px 10px;
+            display: block;
+        }
+        .main-header-menu-wrapper {
+            margin-top: 15px;
+        }
+    }
+    
+    @media only screen and (max-width : 600px) {
+        .main-logo {
+            width: 100px;
+        }
+        .main-logo img {
+            width: 100%;
+        }
+        .header-btn-wrpr {
+            right: 70px;
+        }
+        .footer-logo {
+            width: 100px;
+        }
+        .footer-logo img{
+            width: 100%;
+        }
+    }
+    
