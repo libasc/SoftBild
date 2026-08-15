@@ -60,7 +60,7 @@ function About(){
         </section>
 
 
-        <section className="container-fluid py-80 position-relative phone-pb-10">
+        {/* <section className="container-fluid py-80 position-relative phone-pb-10">
             <div className="container">
                 <div className="row">
                     <div className="col-lg-3"></div>
@@ -72,12 +72,12 @@ function About(){
                 </div>
                 <div className="row sb-services-wrapper mt-30 ">
                     <TeamsCard1></TeamsCard1>
-                    {/* <div className="col-lg-12 text-center">
+                    <div className="col-lg-12 text-center">
                         <button type="button" className="sf-btn3">se all</button>
-                    </div> */}
+                    </div>
                 </div>
             </div>
-        </section>
+        </section> */}
 
         <section className="container-fluid py-100 bg-img-overlay1 color-overlay1">
             <div className="container">
