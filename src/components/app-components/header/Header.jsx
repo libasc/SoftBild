@@ -135,6 +135,8 @@ function Header() {
                                         <li><NavLink to="/" onClick={handleNavClick}>Home</NavLink></li>
                                         <li><NavLink to="/Aboutus" onClick={handleNavClick}>About Us</NavLink></li>
                                         <li><NavLink to="/Services" onClick={handleNavClick}>Services</NavLink></li>
+                                        <li><NavLink to="/Portfolio" onClick={handleNavClick}>Portfolio</NavLink></li>
+                                        {/* <li><NavLink to="/Blog" onClick={handleNavClick}>Blog</NavLink></li> */}
                                         <li><NavLink to="/OnDemand-Resourse" onClick={handleNavClick}>On-Demand Resource</NavLink></li>
                                         <li><NavLink to="/Contact" onClick={handleNavClick}>Contact Us</NavLink></li>
                                     </ul>

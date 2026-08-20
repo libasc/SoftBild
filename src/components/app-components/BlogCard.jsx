@@ -39,7 +39,7 @@ function BlogCard() {
             </div>
             <div className="blog-date-time">
               <p>
-                {/* January 02, 2025 <span style={{ marginLeft: "15px" }}></span> */}
+                {/* January 02, 2026 <span style={{ marginLeft: "15px" }}></span> */}
                 2 min read
               </p>
             </div>

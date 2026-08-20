@@ -9,6 +9,8 @@ import Blog from '../pages/blog/Blog'
 import Page from '../pages/testpage/Page'
 import Contactus from '../pages/contact/Contactus'
 import BlogDetails from '../pages/blog/BlogDetails'
+import Portfolio from '../pages/portfolio/Portfolio'
+import PortfolioDetail from '../pages/portfolio/PortfolioDetail'
 
 function Routing() {
   return (
@@ -21,6 +23,8 @@ function Routing() {
             <Route path='/Services' element={<Services></Services>}></Route>
             <Route path='/OnDemand-Resourse' element={<OnDemandResource></OnDemandResource>}></Route>
             <Route path='/Blog' element={<Blog></Blog>}></Route>
+            <Route path='/Portfolio' element={<Portfolio></Portfolio>}></Route>
+            <Route path='/Portfolio/:slug' element={<PortfolioDetail />}/>
             <Route path='/Pages' element={<Page></Page>}></Route>
             <Route path='/Contact' element={<Contactus></Contactus>}></Route>
 

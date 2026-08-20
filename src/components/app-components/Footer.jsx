@@ -67,7 +67,7 @@ function Footer(){
             </div>
             <div className="row footer-copyright">
                 <div className="col-lg-12">
-                    <p>&copy; copyright 2025 by <a href="#">SoftBild</a> | Privacy Policy</p>
+                    <p>&copy; copyright 2026 by <a href="#">SoftBild</a> | Privacy Policy</p>
                 </div>
             </div>
         </footer>
