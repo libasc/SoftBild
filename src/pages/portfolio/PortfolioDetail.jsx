@@ -899,7 +899,7 @@ function PortfolioDetail() {
           PROJECT SCREENSHOTS
       ====================================================== */}
 
-      {portfolio.screenshots &&
+     {/* {portfolio.screenshots &&
         portfolio.screenshots.length > 0 && (
           <section className="container-fluid py-60 bg-blue2 pt-0">
             <div className="container">
@@ -945,7 +945,7 @@ function PortfolioDetail() {
 
             </div>
           </section>
-        )}
+        )} */}
 
       {/* =====================================================
           RESULTS
