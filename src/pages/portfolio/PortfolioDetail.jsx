@@ -3,13 +3,10 @@ import { Link, useParams } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import EastIcon from "@mui/icons-material/East";
 
-import ServiceUiuxIcon from "../../assets/icons/service-uiux.svg";
-import ServiceWebAppDevelop from "../../assets/icons/service-webapplication.svg";
 import EleaningImg1 from "../../assets/images/portfolio-image/elearning-01.png";
 
-import DentalImg1 from "../../assets/images/portfolio-image/elearning-01.png";
-import DentalImg2 from "../../assets/images/portfolio-image/elearning-01.png";
-import DentalImg3 from "../../assets/images/portfolio-image/elearning-01.png";
+import CieosLogo from "../../assets/images/cieos-logo.png";
+import CieosImg1 from "../../assets/images/softbild-cieos.png";
 
 import SharefarmLogo from "../../assets/images/sharefarm-logo.png";
 import SharefarmImg1 from "../../assets/images/softbild-sharefarm.png";
@@ -19,7 +16,6 @@ import ArtinalImg1 from "../../assets/images/softbild-artinal.png";
 
 import MasterStudyLogo from "../../assets/images/master-study-logo.png";
 import MasterStudyImg1 from "../../assets/images/softbild-masterstudy.png";
-
 
 import HomeCta from "../../components/app-components/HomeCta";
 
@@ -156,8 +152,8 @@ function PortfolioDetail() {
     {
   slug: "dental-healthcare-imaging-data-systems",
 
-  portfolioLogo: ServiceUiuxIcon,
-  portfolioCardImage: DentalImg1,
+  portfolioLogo: CieosLogo,
+  portfolioCardImage: CieosImg1,
 
   title: "Dental Healthcare Imaging and Data Systems",
 
