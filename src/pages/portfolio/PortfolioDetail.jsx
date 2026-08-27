@@ -11,6 +11,15 @@ import DentalImg1 from "../../assets/images/portfolio-image/elearning-01.png";
 import DentalImg2 from "../../assets/images/portfolio-image/elearning-01.png";
 import DentalImg3 from "../../assets/images/portfolio-image/elearning-01.png";
 
+import SharefarmLogo from "../../assets/images/sharefarm-logo.png";
+import SharefarmImg1 from "../../assets/images/softbild-sharefarm.png";
+
+import ArtinalsLogo from "../../assets/images/artinals-logo.png";
+import ArtinalImg1 from "../../assets/images/softbild-artinal.png";
+
+import MasterStudyLogo from "../../assets/images/master-study-logo.png";
+import MasterStudyImg1 from "../../assets/images/softbild-masterstudy.png";
+
 
 import HomeCta from "../../components/app-components/HomeCta";
 
@@ -24,8 +33,8 @@ function PortfolioDetail() {
    {
   slug: "e-learning-platform",
 
-  portfolioLogo: ServiceUiuxIcon,
-  portfolioCardImage: EleaningImg1,
+  portfolioLogo: MasterStudyLogo,
+  portfolioCardImage: MasterStudyImg1,
 
   title: "SoftBild Engineering: School ERP Platform",
 
@@ -263,6 +272,211 @@ function PortfolioDetail() {
   },
 },
 
+{
+  slug: "sharefarm-digital-agriculture-marketplace",
+
+  portfolioLogo: SharefarmLogo,
+  portfolioCardImage: SharefarmImg1,
+
+  title: "Sharefarm: Digital Agriculture Marketplace Platform",
+
+  description:
+    "A digital agriculture platform designed to connect the agriculture ecosystem through modern web and mobile technology, improving access, discovery, communication, and business opportunities.",
+
+  industry: "Agriculture & AgriTech",
+
+  projectType: "Web & Mobile Application Development",
+
+  overview:
+    "Sharefarm is a digital agriculture marketplace platform designed to connect different users and businesses within the agriculture ecosystem. The project focused on creating a modern and accessible digital experience across web and mobile platforms, helping users discover relevant agricultural information, services, products, and business opportunities. The platform was designed with a user-focused approach to make navigation, discovery, and interaction simple and accessible.",
+
+  challenge:
+    "The project required organizing a wide range of agricultural information, services, and user interactions into a clear and intuitive digital experience. Different types of users needed to access relevant information and opportunities without facing a complex or confusing interface. The platform also needed to provide a consistent experience across web and mobile devices while maintaining a scalable structure for future growth.",
+
+  solution:
+    "We designed and developed a modern web and mobile application experience with a clear information architecture, intuitive navigation, responsive interfaces, and scalable frontend components. The solution focused on organizing agricultural information and platform functionality into easy-to-understand sections, helping users discover relevant services, opportunities, and content. A consistent design approach was maintained across web and mobile experiences to provide a seamless user journey.",
+
+  technologies: [
+    "UI/UX Design",
+    "Figma",
+    "Web Application Development",
+    "Mobile Application Development",
+  ],
+
+  features: [
+    {
+      title: "Digital Agriculture Marketplace",
+      description:
+        "A centralized digital platform designed to connect users, businesses, services, and opportunities within the agriculture ecosystem.",
+    },
+    {
+      title: "User-Friendly Navigation",
+      description:
+        "Designed clear and intuitive navigation to help users easily explore different areas of the platform and discover relevant information.",
+    },
+    {
+      title: "Responsive Web Experience",
+      description:
+        "Created responsive interfaces that provide a consistent and accessible experience across desktop, tablet, and mobile devices.",
+    },
+    {
+      title: "Mobile Application Experience",
+      description:
+        "Designed the mobile application experience to help users access platform functionality and information conveniently from their mobile devices.",
+    },
+    {
+      title: "Structured Information Architecture",
+      description:
+        "Organized platform content and functionality into clear sections to improve usability, discoverability, and the overall user experience.",
+    },
+    {
+      title: "Scalable Platform Design",
+      description:
+        "Created a flexible and scalable design approach that could support additional features, services, and platform functionality as the ecosystem grows.",
+    },
+  ],
+
+  integrations: [
+    "Web Services",
+    "Mobile Application Services",
+    "Third-Party APIs",
+  ],
+
+  screenshots: [
+    EleaningImg1,
+    EleaningImg1,
+    EleaningImg1,
+  ],
+
+  results:
+    "The project delivered a modern digital agriculture platform designed to improve access, discovery, and interaction across the agriculture ecosystem. The web and mobile application experience provided users with a more organized and intuitive way to explore relevant information, services, and business opportunities while creating a scalable foundation for future platform growth.",
+
+  testimonial: {
+    quote:
+      "The project focused on creating a modern and user-friendly digital experience that supports better access and engagement across the agriculture ecosystem.",
+    name: "Sharefarm",
+    designation: "Digital Agriculture Platform",
+  },
+},
+
+{
+  slug: "artinals-digital-asset-tokenization-platform",
+
+  portfolioLogo: ArtinalsLogo,
+  portfolioCardImage: ArtinalImg1,
+
+  title: "Artinals: Digital Asset Tokenization Platform",
+
+  description:
+    "A Web3 platform designed to create, manage, launch, and trade tokenized digital and real-world assets through a modern no-code ecosystem.",
+
+  industry: "Web3, Blockchain & Digital Assets",
+
+  projectType: "Web Application Development",
+
+  overview:
+    "Artinals is a comprehensive Web3 platform designed to simplify the creation, management, and trading of tokenized digital assets and real-world assets. The platform is built around the ART20 protocol and provides a connected ecosystem for asset creation, token launches, secondary trading, portfolio management, and blockchain-based digital asset operations. The project includes a no-code management dashboard, launchpad functionality, decentralized trading capabilities, and digital wallet experiences designed to make complex Web3 workflows more accessible.",
+
+  challenge:
+    "The project involved presenting complex blockchain and tokenization workflows through an interface that could be understood and used efficiently by creators, businesses, and organizations. Users needed to manage asset supply, metadata, permissions, balances, transfers, and trading activities from a centralized environment. A major challenge was simplifying these advanced Web3 operations while maintaining clear navigation, structured workflows, real-time visibility, and a scalable user experience.",
+
+  solution:
+    "A modern and structured web application experience was designed to simplify the complete digital asset lifecycle. The platform enables users to create and manage ART20 assets, configure collections and metadata, launch tokenized assets, monitor ownership and transactions, manage permissions, and support secondary trading. The no-code dashboard organizes complex blockchain operations into intuitive workflows, while dedicated analytics, balance management, access control, batch operations, and transaction monitoring interfaces provide users with centralized control over their digital assets.",
+
+  technologies: [
+    "UI/UX Design",
+    "Figma",
+    "Web Application Development",
+    "Web3",
+    "Blockchain",
+    "Sui Blockchain",
+    "ART20 Protocol",
+  ],
+
+  features: [
+    {
+      title: "Digital Asset Creation",
+      description:
+        "Users can create and manage tokenized digital assets and collections through a structured and accessible platform experience.",
+    },
+    {
+      title: "No-Code Dashboard",
+      description:
+        "A centralized dashboard simplifies complex blockchain operations and allows users to manage digital assets without requiring deep technical expertise.",
+    },
+    {
+      title: "Asset Launchpad",
+      description:
+        "Users can configure token offerings, set pricing and currencies, and launch tokenized assets through a streamlined launch process.",
+    },
+    {
+      title: "Decentralized Asset Trading",
+      description:
+        "The platform supports peer-to-peer trading and secondary market activity through on-chain trading mechanisms and order-book functionality.",
+    },
+    {
+      title: "Project Analytics",
+      description:
+        "Real-time dashboards provide visibility into asset supply, metadata changes, transfers, ownership, and overall project activity.",
+    },
+    {
+      title: "Balance Management",
+      description:
+        "Users can monitor token balances and manage asset-related operations through centralized and intuitive management interfaces.",
+    },
+    {
+      title: "Access Control & Permissions",
+      description:
+        "The platform provides tools for managing permissions, deny lists, and access controls to support secure digital asset operations.",
+    },
+    {
+      title: "Batch Operations",
+      description:
+        "Users can efficiently perform and monitor bulk operations, including transfers and metadata updates, through structured workflows.",
+    },
+    {
+      title: "Metadata Management",
+      description:
+        "Collections and digital assets can be managed with dynamic metadata controls, updates, synchronization, and metadata freezing capabilities.",
+    },
+    {
+      title: "Transaction Monitoring",
+      description:
+        "Centralized monitoring tools provide visibility into transfers, updates, user activities, and other important asset transactions.",
+    },
+    {
+      title: "Digital Asset Wallet",
+      description:
+        "The Artinals ecosystem includes a wallet experience designed to help users manage digital assets, track portfolios, and perform transactions.",
+    },
+  ],
+
+  integrations: [
+    "Sui Blockchain",
+    "ART20 Protocol",
+    "Blockchain Smart Contracts",
+    "Web3 Wallet Services",
+    "Decentralized Exchange Infrastructure",
+    "Third-Party APIs",
+  ],
+
+  screenshots: [
+    EleaningImg1,
+    EleaningImg1,
+    EleaningImg1,
+  ],
+
+  results:
+    "The project delivered a modern Web3 platform that organizes complex digital asset and tokenization workflows into a more accessible and structured user experience. The solution provides a scalable foundation for creating, managing, launching, monitoring, and trading tokenized assets while helping bridge the gap between advanced blockchain technology and user-friendly digital product experiences.",
+
+  testimonial: {
+    quote:
+      "The platform was designed to make complex Web3 and digital asset management workflows more accessible through a modern, structured, and user-friendly experience.",
+    name: "Artinals",
+    designation: "Web3 Digital Asset Platform",
+  },
+},
+
 
   ];
 
@@ -461,7 +675,7 @@ function PortfolioDetail() {
           TECHNOLOGY
       ====================================================== */}
 
-      <section className="container-fluid py-80 bg-blue2">
+      <section className="container-fluid py-60 bg-blue2">
         <div className="container">
 
           <div className="row">
@@ -500,7 +714,7 @@ function PortfolioDetail() {
           PROJECT OVERVIEW
       ====================================================== */}
 
-      <section className="container-fluid py-80">
+      <section className="container-fluid py-60">
         <div className="container">
 
           <div className="row">
@@ -528,7 +742,7 @@ function PortfolioDetail() {
           CHALLENGE
       ====================================================== */}
 
-      <section className="container-fluid py-80 bg-blue2">
+      <section className="container-fluid py-60 bg-blue2">
         <div className="container">
 
           <div className="row">
@@ -556,7 +770,7 @@ function PortfolioDetail() {
           SOLUTION
       ====================================================== */}
 
-      <section className="container-fluid py-80">
+      <section className="container-fluid py-60">
         <div className="container">
 
           <div className="row">
@@ -584,7 +798,7 @@ function PortfolioDetail() {
           FEATURES
       ====================================================== */}
 
-      <section className="container-fluid py-80 bg-blue2">
+      <section className="container-fluid py-60 bg-blue2">
         <div className="container">
 
           <div className="row mb-50">
@@ -643,7 +857,7 @@ function PortfolioDetail() {
 
       {portfolio.integrations &&
         portfolio.integrations.length > 0 && (
-          <section className="container-fluid py-80">
+          <section className="container-fluid py-60">
             <div className="container">
 
               <div className="row">
@@ -687,7 +901,7 @@ function PortfolioDetail() {
 
       {portfolio.screenshots &&
         portfolio.screenshots.length > 0 && (
-          <section className="container-fluid py-80 bg-blue2">
+          <section className="container-fluid py-60 bg-blue2 pt-0">
             <div className="container">
 
               <div className="row mb-50">
@@ -738,7 +952,7 @@ function PortfolioDetail() {
       ====================================================== */}
 
       {portfolio.results && (
-        <section className="container-fluid py-80">
+        <section className="container-fluid py-60">
           <div className="container">
 
             <div className="row">
@@ -768,7 +982,7 @@ function PortfolioDetail() {
       ====================================================== */}
 
       {portfolio.testimonial && (
-        <section className="container-fluid py-80 bg-blue2">
+        <section className="container-fluid py-60 bg-blue2">
           <div className="container">
 
             <div className="row justify-content-center">

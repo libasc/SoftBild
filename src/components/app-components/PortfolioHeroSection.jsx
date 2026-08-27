@@ -9,7 +9,7 @@ function PortfolioHeroSection() {
                     <div className="col-lg-3"></div>
                     <div className="col-lg-6 text-center">
                         <h1 className="light-headline">Portfolio</h1>
-                        <p className='light-title3'>SoftBild offers innovative tech solutions in UI/UX design, web development, and AI, driving your business success.</p>
+                        <p className='light-title3'>Explore our portfolio of innovative digital solutions, showcasing how SoftBild transforms ideas into impactful technology for businesses.</p>
                     </div>
                     <div className="col-lg-3"></div>
                 </div>
