@@ -4,14 +4,13 @@ import EastIcon from "@mui/icons-material/East";
 
 import ServiceUiuxIcon from "../../assets/icons/service-uiux.svg";
 import EleaningImg1 from "../../assets/images/portfolio-image/elearning-01.png";
-import DentalImg1 from "../../assets/images/portfolio-image/elearning-01.png";
 
 import SharefarmLogo from "../../assets/images/sharefarm-logo.png";
 import SharefarmImg1 from "../../assets/images/softbild-sharefarm.png";
 
 import CieosLogo from "../../assets/images/cieos-logo.png";
 import CieosImg1 from "../../assets/images/softbild-cieos.png";
-
+32
 import ArtinalsLogo from "../../assets/images/artinals-logo.png";
 import ArtinalImg1 from "../../assets/images/softbild-artinal.png";
 

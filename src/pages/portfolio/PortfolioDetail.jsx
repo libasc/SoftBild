@@ -249,11 +249,11 @@ function PortfolioDetail() {
     "X-Ray Capture",
   ],
 
-  screenshots: [
-    DentalImg1,
-    DentalImg2,
-    DentalImg3,
-  ],
+  // screenshots: [
+  //   DentalImg1,
+  //   DentalImg2,
+  //   DentalImg3,
+  // ],
 
   results:
     "The project transformed a legacy Windows-based dental application into a modern web-based dental imaging and patient management platform. The redesigned solution improved usability, centralized patient and clinical information, organized imaging and media workflows, introduced role-based access management, and provided advanced dental visualization and AI-assisted capabilities. The platform also established a scalable foundation for future enhancements and integrations.",
