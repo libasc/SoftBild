@@ -9,7 +9,7 @@ function ResourceHeroSection() {
                     <div className="col-lg-3"></div>
                     <div className="col-lg-6 text-center">
                         <h1 className="light-headline">Resource Pricing</h1>
-                        <p className='light-title3'>SoftBild offers innovative tech solutions in UI/UX design, web development, and AI, driving your business success.</p>
+                        <p className='light-title3'>Scale your development team with skilled developers, designers, engineers, and technology specialists. Choose the expertise that fits your project and budget.</p>
                     </div>
                     <div className="col-lg-3"></div>
                 </div>

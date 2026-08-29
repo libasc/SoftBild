@@ -1882,439 +1882,366 @@ input.subscribe-input:focus {
 
 
 
-/* =====================================================
-   RESOURCE PRICING SECTION
-===================================================== */
+/* =========================================
+   HIRE DEVELOPER PAGE
+========================================= */
 
-.resource-pricing-section {
-    padding: 100px 0;
-    background: #f3fbfd;
-    position: relative;
-    overflow: hidden;
-}
-
-
-/* =====================================================
-   INTRO
-===================================================== */
-
-.pricing-label {
-    display: inline-block;
-    color: #00bfc3;
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 1.8px;
-    text-transform: uppercase;
-}
-
-.resource-pricing-title {
-    margin-top: 14px;
-    color: #172633;
-    font-size: 48px;
-    line-height: 1.15;
-    font-weight: 700;
-}
-
-.resource-pricing-title span {
-    color: #00bfc3;
-}
-
-.resource-pricing-intro {
-    max-width: 760px;
-    margin: 20px auto 0;
-    color: #66747d;
-    font-size: 16px;
-    line-height: 1.8;
-}
-
-
-/* =====================================================
-   PRICING CARDS
-===================================================== */
-
-.pricing-cards-row {
-    margin-top: 55px;
-}
-
-.developer-pricing-card {
-    position: relative;
-    height: 100%;
-    padding: 32px 28px;
+.hire-developer-section {
     background: #ffffff;
-    border: 1px solid #e2ecef;
-    border-radius: 18px;
-    transition: all 0.3s ease;
-    overflow: hidden;
 }
 
-.developer-pricing-card:hover {
-    transform: translateY(-8px);
-    border-color: #00bfc3;
-    box-shadow: 0 20px 50px rgba(24, 55, 70, 0.10);
+.hire-developer-title {
+    color: #009eae;
+    font-size: 42px;
+    line-height: 1.2;
+    font-weight: 700;
+    margin-bottom: 25px;
 }
 
-.pricing-card-top {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 22px;
+.hire-developer-description {
+    font-size: 17px;
+    line-height: 1.7;
+    color: #222;
+    max-width: 650px;
 }
 
-.pricing-number {
-    width: 34px;
-    height: 34px;
+
+/* =========================================
+   STATS
+========================================= */
+
+.hire-stat-item {
+    text-align: center;
+}
+
+.hire-stat-icon {
+    width: 64px;
+    height: 64px;
+    background: #eeeeee;
+    border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 50%;
-    background: #e9f9fa;
-    color: #00aeb3;
-    font-size: 12px;
-    font-weight: 700;
+    margin: 0 auto 15px;
+    color: #00a5b5;
+    font-size: 27px;
 }
 
-.pricing-type {
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 1px;
-    color: #89959d;
-}
-
-.developer-pricing-card h3 {
-    margin-bottom: 8px;
-    color: #172633;
-    font-size: 22px;
-    font-weight: 700;
-}
-
-.pricing-experience {
-    margin-bottom: 24px;
-    color: #7b878f;
-    font-size: 13px;
-}
-
-.pricing-amount {
-    color: #172633;
-    font-size: 48px;
-    font-weight: 800;
+.hire-stat-item h3 {
+    font-size: 34px;
     line-height: 1;
+    font-weight: 700;
+    margin-bottom: 10px;
 }
 
-.pricing-amount span {
-    position: relative;
-    top: -12px;
-    color: #00bfc3;
+.hire-stat-item p {
+    color: #777;
+    font-size: 15px;
+    line-height: 1.25;
+    margin-bottom: 0;
+}
+
+
+/* =========================================
+   CONTACT DETAILS
+========================================= */
+
+.hire-contact-list {
+    padding-right: 25px;
+}
+
+.hire-contact-item {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-bottom: 28px;
+}
+
+.hire-contact-icon {
+    min-width: 55px;
+    width: 55px;
+    height: 55px;
+    background: #00a3b3;
+    color: #fff;
+    border-radius: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-size: 22px;
 }
 
-.pricing-amount small {
-    margin-left: 5px;
-    color: #7d8991;
-    font-size: 13px;
+.hire-contact-item span {
+    display: block;
+    font-size: 12px;
+    color: #555;
+    font-weight: 600;
+    margin-bottom: 3px;
+}
+
+.hire-contact-item strong {
+    display: block;
+    font-size: 14px;
+    color: #111;
     font-weight: 500;
 }
 
-.pricing-range {
-    margin-top: 10px;
-    color: #7d8991;
-    font-size: 12px;
+
+/* =========================================
+   WHAT HAPPENS NEXT
+========================================= */
+
+.hire-next-section {
+    border-left: 1px solid #cccccc;
+    padding-left: 30px;
 }
 
-.pricing-range strong {
-    color: #4f5c64;
+.hire-next-section h3 {
+    font-size: 25px;
+    margin-bottom: 25px;
+    color: #111;
 }
 
-.pricing-line {
-    width: 100%;
-    height: 1px;
-    margin: 24px 0;
-    background: #e8eef0;
+.hire-next-item {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 25px;
 }
 
-.pricing-features {
-    min-height: 112px;
-    padding: 0;
-    margin: 0;
-    list-style: none;
-}
-
-.pricing-features li {
-    position: relative;
-    padding-left: 22px;
-    margin-bottom: 12px;
-    color: #53616a;
-    font-size: 13px;
-    line-height: 1.5;
-}
-
-.pricing-features li::before {
-    content: "✓";
-    position: absolute;
-    left: 0;
-    top: 0;
-    color: #00bfc3;
+.hire-next-number {
+    min-width: 34px;
+    width: 34px;
+    height: 34px;
+    background: #ff6b00;
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-weight: 700;
 }
 
-.pricing-card-btn {
-    display: block;
-    width: 100%;
-    padding: 12px 15px;
-    margin-top: 25px;
-    border: 1px solid #dce7e9;
-    border-radius: 8px;
-    color: #172633;
-    text-align: center;
-    font-size: 13px;
+.hire-next-item h4 {
+    font-size: 16px;
+    margin-bottom: 4px;
+    color: #111;
+}
+
+.hire-next-item p {
+    font-size: 14px;
+    line-height: 1.5;
+    color: #555;
+    margin-bottom: 0;
+}
+
+
+/* =========================================
+   FORM CARD
+========================================= */
+
+.hire-developer-form-card {
+    background: #dff5f7;
+    border-radius: 15px;
+    padding: 38px;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
+}
+
+.hire-developer-form-card h2 {
+    font-size: 30px;
+    line-height: 1.25;
+    font-weight: 700;
+    color: #111;
+    margin-bottom: 10px;
+}
+
+.hire-developer-form-card h2 span {
+    color: #00a3b3;
+}
+
+.form-intro {
+    color: #666;
+    margin-bottom: 30px;
+    font-size: 15px;
+}
+
+.hire-developer-form-card .form-label {
     font-weight: 600;
-    text-decoration: none;
+    font-size: 14px;
+    margin-bottom: 8px;
+    color: #111;
+}
+
+.hire-developer-form-card .form-label span {
+    color: #e63946;
+}
+
+.hire-developer-form-card .form-label small {
+    color: #777;
+    font-weight: 400;
+}
+
+.hire-developer-form-card .form-control,
+.hire-developer-form-card .form-select {
+    border: 0;
+    min-height: 54px;
+    border-radius: 9px;
+    padding: 14px 16px;
+    font-size: 14px;
+    box-shadow: none;
+}
+
+.hire-developer-form-card textarea.form-control {
+    min-height: 125px;
+    resize: vertical;
+}
+
+.hire-developer-form-card .form-control:focus,
+.hire-developer-form-card .form-select:focus {
+    box-shadow: 0 0 0 3px rgba(0, 168, 180, 0.15);
+}
+
+
+/* =========================================
+   CONSULTATION
+========================================= */
+
+.consultation-section {
+    margin-top: 10px;
+}
+
+.consultation-section h3 {
+    font-size: 22px;
+    margin-bottom: 18px;
+    color: #111;
+}
+
+.consultation-checkbox {
+    color: #009eae;
+    font-size: 17px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.form-check-input {
+    margin-top: 5px;
+}
+
+.form-check-input:checked {
+    background-color: #00a3b3;
+    border-color: #00a3b3;
+}
+
+
+/* =========================================
+   SUBMIT BUTTON
+========================================= */
+
+.hire-submit-btn {
+    background: #ff5b12;
+    border: none;
+    color: #fff;
+    min-height: 55px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 700;
     transition: all 0.3s ease;
 }
 
-.pricing-card-btn:hover {
-    background: #172633;
-    border-color: #172633;
-    color: #ffffff;
+.hire-submit-btn:hover {
+    background: #e94f0b;
+    color: #fff;
+    transform: translateY(-1px);
+}
+
+.form-response-text {
+    color: #777;
+    font-size: 14px;
+    margin-top: 18px;
+    margin-bottom: 12px;
+}
+
+.privacy-text,
+.captcha-text {
+    color: #555;
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+.privacy-text span {
+    color: #ff5b12;
+}
+
+.captcha-text a {
+    color: #111;
+    text-decoration: underline;
 }
 
 
-/* =====================================================
-   FEATURED CARD
-===================================================== */
+/* =========================================
+   TECHNOLOGY SECTION
+========================================= */
 
-.featured-pricing {
-    border: 2px solid #00bfc3;
-    box-shadow: 0 15px 45px rgba(0, 191, 195, 0.12);
+.hire-technology-section {
+    background: #f3fbfc;
 }
 
-.featured-btn {
-    background: #00bfc3;
-    border-color: #00bfc3;
-    color: #ffffff;
-}
-
-.featured-btn:hover {
-    background: #172633;
-    border-color: #172633;
-}
-
-.recommended-badge {
-    position: absolute;
-    top: 0;
-    right: 25px;
-    padding: 7px 13px;
-    border-radius: 0 0 7px 7px;
-    background: #00bfc3;
-    color: #ffffff;
-    font-size: 9px;
+.section-small-title {
+    color: #00a3b3;
+    font-size: 12px;
     font-weight: 700;
     letter-spacing: 1px;
 }
 
-
-/* =====================================================
-   TECHNOLOGY SECTION
-===================================================== */
-
-.technology-section {
-    margin-top: 90px;
+.section-description {
+    max-width: 650px;
+    margin: 15px auto 0;
+    color: #666;
 }
 
-.technology-heading {
-    margin-bottom: 35px;
-}
-
-.technology-heading h2 {
-    margin-top: 12px;
-    margin-bottom: 0;
-    color: #172633;
-    font-size: 36px;
-    font-weight: 700;
-}
-
-.technology-heading p {
-    margin: 0;
-    color: #68767e;
-    font-size: 14px;
-    line-height: 1.8;
-}
-
-
-/* =====================================================
-   TECHNOLOGY CARDS
-===================================================== */
-
-.tech-rate-card {
-    height: 100%;
-    padding: 28px;
-    background: #ffffff;
-    border: 1px solid #e2ecef;
-    border-radius: 15px;
-    transition: all 0.3s ease;
-}
-
-.tech-rate-card:hover {
-    transform: translateY(-5px);
-    border-color: #00bfc3;
-    box-shadow: 0 15px 35px rgba(25, 55, 70, 0.08);
-}
-
-.tech-icon {
-    width: 45px;
-    height: 45px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 20px;
-    border-radius: 10px;
-    background: #eaf9fa;
-    color: #00aeb3;
-    font-size: 15px;
-    font-weight: 800;
-}
-
-.tech-rate-card h3 {
-    margin-bottom: 6px;
-    color: #172633;
-    font-size: 18px;
-    font-weight: 700;
-}
-
-.tech-category {
-    display: block;
-    margin-bottom: 13px;
-    color: #00aeb3;
-    font-size: 11px;
-    font-weight: 600;
-}
-
-.tech-rate-card p {
-    min-height: 65px;
-    margin-bottom: 20px;
-    color: #68767e;
-    font-size: 13px;
-    line-height: 1.7;
-}
-
-.tech-rate {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-top: 16px;
-    border-top: 1px solid #edf1f2;
-}
-
-.tech-rate span {
-    color: #87939a;
-    font-size: 11px;
-}
-
-.tech-rate strong {
-    color: #00aeb3;
-    font-size: 15px;
-}
-
-
-/* =====================================================
-   BOTTOM CTA
-===================================================== */
-
-.pricing-bottom-note {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 30px;
-    padding: 25px 30px;
-    margin-top: 40px;
+.technology-hire-card {
+    background: #fff;
+    border: 1px solid #e5eeee;
     border-radius: 12px;
-    background: #172633;
-    color: #ffffff;
-}
-
-.pricing-bottom-note div {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-}
-
-.pricing-bottom-note strong {
-    font-size: 15px;
-}
-
-.pricing-bottom-note span {
-    color: #b9c6cc;
-    font-size: 12px;
-}
-
-.pricing-bottom-note a {
-    flex-shrink: 0;
-    padding: 11px 20px;
-    border-radius: 7px;
-    background: #00bfc3;
-    color: #ffffff;
-    text-decoration: none;
-    font-size: 12px;
-    font-weight: 600;
+    padding: 25px;
+    height: 100%;
     transition: all 0.3s ease;
 }
 
-.pricing-bottom-note a:hover {
-    background: #ffffff;
-    color: #172633;
+.technology-hire-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.07);
+    border-color: #00a3b3;
 }
 
-.pricing-bottom-note a span {
-    margin-left: 8px;
-    color: inherit;
+.technology-hire-card h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #172b3a;
+}
+
+.technology-hire-card p {
+    font-size: 13px;
+    line-height: 1.6;
+    color: #777;
+    margin-bottom: 0;
 }
 
 
-/* =====================================================
+/* =========================================
    RESPONSIVE
-===================================================== */
-
-@media (max-width: 1199px) {
-
-    .resource-pricing-title {
-        font-size: 42px;
-    }
-
-    .developer-pricing-card {
-        padding: 28px 22px;
-    }
-
-    .developer-pricing-card h3 {
-        font-size: 19px;
-    }
-
-}
-
+========================================= */
 
 @media (max-width: 991px) {
 
-    .resource-pricing-section {
-        padding: 80px 0;
+    .hire-developer-title {
+        font-size: 36px;
     }
 
-    .pricing-cards-row {
-        row-gap: 25px;
+    .hire-developer-form-card {
+        padding: 30px;
     }
 
-    .technology-section {
-        margin-top: 70px;
-    }
-
-    .technology-heading h2 {
-        font-size: 30px;
-    }
-
-    .technology-heading p {
-        margin-top: 15px;
-    }
-
-    .pricing-bottom-note {
-        align-items: flex-start;
-        flex-direction: column;
+    .hire-next-section {
+        margin-top: 30px;
     }
 
 }
@@ -2322,41 +2249,36 @@ input.subscribe-input:focus {
 
 @media (max-width: 767px) {
 
-    .resource-pricing-section {
-        padding: 65px 0;
+    .hire-developer-title {
+        font-size: 30px;
     }
 
-    .resource-pricing-title {
-        font-size: 34px;
+    .hire-developer-description {
+        font-size: 15px;
     }
 
-    .resource-pricing-intro {
-        font-size: 14px;
-    }
-
-    .pricing-cards-row {
-        margin-top: 40px;
-    }
-
-    .technology-section {
-        margin-top: 60px;
-    }
-
-    .technology-heading h2 {
-        font-size: 27px;
-    }
-
-    .tech-rate-card {
-        padding: 24px;
-    }
-
-    .pricing-bottom-note {
+    .hire-developer-form-card {
         padding: 22px;
+        border-radius: 10px;
     }
 
-    .pricing-bottom-note a {
-        width: 100%;
-        text-align: center;
+    .hire-developer-form-card h2 {
+        font-size: 25px;
+    }
+
+    .hire-contact-list {
+        padding-right: 0;
+    }
+
+    .hire-next-section {
+        border-left: 0;
+        border-top: 1px solid #ddd;
+        padding-left: 0;
+        padding-top: 30px;
+    }
+
+    .hire-stat-item {
+        margin-bottom: 30px;
     }
 
 }

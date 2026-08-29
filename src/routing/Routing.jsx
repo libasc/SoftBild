@@ -13,12 +13,14 @@ import Portfolio from '../pages/portfolio/Portfolio'
 import PortfolioDetail from '../pages/portfolio/PortfolioDetail'
 import ScrollToTop from '../components/ScrollToTop'
 import ResourcePricing from '../pages/pricing/ResourcePricing'
+import HireDeveloper from '../pages/pricing/HireDeveloper'
 
 function Routing() {
   return (
     <>
     <section className='main'>
       {/* <BrowserRouter> */}
+
         <ScrollToTop />
           <Routes>
             <Route path='/' element={<AppLayout />}>
@@ -38,6 +40,8 @@ function Routing() {
 
                 {/* <Route path='/' element={<ResourcePricing></ResourcePricing>}></Route> */}
                 <Route path='/ResourcePricing' element={<ResourcePricing />} />
+                <Route path="/HireDeveloper" element={<HireDeveloper />}
+/>
             </Route>
 
             <Route path='*' element={<h1>Sorry!, Page not found</h1>}></Route>
