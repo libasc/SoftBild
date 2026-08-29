@@ -12,6 +12,7 @@ import BlogDetails from '../pages/blog/BlogDetails'
 import Portfolio from '../pages/portfolio/Portfolio'
 import PortfolioDetail from '../pages/portfolio/PortfolioDetail'
 import ScrollToTop from '../components/ScrollToTop'
+import ResourcePricing from '../pages/pricing/ResourcePricing'
 
 function Routing() {
   return (
@@ -34,6 +35,9 @@ function Routing() {
                 <Route path='/BlogDetails/:id' element={<BlogDetails></BlogDetails>}></Route>
                 <Route path='/EditBlog/:id' element={<Page></Page>}></Route>
                 <Route path='/DeleteBlog/:id' element={<Page></Page>}></Route>
+
+                {/* <Route path='/' element={<ResourcePricing></ResourcePricing>}></Route> */}
+                <Route path='/ResourcePricing' element={<ResourcePricing />} />
             </Route>
 
             <Route path='*' element={<h1>Sorry!, Page not found</h1>}></Route>
