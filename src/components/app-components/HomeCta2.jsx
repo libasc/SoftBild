@@ -9,7 +9,7 @@ function HomeCta2() {
                 <div className="row">
                     <div className="col-lg-12 text-center">
                         <h2 className="text-white light-subtitle"><span style={{ fontWeight: 300 }}>Let’s start something</span> <span className="text-gradient1" style={{ fontWeight: 800 }}>great together!!</span></h2>
-                        <Link to="/Contact" className="sf-btn2 text-white">get started</Link>
+                        <Link to="/HireDeveloper" className="sf-btn2 text-white">get started</Link>
                     </div>
                 </div>
             </div>

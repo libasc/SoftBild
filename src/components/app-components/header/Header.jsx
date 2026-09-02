@@ -86,6 +86,7 @@ import instaicon from '../../../assets/icons/social-instagram.svg';
 import twittericon from '../../../assets/icons/social-twitter.svg';
 import linkedinicon from '../../../assets/icons/social-linkedin.svg';
 import email from '../../../assets/icons/email1.svg';
+import phoneIcon from '../../../assets/icons/call3.svg';
 import { Link, NavLink } from 'react-router-dom';
 
 function Header() {
@@ -102,9 +103,15 @@ function Header() {
             <div className="container-fluid bg-blue1 text-white py-10">
                 <div className="container px-0">
                     <div className="small-header">
-                        <div className="sh-email">
-                            <span><img src={email} alt="email" /> &nbsp;: </span>
-                            <Link to="mailto:info@softbild.com">info@softbild.com</Link>
+                        <div className="d-flex justify-content-start gap-3">
+                            <div className="sh-email">
+                                <span><img src={email} alt="email" /> &nbsp;: </span>
+                                <Link to="mailto:info@softbild.com">info@softbild.com</Link>
+                            </div>
+                            <div className="sh-email">
+                                <span><img src={phoneIcon} alt="email" /> &nbsp;: </span>
+                                <Link to="tel:+971527535786">+971 (527) 535-786</Link>
+                            </div>
                         </div>
                         <div className="sh-social">
                             <ul>
@@ -142,7 +149,7 @@ function Header() {
                                     </ul>
                                 </div>
                                 <div className="header-btn-wrpr">
-                                    <Link to="/Contact" className="sf-btn1">
+                                    <Link to="/HireDeveloper" className="sf-btn1">
                                         Start a Project
                                     </Link>
                                 </div>

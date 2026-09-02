@@ -29,7 +29,7 @@ function AboutInfo(){
                         <h2 className="dark-subtitle mb-15">We always make <span className="text-curve-line">the best</span></h2>
                         <p>At SoftBild, we are committed to delivering the highest quality in every project. We believe in crafting innovative, reliable, and impactful solutions that help your business thrive in the digital world. With a strong focus on customer satisfaction, we ensure that each solution we provide is tailored to meet your specific needs and exceed expectations. Whether it's UI/UX design, custom web development, or AI-powered applications, we always aim for excellence.</p>
                         <p>Our experienced team combines creativity, expertise, and cutting-edge technology to create digital solutions that deliver real business value. We take pride in understanding your goals and providing solutions that not only meet but surpass your business requirements. Trust SoftBild to always deliver the best, every time.</p>
-                        <Link to="/Contact" className="sf-btn1 pe-2">
+                        <Link to="/HireDeveloper" className="sf-btn1 pe-2">
                         Enquire
                         <span className="icon-round1 ms-2">
                             <img src={arrowIcon} alt="Enquire" />

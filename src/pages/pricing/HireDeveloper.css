@@ -1,574 +1,1368 @@
-/* =========================================
+/* =========================================================
    HIRE DEVELOPER PAGE
-========================================= */
+========================================================= */
 
 .hire-developer-section {
-    padding: 70px 0 80px;
-    background: #ffffff;
+    position: relative;
+    overflow: hidden;
+    padding: 85px 0 90px;
+    background: #f4fbfc;
 }
 
 
-/* =========================================
+/* =========================================================
+   BACKGROUND DECORATION
+========================================================= */
+
+.hire-bg-circle {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    opacity: 0.65;
+}
+
+.hire-bg-circle-one {
+    width: 380px;
+    height: 380px;
+    top: -220px;
+    left: -190px;
+    background: #dff5f7;
+}
+
+.hire-bg-circle-two {
+    width: 320px;
+    height: 320px;
+    right: -180px;
+    bottom: -180px;
+    background: #e4f7f8;
+}
+
+
+/* =========================================================
    LEFT CONTENT
-========================================= */
+========================================================= */
 
 .hire-left-content {
-    padding: 10px 15px 0 0;
+    position: relative;
+    z-index: 2;
+    padding: 8px 25px 0 0;
 }
+
 
 .hire-eyebrow {
-    display: inline-block;
-    margin-bottom: 12px;
-    font-size: 12px;
+    display: flex;
+    align-items: center;
+    gap: 11px;
+
+    margin-bottom: 18px;
+
+    color: #08aeba;
+    font-size: 11px;
     font-weight: 700;
-    letter-spacing: 1.5px;
-    color: #08b8c4;
+    letter-spacing: 1.6px;
 }
 
-.hire-left-content h1 {
-    margin: 0 0 22px;
+
+.hire-eyebrow-line {
+    width: 35px;
+    height: 2px;
+
+    background: #08b8c4;
+}
+
+
+/* =========================================================
+   MAIN HEADING
+========================================================= */
+
+.hire-main-title {
+    max-width: 600px;
+
+    margin: 0 0 20px;
+
     color: #172635;
-    font-size: 43px;
-    line-height: 1.16;
+
+    font-size: 48px;
+    line-height: 1.08;
+    font-weight: 700;
+    letter-spacing: -1.4px;
+}
+
+
+.hire-main-title span {
+    display: block;
+    margin-top: 5px;
+
+    color: #08aeba;
+}
+
+
+.hire-main-description {
+    max-width: 600px;
+
+    margin: 0 0 30px;
+
+    color: #586b75;
+
+    font-size: 16px;
+    line-height: 1.75;
+}
+
+
+/* =========================================================
+   BENEFITS
+========================================================= */
+
+.hire-benefits {
+    display: flex;
+    flex-direction: column;
+
+    gap: 17px;
+
+    max-width: 590px;
+
+    margin-bottom: 32px;
+}
+
+
+.hire-benefit {
+    display: flex;
+    align-items: flex-start;
+
+    gap: 14px;
+}
+
+
+.hire-benefit-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 40px;
+    height: 40px;
+
+    flex-shrink: 0;
+
+    border-radius: 10px;
+
+    background: #dff5f6;
+
+    color: #08aeba;
+
+    font-size: 17px;
+}
+
+
+.hire-benefit h4 {
+    margin: 1px 0 3px;
+
+    color: #172635;
+
+    font-size: 14px;
     font-weight: 700;
 }
 
-.hire-left-content h1 span {
-    color: #08b8c4;
-}
 
-.hire-intro {
-    margin-bottom: 16px;
-    color: #273744;
-    font-size: 17px;
-    line-height: 1.65;
-}
+.hire-benefit p {
+    max-width: 460px;
 
-.hire-description {
-    margin-bottom: 35px;
-    color: #5e6b74;
-    font-size: 15px;
-    line-height: 1.7;
+    margin: 0;
+
+    color: #70808a;
+
+    font-size: 14px;
+    line-height: 1.55;
 }
 
 
-/* =========================================
-   STATS
-========================================= */
+/* =========================================================
+   TRUST STRIP
+========================================================= */
 
-.hire-stats {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 15px;
-    margin-bottom: 40px;
+.hire-trust-strip {
+    display: flex;
+    align-items: center;
+
+    width: 100%;
+
+    margin-bottom: 38px;
+
+    padding: 20px 22px;
+
+    background: #ffffff;
+
+    border: 1px solid #e1ecee;
+    border-radius: 12px;
+
+    box-shadow: 0 8px 25px rgba(23, 38, 53, 0.045);
 }
 
-.hire-stat {
+
+.hire-trust-item {
+    flex: 1;
+
     text-align: center;
 }
 
-.stat-icon {
-    width: 46px;
-    height: 46px;
-    margin: 0 auto 10px;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.hire-trust-item strong {
+    display: block;
 
-    background: #e9f7f8;
-    border-radius: 9px;
+    margin-bottom: 4px;
 
-    color: #08aeba;
-    font-size: 20px;
-}
-
-.hire-stat h3 {
-    margin: 0;
     color: #172635;
-    font-size: 27px;
+
+    font-size: 23px;
+    line-height: 1;
     font-weight: 700;
 }
 
-.hire-stat p {
-    margin: 3px 0 0;
-    color: #7b8790;
-    font-size: 12px;
-    line-height: 1.4;
-}
 
-
-/* =========================================
-   CONTACT + PROCESS
-========================================= */
-
-.hire-contact-process {
-    display: grid;
-    grid-template-columns: 0.9fr 1.1fr;
-    gap: 35px;
-}
-
-.hire-contact {
-    padding-right: 25px;
-    border-right: 1px solid #dce5e8;
-}
-
-.contact-item {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    margin-bottom: 20px;
-}
-
-.contact-item:last-child {
-    margin-bottom: 0;
-}
-
-.contact-icon {
-    width: 42px;
-    height: 42px;
-    flex-shrink: 0;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    background: #08aeba;
-    border-radius: 7px;
-
-    color: #ffffff;
-    font-size: 18px;
-}
-
-.contact-item span {
+.hire-trust-item span {
     display: block;
-    margin-bottom: 3px;
-    color: #6c7880;
+
+    color: #7b8991;
+
     font-size: 10px;
-    font-weight: 600;
-}
-
-.contact-item strong {
-    display: block;
-    color: #263642;
-    font-size: 12px;
-    font-weight: 500;
-    line-height: 1.4;
+    line-height: 1.3;
 }
 
 
-/* =========================================
+.hire-trust-divider {
+    width: 1px;
+    height: 38px;
+
+    background: #dce7e9;
+}
+
+
+/* =========================================================
    PROCESS
-========================================= */
+========================================================= */
 
-.hire-process h3 {
-    margin: 0 0 22px;
-    color: #172635;
-    font-size: 21px;
-    font-weight: 600;
+.hire-process-wrapper {
+    max-width: 600px;
+
+    margin-bottom: 34px;
 }
 
-.process-item {
+
+.hire-small-label {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: #08aeba;
+
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+}
+
+
+.hire-process-header h2 {
+    margin: 0 0 6px;
+
+    color: #172635;
+
+    font-size: 24px;
+    font-weight: 700;
+}
+
+
+.hire-process-header p {
+    margin: 0 0 22px;
+
+    color: #71818a;
+
+    font-size: 16px;
+}
+
+
+.hire-process-list {
+    position: relative;
+}
+
+
+.hire-process-list::before {
+    content: "";
+
+    position: absolute;
+
+    top: 19px;
+    bottom: 19px;
+    left: 17px;
+
+    width: 1px;
+
+    background: #cfe3e6;
+}
+
+
+.hire-process-item {
+    position: relative;
+
     display: flex;
-    gap: 13px;
+
+    gap: 15px;
+
     margin-bottom: 20px;
 }
 
-.process-item:last-child {
+
+.hire-process-item:last-child {
     margin-bottom: 0;
 }
 
-.process-number {
-    width: 28px;
-    height: 28px;
-    flex-shrink: 0;
+
+.hire-process-number {
+    position: relative;
+    z-index: 2;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
+    width: 35px;
+    height: 35px;
+
+    flex-shrink: 0;
+
+    border: 3px solid #f4fbfc;
     border-radius: 50%;
+
     background: #08b8c4;
 
     color: #ffffff;
-    font-size: 13px;
+
+    font-size: 10px;
     font-weight: 700;
+
+    box-shadow: 0 0 0 1px #08b8c4;
 }
 
-.process-item h4 {
+
+.hire-process-content {
+    padding-top: 1px;
+}
+
+
+.hire-process-content h4 {
     margin: 0 0 4px;
-    color: #273744;
-    font-size: 13px;
+
+    color: #172635;
+
+    font-size: 14px;
     font-weight: 700;
 }
 
-.process-item p {
+
+.hire-process-content p {
+    max-width: 430px;
+
     margin: 0;
-    color: #697780;
-    font-size: 11px;
-    line-height: 1.5;
+
+    color: #72818a;
+
+    font-size: 14px;
+    line-height: 1.55;
 }
 
 
-/* =========================================
-   FORM CARD
-========================================= */
+/* =========================================================
+   CONTACT ROW
+========================================================= */
+
+.hire-contact-row {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 10px;
+
+    max-width: 600px;
+}
+
+
+.hire-contact-box {
+    display: flex;
+    align-items: center;
+
+    gap: 9px;
+
+    padding: 11px;
+
+    background: transparent;
+
+    border: 1px solid #dce9eb;
+    border-radius: 9px;
+
+    text-decoration: none;
+
+    transition: all 0.25s ease;
+}
+
+
+.hire-contact-box:hover {
+    background: #ffffff;
+
+    border-color: #b9dfe2;
+
+    transform: translateY(-2px);
+
+    box-shadow: 0 8px 20px rgba(23, 38, 53, 0.06);
+}
+
+
+.hire-contact-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 32px;
+    height: 32px;
+
+    flex-shrink: 0;
+
+    border-radius: 7px;
+
+    background: #08aeba;
+
+    color: #ffffff;
+
+    font-size: 12px;
+}
+
+
+.hire-contact-box small {
+    display: block;
+
+    margin-bottom: 2px;
+
+    color: #7b8991;
+
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+
+.hire-contact-box strong {
+    display: block;
+
+    color: #172635;
+
+    font-size: 9px;
+    font-weight: 600;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   FORM WRAPPER
+========================================================= */
+
+.hire-form-wrapper {
+    position: relative;
+
+    z-index: 2;
+
+    padding-top: 5px;
+}
+
+
+.hire-form-top-line {
+    position: absolute;
+
+    top: 0;
+    left: 28px;
+
+    width: 55px;
+    height: 3px;
+
+    border-radius: 4px;
+
+    background: #08b8c4;
+
+    z-index: 3;
+}
+
 
 .hire-form-card {
-    padding: 32px;
-    background: #e1f6f8;
-    border-radius: 15px;
-    box-shadow: 0 12px 35px rgba(23, 38, 53, 0.08);
+    position: relative;
+
+    padding: 34px 30px 27px;
+
+    background: #ffffff;
+
+    border: 1px solid #dcecee;
+
+    border-radius: 16px;
+
+    box-shadow:
+        0 20px 55px rgba(23, 38, 53, 0.09),
+        0 3px 10px rgba(23, 38, 53, 0.03);
 }
 
+
+/* =========================================================
+   FORM HEADER
+========================================================= */
+
 .hire-form-header {
-    margin-bottom: 25px;
+    padding-bottom: 20px;
+
+    margin-bottom: 21px;
+
+    border-bottom: 1px solid #edf2f3;
 }
+
+
+.hire-form-label {
+    display: flex;
+    align-items: center;
+
+    gap: 7px;
+
+    margin-bottom: 9px;
+
+    color: #08aeba;
+
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1.1px;
+}
+
 
 .hire-form-header h2 {
     margin: 0 0 8px;
+
     color: #172635;
-    font-size: 25px;
-    line-height: 1.3;
-    font-weight: 650;
+
+    font-size: 29px;
+    line-height: 1.15;
+    font-weight: 700;
+    letter-spacing: -0.6px;
 }
+
 
 .hire-form-header h2 span {
     color: #08aeba;
 }
 
+
 .hire-form-header p {
+    max-width: 500px;
+
     margin: 0;
-    color: #66757e;
-    font-size: 12px;
-    line-height: 1.5;
+
+    color: #71818a;
+
+    font-size: 11px;
+    line-height: 1.55;
 }
 
 
-/* =========================================
-   FORM FIELDS
-========================================= */
+/* =========================================================
+   FORM LABELS
+========================================================= */
 
 .hire-form-card label {
     display: block;
+
     margin-bottom: 7px;
-    color: #172635;
-    font-size: 12px;
-    font-weight: 600;
+
+    color: #263946;
+
+    font-size: 14px;
+    font-weight: 700;
 }
 
-.hire-form-card label > span {
-    color: #08aeba;
+
+.hire-form-card label>span {
     margin-left: 3px;
+
+    color: #08aeba;
 }
+
 
 .hire-form-card label small {
-    margin-left: 4px;
-    color: #7b858c;
-    font-size: 9px;
+    margin-left: 5px;
+
+    color: #8c999f;
+
+    font-size: 8px;
     font-weight: 400;
 }
 
+
+/* =========================================================
+   INPUTS
+========================================================= */
+
 .hire-form-card .form-control,
 .hire-form-card .form-select {
-    width: 100%;
-    min-height: 48px;
-
-    border: 1px solid #dce8ea;
-    border-radius: 8px;
-
-    background: #ffffff;
-
-    color: #475761;
+    min-height: 43px;
+    padding: 10px 12px;
+    border: 1px solid #dce7e9;
+    border-radius: 7px;
+    background-color: #fbfdfd;
+    color: #344650;
     font-size: 12px;
-
-    padding: 11px 13px;
-
     box-shadow: none;
-    transition: all 0.2s ease;
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
 }
 
-.hire-form-card textarea.form-control {
-    min-height: 105px;
-    resize: vertical;
+
+.hire-form-card .form-control:hover,
+.hire-form-card .form-select:hover {
+    border-color: #c7dfe2;
+
+    background-color: #ffffff;
 }
 
-.hire-form-card .form-control::placeholder {
-    color: #9ba5aa;
-}
 
 .hire-form-card .form-control:focus,
 .hire-form-card .form-select:focus {
     border-color: #08b8c4;
-    box-shadow: 0 0 0 3px rgba(8, 184, 196, 0.12);
+
+    background: #ffffff;
+
+    box-shadow: 0 0 0 3px rgba(8, 184, 196, 0.10);
 }
 
 
-/* =========================================
+.hire-form-card .form-control::placeholder {
+    color: #a2adb2;
+}
+
+
+.hire-textarea {
+    min-height: 105px !important;
+
+    resize: vertical;
+}
+
+
+/* =========================================================
    CONSULTATION
-========================================= */
+========================================================= */
 
-.consultation-section {
-    margin-top: 25px;
-}
+.hire-consultation {
+    /* margin-top: 25px; */
 
-.consultation-section h3 {
-    margin: 0 0 13px;
-    color: #172635;
-    font-size: 18px;
-    font-weight: 600;
+    padding-top: 20px;
+
+    /* border-top: 1px solid #edf2f3; */
 }
 
 
-/* Booking checkbox */
+.hire-consultation-heading {
+    margin-bottom: 17px;
+}
 
-.booking-check {
-    display: flex !important;
+
+.hire-consultation-heading>div:first-child {
+    display: flex;
     align-items: center;
-    gap: 8px;
 
-    margin-bottom: 15px !important;
+    gap: 10px;
 
-    cursor: pointer;
+    margin-bottom: 13px;
 }
 
-.booking-check input {
-    width: 14px;
-    height: 14px;
 
+.hire-consultation-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 35px;
+    height: 35px;
+
+    flex-shrink: 0;
+
+    border-radius: 8px;
+
+    background: #e1f6f7;
+
+    color: #08aeba;
+
+    font-size: 14px;
+}
+
+
+.hire-consultation-heading h3 {
+    margin: 0 0 2px;
+
+    color: #172635;
+
+    font-size: 14px;
+    font-weight: 700;
+}
+
+
+.hire-consultation-heading p {
     margin: 0;
 
-    accent-color: #08b8c4;
+    color: #7b8991;
+
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   BOOKING CHECKBOX
+========================================================= */
+
+.hire-consultation-check {
+    display: flex !important;
+    align-items: center;
+
+    width: fit-content;
+
+    gap: 8px;
+
+    margin: 0 !important;
+
     cursor: pointer;
 }
 
-.booking-check span {
-    margin: 0 !important;
 
-    color: #08aeba !important;
-    font-size: 13px !important;
-    font-weight: 600 !important;
+.hire-consultation-check input {
+    position: absolute;
+
+    opacity: 0;
+
+    pointer-events: none;
 }
 
 
-/* Consultation labels */
+.hire-consultation-check span {
+    position: relative;
 
-.consultation-section label:not(.booking-check) {
-    margin-bottom: 7px;
+    width: 16px;
+    height: 16px;
+
+    flex-shrink: 0;
+
+    border: 1px solid #b9cdd0;
+
+    border-radius: 4px;
+
+    background: #ffffff;
 }
 
 
-/* =========================================
+.hire-consultation-check input:checked+span {
+    background: #08b8c4;
+
+    border-color: #08b8c4;
+}
+
+
+.hire-consultation-check input:checked+span::after {
+    content: "✓";
+
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -55%);
+
+    color: #ffffff;
+
+    font-size: 10px;
+    font-weight: 700;
+}
+
+
+.hire-consultation-check strong {
+    color: #08aeba;
+
+    font-size: 14px;
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   DATE/TIME INPUT
+========================================================= */
+
+.hire-input-icon {
+    position: relative;
+}
+
+
+.hire-input-icon>svg {
+    position: absolute;
+
+    top: 50%;
+    right: 12px;
+
+    transform: translateY(-50%);
+
+    color: #71818a;
+
+    font-size: 11px;
+
+    pointer-events: none;
+
+    z-index: 2;
+}
+
+
+.hire-input-icon input {
+    padding-right: 35px !important;
+}
+
+
+/* =========================================================
    SUBMIT BUTTON
-========================================= */
+========================================================= */
 
 .hire-submit-btn {
-    width: 100%;
-    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    margin-top: 20px;
+    gap: 10px;
+
+    width: 100%;
+    min-height: 48px;
+
+    margin-top: 22px;
+
+    padding: 10px 20px;
 
     border: 0;
     border-radius: 8px;
 
     background: #08b8c4;
+
     color: #ffffff;
 
-    font-size: 13px;
-    font-weight: 600;
+    font-size: 11px;
+    font-weight: 700;
 
-    cursor: pointer;
+    box-shadow: 0 8px 18px rgba(8, 184, 196, 0.18);
 
     transition: all 0.25s ease;
 }
 
+
+.hire-submit-btn svg {
+    font-size: 10px;
+
+    transition: transform 0.25s ease;
+}
+
+
 .hire-submit-btn:hover {
-    background: #079da8;
+    background: #079fa9;
+
     color: #ffffff;
 
     transform: translateY(-1px);
 
-    box-shadow: 0 7px 18px rgba(8, 184, 196, 0.22);
+    box-shadow: 0 10px 23px rgba(8, 184, 196, 0.25);
 }
 
 
-/* =========================================
-   FORM NOTES
-========================================= */
-
-.response-note {
-    margin: 12px 0 7px;
-
-    color: #74818a;
-    font-size: 10px;
+.hire-submit-btn:hover svg {
+    transform: translateX(3px);
 }
 
-.privacy-note {
-    margin: 0 0 7px;
 
-    color: #637078;
+/* =========================================================
+   FORM TRUST
+========================================================= */
+
+.hire-form-trust {
+    display: flex;
+    align-items: flex-start;
+
+    gap: 9px;
+
+    margin-top: 17px;
+
+    padding: 11px;
+
+    background: #f5fbfb;
+
+    border: 1px solid #e4f0f1;
+
+    border-radius: 7px;
+}
+
+
+.hire-trust-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 27px;
+    height: 27px;
+
+    flex-shrink: 0;
+
+    border-radius: 6px;
+
+    background: #dff5f6;
+
+    color: #08aeba;
+
+    font-size: 11px;
+}
+
+
+.hire-form-trust strong {
+    display: block;
+
+    margin-bottom: 2px;
+
+    color: #344650;
+
     font-size: 9px;
+}
+
+
+.hire-form-trust p {
+    margin: 0;
+
+    color: #829096;
+
+    font-size: 8px;
+    line-height: 1.45;
+}
+
+
+/* =========================================================
+   FORM NOTES
+========================================================= */
+
+.hire-response-note {
+    display: flex;
+    align-items: center;
+
+    gap: 5px;
+
+    margin: 13px 0 5px;
+
+    color: #71818a;
+
+    font-size: 12px;
+}
+
+
+.hire-response-note svg {
+    color: #08aeba;
+}
+
+
+.hire-privacy-note {
+    margin: 0;
+
+    color: #879399;
+
+    font-size: 12px;
     line-height: 1.5;
 }
 
-.privacy-note span {
-    color: #08aeba;
+
+/* =========================================================
+   BOTTOM CTA
+========================================================= */
+
+.hire-bottom-cta {
+    position: relative;
+
+    padding: 52px 0;
+
+    background:
+        linear-gradient(135deg,
+            #162936 0%,
+            #1d3442 100%);
+
+    overflow: hidden;
+}
+
+
+.hire-bottom-cta::before {
+    content: "";
+
+    position: absolute;
+
+    width: 250px;
+    height: 250px;
+
+    right: -100px;
+    top: -130px;
+
+    border: 1px solid rgba(8, 184, 196, 0.15);
+
+    border-radius: 50%;
+}
+
+
+.hire-bottom-cta::after {
+    content: "";
+
+    position: absolute;
+
+    width: 170px;
+    height: 170px;
+
+    left: -80px;
+    bottom: -100px;
+
+    border: 1px solid rgba(8, 184, 196, 0.12);
+
+    border-radius: 50%;
+}
+
+
+.hire-bottom-cta-inner {
+    position: relative;
+    z-index: 2;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 30px;
+}
+
+
+.hire-bottom-cta-inner>div>span {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: #08b8c4;
+
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1.3px;
+}
+
+
+.hire-bottom-cta-inner h2 {
+    max-width: 650px;
+
+    margin: 0;
+
+    color: #ffffff;
+
+    font-size: 28px;
+    line-height: 1.2;
+    font-weight: 600;
+}
+
+
+.hire-bottom-cta-inner h2 strong {
+    color: #08b8c4;
+
     font-weight: 700;
 }
 
-.captcha-note {
-    margin: 0;
 
-    color: #637078;
-    font-size: 9px;
-    line-height: 1.5;
+.hire-cta-button {
+    display: inline-flex;
+    align-items: center;
+
+    gap: 9px;
+
+    flex-shrink: 0;
+
+    padding: 12px 22px;
+
+    border: 1px solid #08b8c4;
+    border-radius: 50px;
+
+    background: #08b8c4;
+
+    color: #ffffff;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    text-decoration: none;
+
+    transition: all 0.25s ease;
 }
 
-.captcha-note a {
-    color: #172635;
-    text-decoration: underline;
-}
 
+.hire-cta-button:hover {
+    background: transparent;
 
-/* =========================================
-   CTA
-========================================= */
-
-.color-overlay1-content h2 span {
     color: #08b8c4;
+
+    transform: translateY(-2px);
 }
 
 
-/* =========================================
+.hire-cta-button svg {
+    font-size: 9px;
+}
+
+
+/* =========================================================
+   LARGE TABLET
+========================================================= */
+
+@media (max-width: 1199px) {
+
+    .hire-main-title {
+        font-size: 42px;
+    }
+
+    .hire-form-card {
+        padding: 30px 25px;
+    }
+
+    .hire-form-header h2 {
+        font-size: 26px;
+    }
+
+}
+
+
+/* =========================================================
    TABLET
-========================================= */
+========================================================= */
 
 @media (max-width: 991px) {
 
     .hire-developer-section {
-        padding: 55px 0 65px;
+        padding: 65px 0 70px;
     }
+
 
     .hire-left-content {
         padding-right: 0;
     }
 
-    .hire-left-content h1 {
-        font-size: 38px;
+
+    .hire-main-title {
+        max-width: 700px;
+
+        font-size: 43px;
     }
 
-    .hire-contact-process {
-        gap: 25px;
+
+    .hire-main-description {
+        max-width: 700px;
     }
+
+
+    .hire-benefits {
+        max-width: 700px;
+    }
+
+
+    .hire-trust-strip {
+        max-width: 700px;
+    }
+
+
+    .hire-process-wrapper {
+        max-width: 700px;
+    }
+
+
+    .hire-contact-row {
+        max-width: 700px;
+    }
+
+
+    .hire-form-wrapper {
+        margin-top: 15px;
+    }
+
 
     .hire-form-card {
-        padding: 28px;
+        padding: 32px;
+    }
+
+
+    .hire-bottom-cta-inner h2 {
+        font-size: 25px;
     }
 
 }
 
 
-/* =========================================
+/* =========================================================
    MOBILE
-========================================= */
+========================================================= */
 
 @media (max-width: 767px) {
 
     .hire-developer-section {
-        padding: 40px 0 50px;
+        padding: 48px 0 55px;
     }
 
-    .hire-left-content h1 {
-        font-size: 31px;
-        line-height: 1.2;
+
+    .hire-main-title {
+        font-size: 34px;
+
+        letter-spacing: -0.8px;
     }
 
-    .hire-intro {
-        font-size: 15px;
+
+    .hire-main-description {
+        font-size: 14px;
+
+        line-height: 1.65;
     }
 
-    .hire-description {
+
+    .hire-benefit p {
         font-size: 14px;
     }
 
 
-    /* Stats */
+    .hire-trust-strip {
+        display: grid;
 
-    .hire-stats {
         grid-template-columns: repeat(2, 1fr);
-        gap: 25px 10px;
-        margin-bottom: 35px;
+
+        gap: 20px;
+
+        padding: 20px;
     }
 
 
-    /* Contact / Process */
+    .hire-trust-divider {
+        display: none;
+    }
 
-    .hire-contact-process {
+
+    .hire-trust-item strong {
+        font-size: 22px;
+    }
+
+
+    .hire-form-wrapper {
+        margin-top: 5px;
+    }
+
+
+    .hire-form-card {
+        padding: 26px 20px;
+
+        border-radius: 13px;
+    }
+
+
+    .hire-form-header h2 {
+        font-size: 24px;
+    }
+
+
+    .hire-form-header p {
+        font-size: 10px;
+    }
+
+
+    .hire-contact-row {
+        grid-template-columns: 1fr 1fr;
+    }
+
+
+    .hire-contact-box:last-child {
+        grid-column: span 2;
+    }
+
+
+    .hire-bottom-cta {
+        padding: 42px 0;
+    }
+
+
+    .hire-bottom-cta-inner {
         display: block;
     }
 
-    .hire-contact {
-        padding: 0 0 25px;
-        margin-bottom: 25px;
 
-        border-right: 0;
-        border-bottom: 1px solid #dce5e8;
-    }
+    .hire-bottom-cta-inner h2 {
+        margin-bottom: 22px;
 
-
-    /* Form */
-
-    .hire-form-card {
-        padding: 22px 18px;
-        border-radius: 12px;
-    }
-
-    .hire-form-header h2 {
-        font-size: 21px;
-    }
-
-    .hire-form-header p {
-        font-size: 11px;
-    }
-
-
-    /* Date + Timezone */
-
-    .consultation-section .row {
-        row-gap: 15px;
-    }
-
-    .hire-submit-btn {
-        margin-top: 18px;
+        font-size: 24px;
     }
 
 }
 
 
-/* =========================================
+/* =========================================================
    SMALL MOBILE
-========================================= */
+========================================================= */
 
 @media (max-width: 480px) {
 
-    .hire-left-content h1 {
-        font-size: 27px;
+    .hire-main-title {
+        font-size: 30px;
     }
 
-    .hire-stats {
-        gap: 20px 5px;
+
+    .hire-eyebrow {
+        font-size: 9px;
     }
 
-    .hire-stat h3 {
-        font-size: 24px;
+
+    .hire-trust-strip {
+        padding: 16px 12px;
     }
+
+
+    .hire-trust-item strong {
+        font-size: 20px;
+    }
+
+
+    .hire-trust-item span {
+        font-size: 9px;
+    }
+
+
+    .hire-process-header h2 {
+        font-size: 21px;
+    }
+
+
+    .hire-contact-row {
+        grid-template-columns: 1fr;
+    }
+
+
+    .hire-contact-box:last-child {
+        grid-column: auto;
+    }
+
 
     .hire-form-card {
-        padding: 20px 15px;
+        padding: 23px 16px;
     }
 
+
     .hire-form-header h2 {
-        font-size: 19px;
+        font-size: 22px;
+    }
+
+
+    .hire-consultation-heading h3 {
+        font-size: 13px;
+    }
+
+
+    .hire-bottom-cta-inner h2 {
+        font-size: 22px;
     }
 
 }

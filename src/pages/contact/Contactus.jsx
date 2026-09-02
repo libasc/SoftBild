@@ -6,7 +6,9 @@ import contactImage from "../../assets/images/SoftBild-contact-img-01.png";
 import HomeCta from "../../components/app-components/HomeCta";
 import emailjs from "@emailjs/browser";
 import { Link } from "react-router-dom";
-import supportIcon from "../../assets/icons/services-icon1.svg";
+import supportIcon from "../../assets/icons/email2.svg";
+import salesIcon from "../../assets/icons/services-icon1.svg";
+import phoneIcon from "../../assets/icons/call1.svg"
 import supportIconWhite from "../../assets/icons/services-icon-white1.svg";
 
 import { Helmet } from "react-helmet-async";
@@ -281,11 +283,11 @@ function Contactus() {
                   <div className="sb-contact-card1-content">
                     <div className="sb-contact-card1-inner-content text-center">
                       <div className="contact-icon">
-                        <img src={supportIcon} alt="Service Icon" />
+                        <img src={phoneIcon} alt="Service Icon" />
                       </div>
                       <h3 className="dark-title mb-20">Phone</h3>
                       <h4 className="mb-10">Mon-Fri from 8am to 5pm.</h4>
-                      <p><Link to="tel:+919990311235">+91 (999) 031-1235</Link></p>
+                      <p><Link to="tel:+971527535786">+971 (527) 535-786</Link></p>
                     </div>
                   </div>
                 </div>

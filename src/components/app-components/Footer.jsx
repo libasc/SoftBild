@@ -19,7 +19,7 @@ function Footer(){
                                 <img src={footerLogo} alt="Footer Logo" />
                             </div>
                             <div className="footer-info my-20 pr-60">
-                            <p className='mb-0'>“SoftBild is a provider of innovative tech solutions, specializing in UI/UX design, web and mobile app development, e-commerce, ERP, and CRM systems. We help businesses thrive in the digital world with customized, scalable solutions that drive growth and efficiency.”</p>
+                            <p className='mb-0'>SoftBild is a provider of innovative tech solutions, specializing in UI/UX design, web and mobile app development, e-commerce, ERP, and CRM systems. We help businesses thrive in the digital world with customized, scalable solutions that drive growth and efficiency.</p>
                             </div>
                             <div className="footer-social-media">
                                 <ul>
@@ -67,7 +67,7 @@ function Footer(){
             </div>
             <div className="row footer-copyright">
                 <div className="col-lg-12">
-                    <p>&copy; copyright 2026 by <a href="#">SoftBild</a> | Privacy Policy</p>
+                    <p>&copy; Copyright 2026 by <a href="#">SoftBild</a> | Privacy Policy</p>
                 </div>
             </div>
         </footer>

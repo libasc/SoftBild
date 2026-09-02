@@ -1,61 +1,129 @@
-import React from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
+
+import {
+    FaCode,
+    FaUsers,
+    FaGlobe,
+    FaClock,
+    FaPhoneAlt,
+    FaEnvelope,
+    FaComments,
+    FaCheck,
+    FaArrowRight,
+    FaLaptopCode,
+    FaLayerGroup,
+    FaHeadset,
+    FaCalendarAlt,
+    FaShieldAlt
+} from "react-icons/fa";
 
 import HomeCta from "../../components/app-components/HomeCta";
 
 import "./HireDeveloper.css";
+import HomeCta2 from "../../components/app-components/HomeCta2";
+
 
 function HireDeveloper() {
+
+    const [formData, setFormData] = useState({
+        name: "",
+        email: "",
+        phone: "",
+        company: "",
+        projectType: "",
+        developers: "",
+        requirements: "",
+        consultation: false,
+        dateTime: "",
+        timezone: "New York, Washington (UTC-05:00)"
+    });
+
+
+    const handleChange = (e) => {
+
+        const { name, value, type, checked } = e.target;
+
+        setFormData((prev) => ({
+            ...prev,
+            [name]: type === "checkbox" ? checked : value
+        }));
+
+    };
+
+
+    const handleSubmit = (e) => {
+
+        e.preventDefault();
+
+        console.log("Hire Developer Form:", formData);
+
+        // Connect your API/email service here.
+    };
+
+
     return (
         <>
+
             <Helmet>
-                <title>Hire Developers | SoftBild</title>
+
+                <title>
+                    Hire Developers & Technology Experts | SoftBild
+                </title>
 
                 <meta
                     name="description"
-                    content="Hire skilled developers and technology specialists from SoftBild. Get the right development resources for your web, mobile, AI, cloud, and software development projects."
+                    content="Hire experienced developers, designers and technology specialists from SoftBild. Build your dedicated development team based on your project requirements."
                 />
 
                 <meta
                     name="keywords"
-                    content="hire developers, hire software developers, dedicated developers, web developers, mobile developers, AI developers, SoftBild"
+                    content="hire developers, hire software developers, dedicated developers, dedicated development team, software development team, hire technology experts"
                 />
 
-                <meta name="author" content="SoftBild" />
-                <meta name="robots" content="index, follow" />
+                <meta
+                    name="author"
+                    content="SoftBild"
+                />
+
+                <meta
+                    name="robots"
+                    content="index, follow"
+                />
 
                 <meta
                     property="og:title"
-                    content="Hire Developers | SoftBild"
+                    content="Hire Developers & Technology Experts | SoftBild"
                 />
 
                 <meta
                     property="og:description"
-                    content="Hire experienced developers and technology specialists for your next project with SoftBild."
-                />
-
-                <meta
-                    property="og:url"
-                    content="https://softbild.com/HireDeveloper"
+                    content="Build your development team with experienced developers and technology specialists from SoftBild."
                 />
 
                 <meta
                     property="og:type"
                     content="website"
                 />
+
             </Helmet>
 
 
             {/* =========================================
-                MAIN HIRE DEVELOPER SECTION
-            ========================================= */}
+                HERO / HIRE SECTION
+            ========================================== */}
 
             <section className="hire-developer-section">
+
+                <div className="hire-bg-circle hire-bg-circle-one"></div>
+                <div className="hire-bg-circle hire-bg-circle-two"></div>
+
 
                 <div className="container">
 
                     <div className="row align-items-start g-5">
+
 
                         {/* =================================
                             LEFT CONTENT
@@ -65,362 +133,355 @@ function HireDeveloper() {
 
                             <div className="hire-left-content">
 
-                                <span className="hire-eyebrow">
-                                    HIRE DEVELOPERS
-                                </span>
 
-                                <h1>
-                                    Let's Build the Right
-                                    <span> Technology Solution</span>
-                                    <br />
-                                    for Your Business
+                                <h1 className="dark-subtitle">
+
+                                    Build Your Team With
+                                    <span> The Right <span className="text-gradient1">Technology Experts</span></span>
+
                                 </h1>
 
-                                <p className="hire-intro">
-                                    Tell us about your development requirements
-                                    and our technology experts will help you
-                                    find the right team for your project.
-                                </p>
 
-                                <p className="hire-description">
-                                    Whether you need a single developer, a
-                                    dedicated development team, or specialized
-                                    technology expertise, SoftBild can help you
-                                    find the right resources based on your
-                                    project requirements.
+                                <p className="hire-main-description">
+
+                                    Get experienced developers, designers and
+                                    technology specialists who understand your
+                                    business goals and can become an extension
+                                    of your team.
+
                                 </p>
 
 
-                                {/* =================================
-                                    CONTACT + PROCESS
-                                ================================= */}
+                                {/* VALUE PROPOSITIONS */}
 
-                                <div className="hire-contact-process">
+                                <div className="hire-benefits">
 
-                                    {/* Contact */}
+                                    <div className="hire-benefit">
 
-                                    <div className="hire-contact">
-
-                                        <div className="contact-item">
-
-                                            <div className="contact-icon">
-                                                ☎
-                                            </div>
-
-                                            <div>
-                                                <span>CALL US</span>
-                                                <strong>
-                                                    +91 00000 00000
-                                                </strong>
-                                            </div>
-
+                                        <div className="hire-benefit-icon">
+                                            <FaLaptopCode />
                                         </div>
 
+                                        <div>
+                                            <h4>Skilled Technology Experts</h4>
 
-                                        <div className="contact-item">
-
-                                            <div className="contact-icon">
-                                                ✉
-                                            </div>
-
-                                            <div>
-                                                <span>EMAIL US</span>
-                                                <strong>
-                                                    info@softbild.com
-                                                </strong>
-                                            </div>
-
-                                        </div>
-
-
-                                        <div className="contact-item">
-
-                                            <div className="contact-icon">
-                                                💬
-                                            </div>
-
-                                            <div>
-                                                <span>CHAT WITH US</span>
-                                                <strong>
-                                                    Let's discuss your project
-                                                </strong>
-                                            </div>
-
-                                        </div>
-
-
-                                        <div className="contact-item">
-
-                                            <div className="contact-icon">
-                                                ✓
-                                            </div>
-
-                                            <div>
-                                                <span>RESPONSE TIME</span>
-                                                <strong>
-                                                    Within 24 hours
-                                                </strong>
-                                            </div>
-
+                                            <p>
+                                                Access experienced professionals
+                                                across modern technologies.
+                                            </p>
                                         </div>
 
                                     </div>
 
 
-                                    {/* Process */}
+                                    <div className="hire-benefit">
 
-                                    <div className="hire-process">
-
-                                        <h3>
-                                            What Happens Next
-                                        </h3>
-
-
-                                        <div className="process-item">
-
-                                            <div className="process-number">
-                                                1
-                                            </div>
-
-                                            <div>
-                                                <h4>
-                                                    We Review Your Request
-                                                </h4>
-
-                                                <p>
-                                                    Our technology expert
-                                                    reviews your requirements
-                                                    and identifies the right
-                                                    developer or team for your
-                                                    project.
-                                                </p>
-                                            </div>
-
+                                        <div className="hire-benefit-icon">
+                                            <FaLayerGroup />
                                         </div>
 
+                                        <div>
+                                            <h4>Flexible Engagement</h4>
 
-                                        <div className="process-item">
-
-                                            <div className="process-number">
-                                                2
-                                            </div>
-
-                                            <div>
-                                                <h4>
-                                                    We Contact You
-                                                </h4>
-
-                                                <p>
-                                                    We'll reach out within
-                                                    24 hours to understand your
-                                                    project, timeline, and
-                                                    technical needs.
-                                                </p>
-                                            </div>
-
+                                            <p>
+                                                Hire an individual developer,
+                                                specialist or complete team.
+                                            </p>
                                         </div>
 
+                                    </div>
 
-                                        <div className="process-item">
 
-                                            <div className="process-number">
-                                                3
-                                            </div>
+                                    <div className="hire-benefit">
 
-                                            <div>
-                                                <h4>
-                                                    We Build Your Team
-                                                </h4>
+                                        <div className="hire-benefit-icon">
+                                            <FaHeadset />
+                                        </div>
 
-                                                <p>
-                                                    Get matched with the right
-                                                    developers and technology
-                                                    specialists for your project.
-                                                </p>
-                                            </div>
+                                        <div>
+                                            <h4>Dedicated Support</h4>
 
+                                            <p>
+                                                Work with a reliable team from
+                                                planning through delivery.
+                                            </p>
                                         </div>
 
                                     </div>
 
                                 </div>
+
+
+                                {/* TRUST NUMBERS */}
+
+                                <div className="hire-trust-strip">
+
+
+                                    <div className="hire-trust-item">
+
+                                        <strong>7+</strong>
+
+                                        <span>Years Experience</span>
+
+                                    </div>
+
+
+                                    <div className="hire-trust-divider"></div>
+
+
+                                    <div className="hire-trust-item">
+
+                                        <strong>100+</strong>
+
+                                        <span>Projects Delivered</span>
+
+                                    </div>
+
+
+                                    <div className="hire-trust-divider"></div>
+
+
+                                    <div className="hire-trust-item">
+
+                                        <strong>15+</strong>
+
+                                        <span>Countries Served</span>
+
+                                    </div>
+
+
+                                    <div className="hire-trust-divider"></div>
+
+
+                                    <div className="hire-trust-item">
+
+                                        <strong>24h</strong>
+
+                                        <span>Response Time</span>
+
+                                    </div>
+
+
+                                </div>
+
+
+                                {/* WHAT HAPPENS NEXT */}
+
+                                <div className="hire-process-wrapper">
+
+
+                                    <div className="hire-process-header">
+
+                                        <span className="hire-small-label">
+                                            SIMPLE PROCESS
+                                        </span>
+
+                                        <h2>
+                                            What Happens Next?
+                                        </h2>
+
+                                        <p>
+                                            From your first conversation to
+                                            building the right development team.
+                                        </p>
+
+                                    </div>
+
+
+                                    <div className="hire-process-list">
+
+
+                                        <div className="hire-process-item">
+
+                                            <div className="hire-process-number">
+                                                01
+                                            </div>
+
+                                            <div className="hire-process-content">
+
+                                                <h4>
+                                                    We Review Your Request
+                                                </h4>
+
+                                                <p>
+                                                    Our technology experts review
+                                                    your requirements and identify
+                                                    the right skills for your project.
+                                                </p>
+
+                                            </div>
+
+                                        </div>
+
+
+                                        <div className="hire-process-item">
+
+                                            <div className="hire-process-number">
+                                                02
+                                            </div>
+
+                                            <div className="hire-process-content">
+
+                                                <h4>
+                                                    We Contact You
+                                                </h4>
+
+                                                <p>
+                                                    We get in touch within 24 hours
+                                                    to understand your project,
+                                                    timeline and technical needs.
+                                                </p>
+
+                                            </div>
+
+                                        </div>
+
+
+                                        <div className="hire-process-item">
+
+                                            <div className="hire-process-number">
+                                                03
+                                            </div>
+
+                                            <div className="hire-process-content">
+
+                                                <h4>
+                                                    We Build Your Team
+                                                </h4>
+
+                                                <p>
+                                                    Get matched with developers and
+                                                    technology specialists suited to
+                                                    your project.
+                                                </p>
+
+                                            </div>
+
+                                        </div>
+
+
+                                    </div>
+
+                                </div>
+
+
+                                {/* CONTACT OPTIONS */}
+
+                                {/* <div className="hire-contact-row">
+
+
+                                    <a
+                                        href="tel:+919000000000"
+                                        className="hire-contact-box"
+                                    >
+
+                                        <div className="hire-contact-icon">
+                                            <FaPhoneAlt />
+                                        </div>
+
+                                        <div>
+                                            <small>CALL US</small>
+                                            <strong>+91 90000 00000</strong>
+                                        </div>
+
+                                    </a>
+
+
+                                    <a
+                                        href="mailto:info@softbild.com"
+                                        className="hire-contact-box"
+                                    >
+
+                                        <div className="hire-contact-icon">
+                                            <FaEnvelope />
+                                        </div>
+
+                                        <div>
+                                            <small>EMAIL US</small>
+                                            <strong>info@softbild.com</strong>
+                                        </div>
+
+                                    </a>
+
+
+                                    <div className="hire-contact-box">
+
+                                        <div className="hire-contact-icon">
+                                            <FaComments />
+                                        </div>
+
+                                        <div>
+                                            <small>CHAT WITH US</small>
+                                            <strong>Let's discuss your project</strong>
+                                        </div>
+
+                                    </div>
+
+
+                                </div> */}
+
 
                             </div>
 
                         </div>
 
 
-                        {/* =========================================
+                        {/* =================================
                             RIGHT FORM
-                        ========================================= */}
+                        ================================= */}
 
                         <div className="col-lg-6">
 
-                            <div className="hire-form-card">
-
-                                <div className="hire-form-header">
-
-                                    <h2>
-                                        Tell Us About Your
-                                        <span> Development Needs</span>
-                                    </h2>
-
-                                    <p>
-                                        Fill out the form and our team will
-                                        get back to you within 24 hours.
-                                    </p>
-
-                                </div>
+                            <div className="hire-form-wrapper">
 
 
-                                <form>
-
-                                    {/* Name + Email */}
-
-                                    <div className="row g-3">
-
-                                        <div className="col-md-6">
-
-                                            <label htmlFor="name">
-                                                Your Name
-                                                <span>*</span>
-                                            </label>
-
-                                            <input
-                                                type="text"
-                                                id="name"
-                                                name="name"
-                                                className="form-control"
-                                                placeholder="E.g. John Smith"
-                                                required
-                                            />
-
-                                        </div>
+                                <div className="hire-form-card">
 
 
-                                        <div className="col-md-6">
+                                    {/* FORM HEADER */}
 
-                                            <label htmlFor="email">
-                                                Contact Email
-                                                <span>*</span>
-                                            </label>
+                                    <div className="hire-form-header">
+                                        <h2>
 
-                                            <input
-                                                type="email"
-                                                id="email"
-                                                name="email"
-                                                className="form-control"
-                                                placeholder="E.g. you@example.com"
-                                                required
-                                            />
+                                            Tell Us About Your
+                                            <span className="text-gradient1"> Development Needs</span>
 
-                                        </div>
+                                        </h2>
 
 
-                                        {/* Phone + Company */}
-
-                                        <div className="col-md-6">
-
-                                            <label htmlFor="phone">
-                                                Phone
-                                                <span>*</span>
-                                            </label>
-
-                                            <input
-                                                type="tel"
-                                                id="phone"
-                                                name="phone"
-                                                className="form-control"
-                                                placeholder="E.g. +91 98765 43210"
-                                                required
-                                            />
-
-                                        </div>
-
-
-                                        <div className="col-md-6">
-
-                                            <label htmlFor="company">
-                                                Company Name
-                                                <small>
-                                                    [Optional]
-                                                </small>
-                                            </label>
-
-                                            <input
-                                                type="text"
-                                                id="company"
-                                                name="company"
-                                                className="form-control"
-                                                placeholder="E.g. Acme Corp"
-                                            />
-
-                                        </div>
-
-
-                                        {/* Requirements */}
-
-                                        <div className="col-12">
-
-                                            <label htmlFor="message">
-                                                How can we help?
-                                                <span>*</span>
-                                            </label>
-
-                                            <textarea
-                                                id="message"
-                                                name="message"
-                                                className="form-control"
-                                                rows="5"
-                                                placeholder="Tell us about your project, required developers, technologies, timeline, or any other requirements..."
-                                                required
-                                            ></textarea>
-
-                                        </div>
+                                        <p>
+                                            Share a few details about your project
+                                            and we'll help you find the right
+                                            technology experts.
+                                        </p>
 
                                     </div>
 
 
-                                    {/* =================================
-                                        CONSULTATION
-                                    ================================= */}
-
-                                    <div className="consultation-section">
-
-                                        <h3>
-                                            Schedule Your Consultation
-                                        </h3>
+                                    <form onSubmit={handleSubmit}>
 
 
-                                        <label className="booking-check">
-
-                                            <input
-                                                type="checkbox"
-                                                name="bookCall"
-                                            />
-
-                                            <span>
-                                                Click here to book a 20 min call
-                                            </span>
-
-                                        </label>
-
-
-                                        {/* Date & Time + Time Zone */}
+                                        {/* NAME + EMAIL */}
 
                                         <div className="row g-3">
 
+
                                             <div className="col-md-6">
 
-                                                <label htmlFor="preferredDateTime">
-                                                    Preferred Date & Time
+                                                <label htmlFor="name">
+                                                    Your Name
+                                                    <span>*</span>
                                                 </label>
 
                                                 <input
-                                                    type="datetime-local"
-                                                    id="preferredDateTime"
-                                                    name="preferredDateTime"
+                                                    type="text"
+                                                    id="name"
+                                                    name="name"
                                                     className="form-control"
+                                                    placeholder="e.g. John Smith"
+                                                    value={formData.name}
+                                                    onChange={handleChange}
+                                                    required
                                                 />
 
                                             </div>
@@ -428,98 +489,381 @@ function HireDeveloper() {
 
                                             <div className="col-md-6">
 
-                                                <label htmlFor="timeZone">
-                                                    Time Zone
+                                                <label htmlFor="email">
+                                                    Contact Email
+                                                    <span>*</span>
+                                                </label>
+
+                                                <input
+                                                    type="email"
+                                                    id="email"
+                                                    name="email"
+                                                    className="form-control"
+                                                    placeholder="e.g. you@example.com"
+                                                    value={formData.email}
+                                                    onChange={handleChange}
+                                                    required
+                                                />
+
+                                            </div>
+
+
+                                            {/* PHONE */}
+
+                                            <div className="col-md-6">
+
+                                                <label htmlFor="phone">
+                                                    Phone
+                                                    <span>*</span>
+                                                </label>
+
+                                                <input
+                                                    type="tel"
+                                                    id="phone"
+                                                    name="phone"
+                                                    className="form-control"
+                                                    placeholder="e.g. +91 98765 43210"
+                                                    value={formData.phone}
+                                                    onChange={handleChange}
+                                                    required
+                                                />
+
+                                            </div>
+
+
+                                            {/* COMPANY */}
+
+                                            <div className="col-md-6">
+
+                                                <label htmlFor="company">
+
+                                                    Company Name
+
+                                                    <small>
+                                                        Optional
+                                                    </small>
+
+                                                </label>
+
+                                                <input
+                                                    type="text"
+                                                    id="company"
+                                                    name="company"
+                                                    className="form-control"
+                                                    placeholder="e.g. Acme Corp"
+                                                    value={formData.company}
+                                                    onChange={handleChange}
+                                                />
+
+                                            </div>
+
+
+                                            {/* PROJECT TYPE */}
+
+                                            <div className="col-md-6">
+
+                                                <label htmlFor="projectType">
+                                                    What do you need?
                                                 </label>
 
                                                 <select
-                                                    id="timeZone"
-                                                    name="timeZone"
+                                                    id="projectType"
+                                                    name="projectType"
                                                     className="form-select"
-                                                    defaultValue="America/New_York"
+                                                    value={formData.projectType}
+                                                    onChange={handleChange}
                                                 >
 
-                                                    <option value="America/New_York">
-                                                        New York, Washington (UTC-05:00)
+                                                    <option value="">
+                                                        Select service
                                                     </option>
 
-                                                    <option value="America/Chicago">
-                                                        Chicago (UTC-06:00)
+                                                    <option value="Dedicated Developer">
+                                                        Dedicated Developer
                                                     </option>
 
-                                                    <option value="America/Denver">
-                                                        Denver (UTC-07:00)
+                                                    <option value="Development Team">
+                                                        Dedicated Development Team
                                                     </option>
 
-                                                    <option value="America/Los_Angeles">
-                                                        Los Angeles (UTC-08:00)
+                                                    <option value="Web Development">
+                                                        Web Development
                                                     </option>
 
-                                                    <option value="Asia/Kolkata">
-                                                        India Standard Time (UTC+05:30)
+                                                    <option value="Mobile Development">
+                                                        Mobile App Development
                                                     </option>
 
-                                                    <option value="Europe/London">
-                                                        London (UTC+00:00)
+                                                    <option value="UI UX">
+                                                        UI/UX Design
                                                     </option>
 
-                                                    <option value="Europe/Berlin">
-                                                        Berlin (UTC+01:00)
+                                                    <option value="AI">
+                                                        AI & Machine Learning
                                                     </option>
 
-                                                    <option value="Asia/Dubai">
-                                                        Dubai (UTC+04:00)
-                                                    </option>
-
-                                                    <option value="Asia/Singapore">
-                                                        Singapore (UTC+08:00)
+                                                    <option value="Other">
+                                                        Other
                                                     </option>
 
                                                 </select>
 
                                             </div>
 
+
+                                            {/* NUMBER OF DEVELOPERS */}
+
+                                            <div className="col-md-6">
+
+                                                <label htmlFor="developers">
+                                                    Team Size
+                                                </label>
+
+                                                <select
+                                                    id="developers"
+                                                    name="developers"
+                                                    className="form-select"
+                                                    value={formData.developers}
+                                                    onChange={handleChange}
+                                                >
+
+                                                    <option value="">
+                                                        Select team size
+                                                    </option>
+
+                                                    <option value="1">
+                                                        1 Developer
+                                                    </option>
+
+                                                    <option value="2-3">
+                                                        2–3 Developers
+                                                    </option>
+
+                                                    <option value="4-6">
+                                                        4–6 Developers
+                                                    </option>
+
+                                                    <option value="7+">
+                                                        7+ Developers
+                                                    </option>
+
+                                                </select>
+
+                                            </div>
+
+
+                                            {/* REQUIREMENTS */}
+
+                                            <div className="col-12">
+
+                                                <label htmlFor="requirements">
+                                                    Tell Us About Your Project
+                                                    <span>*</span>
+                                                </label>
+
+                                                <textarea
+                                                    id="requirements"
+                                                    name="requirements"
+                                                    className="form-control hire-textarea"
+                                                    placeholder="Tell us about your project, required developers, technologies, timeline or any other requirements..."
+                                                    value={formData.requirements}
+                                                    onChange={handleChange}
+                                                    required
+                                                ></textarea>
+
+                                            </div>
+
                                         </div>
 
 
-                                        {/* Submit */}
+                                        {/* CONSULTATION */}
+
+                                        <div className="hire-consultation">
+
+
+                                            <div className="hire-consultation-heading">
+
+                                                <div>
+
+                                                    <span className="hire-consultation-icon">
+                                                        <FaCalendarAlt />
+                                                    </span>
+
+                                                    <div>
+
+                                                        <h3>
+                                                            Schedule a Consultation
+                                                        </h3>
+
+                                                        <p>
+                                                            Prefer to discuss your
+                                                            project directly?
+                                                        </p>
+
+                                                    </div>
+
+                                                </div>
+
+
+                                                <label className="hire-consultation-check">
+
+                                                    <input
+                                                        type="checkbox"
+                                                        name="consultation"
+                                                        checked={formData.consultation}
+                                                        onChange={handleChange}
+                                                    />
+
+                                                    <span></span>
+
+                                                    <strong>
+                                                        Book a 20 min call
+                                                    </strong>
+
+                                                </label>
+
+                                            </div>
+
+
+                                            <div className="row g-3">
+
+
+                                                {/* DATE TIME */}
+
+                                                <div className="col-md-7">
+
+                                                    <label htmlFor="dateTime">
+                                                        Preferred Date & Time
+                                                    </label>
+
+                                                    <div className="hire-input-icon">
+
+                                                        <FaCalendarAlt />
+
+                                                        <input
+                                                            type="datetime-local"
+                                                            id="dateTime"
+                                                            name="dateTime"
+                                                            className="form-control"
+                                                            value={formData.dateTime}
+                                                            onChange={handleChange}
+                                                        />
+
+                                                    </div>
+
+                                                </div>
+
+
+                                                {/* TIMEZONE */}
+
+                                                <div className="col-md-5">
+
+                                                    <label htmlFor="timezone">
+                                                        Time Zone
+                                                    </label>
+
+                                                    <select
+                                                        id="timezone"
+                                                        name="timezone"
+                                                        className="form-select"
+                                                        value={formData.timezone}
+                                                        onChange={handleChange}
+                                                    >
+
+                                                        <option>
+                                                            New York, Washington (UTC-05:00)
+                                                        </option>
+
+                                                        <option>
+                                                            Los Angeles (UTC-08:00)
+                                                        </option>
+
+                                                        <option>
+                                                            Chicago (UTC-06:00)
+                                                        </option>
+
+                                                        <option>
+                                                            London (UTC+00:00)
+                                                        </option>
+
+                                                        <option>
+                                                            Dubai (UTC+04:00)
+                                                        </option>
+
+                                                        <option>
+                                                            India Standard Time (UTC+05:30)
+                                                        </option>
+
+                                                        <option>
+                                                            Singapore (UTC+08:00)
+                                                        </option>
+
+                                                    </select>
+
+                                                </div>
+
+
+                                            </div>
+
+                                        </div>
+
+
+                                        {/* SUBMIT */}
 
                                         <button
                                             type="submit"
                                             className="hire-submit-btn"
                                         >
+
                                             Book Your Consultation Now
+
+                                            <FaArrowRight />
+
                                         </button>
 
 
-                                        <p className="response-note">
-                                            We respond within 24 hours.
+                                        {/* TRUST NOTE */}
+
+                                        {/* <div className="hire-form-trust">
+
+                                            <div className="hire-trust-icon">
+                                                <FaShieldAlt />
+                                            </div>
+
+                                            <div>
+
+                                                <strong>
+                                                    Your information is safe with us.
+                                                </strong>
+
+                                                <p>
+                                                    We respect your privacy and will
+                                                    never share your information with
+                                                    third parties.
+                                                </p>
+
+                                            </div>
+
+                                        </div> */}
+
+
+                                        <p className="hire-response-note">
+                                            <FaClock />
+                                            We typically respond within 24 hours.
                                         </p>
 
 
-                                        <p className="privacy-note">
-                                            <span>*</span> By requesting a
-                                            consultation, you agree to the
-                                            terms of SoftBild's privacy policy.
+                                        <p className="hire-privacy-note">
+
+                                            By submitting this form, you agree to
+                                            SoftBild's privacy policy and terms of service.
+
                                         </p>
 
 
-                                        <p className="captcha-note">
-                                            This site is protected by reCAPTCHA
-                                            and the Google
-                                            <a href="#">
-                                                Privacy Policy
-                                            </a>
-                                            and
-                                            <a href="#">
-                                                Terms of Service
-                                            </a>
-                                            apply.
-                                        </p>
+                                    </form>
 
-                                    </div>
-
-                                </form>
+                                </div>
 
                             </div>
 
@@ -534,49 +878,16 @@ function HireDeveloper() {
 
             {/* =========================================
                 CTA
-            ========================================= */}
+            ========================================== */}
 
-            <section className="container-fluid py-100 bg-img-overlay1 color-overlay1">
-
-                <div className="container">
-
-                    <div className="row">
-
-                        <div className="col-lg-3"></div>
-
-                        <div className="col-lg-6 text-center color-overlay1-content">
-
-                            <h2 className="light-subtitle">
-                                Need The Right Developers For
-                                <span> Your Project?</span>
-                            </h2>
-
-                            <Link
-                                to="/Contact"
-                                className="sf-btn5 mt-20"
-                            >
-                                Let's Talk
-                            </Link>
-
-                        </div>
-
-                        <div className="col-lg-3"></div>
-
-                    </div>
-
-                </div>
-
-            </section>
+            {/* <HomeCta2 /> */}
 
 
-            {/* =========================================
-                NEWSLETTER
-            ========================================= */}
-
-            <HomeCta />
+            {/* <HomeCta /> */}
 
         </>
     );
 }
+
 
 export default HireDeveloper;

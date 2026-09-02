@@ -1051,7 +1051,7 @@ function PortfolioDetail() {
               </h2>
 
               <Link
-                to="/Services"
+                to="/HireDeveloper"
                 className="sf-btn5 mt-20"
               >
                 Enquire

@@ -12,7 +12,7 @@ function HomeBanner(){
                         <p>Welcome to Softbild Solutions</p>
                         <h1 className="dark-headline">We provide best tech solutions for your <span className="text-gradient1">business</span></h1>
                         <p className='dark-title3'>Empowering your vision with top-notch technology solutions tailored to drive growth and optimize business operations.</p>
-                        <Link to="/Contact" className="sf-btn1 pe-2">
+                        <Link to="/HireDeveloper" className="sf-btn1 pe-2">
                         Get Started
                         <span className="icon-round1 ms-2">
                             <img src={arrowIcon} alt="Get Started" />

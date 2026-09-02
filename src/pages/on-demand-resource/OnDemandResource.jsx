@@ -6,7 +6,7 @@ import onDemandImg2 from "../../assets/images/softbild-ondemand-02.png";
 import onDemandImg3 from "../../assets/images/softbild-ondemand-03.png";
 import onDemandImg4 from "../../assets/images/softbild-ondemand-04.png";
 import ctaImg1 from "../../assets/images/softbild-cta-img1.png";
-import arrowIcon from '../../assets/icons/arrow-right1.svg'
+import arrowIcon from '../../assets/icons/arrow-right1.svg';
 import { Link } from 'react-router-dom';
 import OnDemandTechCard from './OnDemandTechCard';
 import { Helmet } from "react-helmet-async";
@@ -96,7 +96,7 @@ function OnDemandResource() {
                 </div>
             </div>
             <div className="row d-flex justify-content-center">
-                <Link to="/Contact" className="sf-btn1 pe-2">
+                <Link to="/HireDeveloper" className="sf-btn1 pe-2">
                     Hire On-Demand Resource
                     <span className="icon-round1 ms-2">
                         <img src={arrowIcon} alt="Get Started" />
