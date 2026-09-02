@@ -379,13 +379,17 @@ ul{
     border-radius: 16px;
     /* transition: 300ms; */
     margin-bottom: 20px;
+    transition: 0.3s;
 }
 .sb-card1:hover{
-    background: var(--sf-gradient1);
-    cursor: pointer;
-    color: var(--sf-white);
+    /* background: var(--sf-gradient1); */
+    /* cursor: pointer; */
+    /* color: var(--sf-white);   */
+    transform: translateY(-4px);
+    box-shadow: rgba(0, 185, 200, 0.08) 0px 10px 30px;
+    border: 1px solid var(--sf-gradient1);
 }
-.sb-card1:hover .dark-title2{
+/* .sb-card1:hover .dark-title2{
     color: var(--sf-white);
 }
 .sb-card1:hover .sb-card1-icon{
@@ -393,7 +397,7 @@ ul{
 }
 .sb-card1:hover .sb-card1-icon svg path {
     fill: var(--sf-white);
-}
+} */
 .sb-card1-icon{
     width: 50px;
     height: 50px;
@@ -455,6 +459,7 @@ ul{
     padding: 10px;
     margin-bottom: 20px;
     transition: 300ms;
+    border: 1px solid var(--sf-white);
 }
 .sb-services-card1-content {
     width: 100%;
@@ -487,8 +492,16 @@ ul{
     height: auto;
     vertical-align: middle;
 }
+.sb-services-card1:hover{
+    border: 1px solid #008f9c;
+    transform: translateY(-4px);
+}
+.sb-services-card1:hover .sb-services-card1-content{
+    border: 1px solid #008f9c;
+    /* transform: translateY(-4px); */
+}
 .sb-services-card1:hover .service-read-more-btnwrapper{
-    background: var(--sf-gradient1);
+    /* background: var(--sf-gradient1); */
     cursor: pointer;
     color: var(--sf-white);
 }

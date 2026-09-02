@@ -181,12 +181,12 @@ function ServiceCard1({ limit }) {
             <h3 className="dark-title2">{service.serviceTitle}</h3>
             <p>{service.serviceDescription}</p>
           </div>
-          <div className="service-read-more-btnwrapper">
+          {/* <div className="service-read-more-btnwrapper">
             <div className="services-text-read-more">Read More</div>
             <div className="services-icon-read-more">
               <service.serviceReadMoreIcon />
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>
