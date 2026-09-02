@@ -1,4 +1,4 @@
-import imgInfo1 from '../../assets/images/softbild-info1.jpeg';
+import imgInfo1 from '../../assets/images/softbild-info11.png';
 import imgInfo2 from '../../assets/images/softbild-info2.png';
 
 import impoweringBusinessIcon from '../../assets/icons/empowering-business-icon.svg';

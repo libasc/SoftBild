@@ -1,5 +1,5 @@
-import imgInfo1 from '../../assets/images/softbild-info1.jpeg';
-import imgInfo2 from '../../assets/images/softbild-info2.png';
+import imgInfo1 from '../../assets/images/softbild-info1.png';
+import imgInfo2 from '../../assets/images/softbild-info3.png';
 import arrowIcon from '../../assets/icons/arrow-right1.svg'
 import { Link } from 'react-router-dom';
 

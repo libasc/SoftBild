@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import arrowIcon from '../../assets/icons/arrow-right1.svg'
-import heroImage from '../../assets/images/SoftBild-Home-Hero.png'
+import heroImage from '../../assets/images/SoftBild-Home-Hero2.png'
 
 function HomeBanner(){
     return(
