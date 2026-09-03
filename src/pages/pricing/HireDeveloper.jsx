@@ -53,14 +53,50 @@ function HireDeveloper() {
     };
 
 
-    const handleSubmit = (e) => {
+const handleSubmit = async (e) => {
+    e.preventDefault();
 
-        e.preventDefault();
+    try {
+        const response = await fetch("/api/send-email", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(formData),
+        });
 
-        console.log("Hire Developer Form:", formData);
+        const result = await response.json();
 
-        // Connect your API/email service here.
-    };
+        if (!response.ok) {
+            throw new Error(result.message || "Failed to send form");
+        }
+
+        console.log("Form submitted successfully:", result);
+
+        alert("Thank you! Your consultation request has been submitted.");
+
+        // Reset form after successful submission
+        setFormData({
+            name: "",
+            email: "",
+            phone: "",
+            company: "",
+            projectType: "",
+            developers: "",
+            requirements: "",
+            consultation: false,
+            dateTime: "",
+            timezone: "New York, Washington (UTC-05:00)"
+        });
+
+    } catch (error) {
+        console.error("Form submission error:", error);
+
+        alert(
+            "Sorry, something went wrong while submitting the form. Please try again."
+        );
+    }
+};
 
 
     return (
@@ -419,10 +455,7 @@ function HireDeveloper() {
 
 
                                 </div> */}
-
-
                             </div>
-
                         </div>
 
 
@@ -436,25 +469,18 @@ function HireDeveloper() {
 
 
                                 <div className="hire-form-card">
-
-
                                     {/* FORM HEADER */}
-
                                     <div className="hire-form-header">
                                         <h2>
-
                                             Tell Us About Your
                                             <span className="text-gradient1"> Development Needs</span>
 
                                         </h2>
-
-
                                         <p>
                                             Share a few details about your project
                                             and we'll help you find the right
                                             technology experts.
                                         </p>
-
                                     </div>
 
 
