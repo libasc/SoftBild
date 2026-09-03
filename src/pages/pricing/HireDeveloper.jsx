@@ -40,6 +40,9 @@ function HireDeveloper() {
         timezone: "New York, Washington (UTC-05:00)"
     });
 
+    const [showSuccessModal, setShowSuccessModal] = useState(false);
+    const [isSubmitting, setIsSubmitting] = useState(false);
+
 
     const handleChange = (e) => {
 
@@ -55,6 +58,10 @@ function HireDeveloper() {
 
 const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (isSubmitting) return;
+
+    setIsSubmitting(true);
 
     try {
         const response = await fetch("/api/send-email", {
@@ -73,9 +80,7 @@ const handleSubmit = async (e) => {
 
         console.log("Form submitted successfully:", result);
 
-        alert("Thank you! Your consultation request has been submitted.");
-
-        // Reset form after successful submission
+        // Reset form
         setFormData({
             name: "",
             email: "",
@@ -89,12 +94,18 @@ const handleSubmit = async (e) => {
             timezone: "New York, Washington (UTC-05:00)"
         });
 
+        // Show custom success modal
+        setShowSuccessModal(true);
+
     } catch (error) {
         console.error("Form submission error:", error);
 
         alert(
             "Sorry, something went wrong while submitting the form. Please try again."
         );
+
+    } finally {
+        setIsSubmitting(false);
     }
 };
 
@@ -836,7 +847,7 @@ const handleSubmit = async (e) => {
 
                                         {/* SUBMIT */}
 
-                                        <button
+                                        {/* <button
                                             type="submit"
                                             className="hire-submit-btn"
                                         >
@@ -845,6 +856,24 @@ const handleSubmit = async (e) => {
 
                                             <FaArrowRight />
 
+                                        </button> */}
+
+                                        <button
+                                            type="submit"
+                                            disabled={isSubmitting}
+                                            className="hire-submit-btn"
+                                        >
+                                            {isSubmitting ? (
+                                                <>
+                                                    <span className="submit-spinner"></span>
+                                                    Sending Request...
+                                                </>
+                                            ) : (
+                                                <>
+                                                    Book Your Consultation Now
+                                                    <FaArrowRight />
+                                                </>
+                                            )}
                                         </button>
 
 

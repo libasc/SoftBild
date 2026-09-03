@@ -855,6 +855,30 @@
     transition: all 0.25s ease;
 }
 
+.hire-submit-btn:disabled {
+    opacity: 0.75;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.submit-spinner {
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+
+    border: 2px solid rgba(255, 255, 255, 0.35);
+    border-top-color: #ffffff;
+    border-radius: 50%;
+
+    animation: submitSpinner 0.7s linear infinite;
+}
+
+@keyframes submitSpinner {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
 
 .hire-submit-btn svg {
     font-size: 10px;
