@@ -57,11 +57,19 @@ function HireDeveloper() {
 
     };
 
-const handlePhoneChange = (value) => {
+const handlePhoneChange = (value, country, e, formattedValue) => {
     setFormData((prev) => ({
         ...prev,
-        phone: value
+        phone: value,
+        phoneFormatted: formattedValue
     }));
+};
+
+const formatPhoneNumber = (phone) => {
+    if (!phone) return "";
+
+    // Add + before the country code
+    return `+${phone}`;
 };
 
 const handleSubmit = async (e) => {
@@ -72,12 +80,17 @@ const handleSubmit = async (e) => {
     setIsSubmitting(true);
 
     try {
+        const submissionData = {
+            ...formData,
+            phone: formatPhoneNumber(formData.phone),
+        };
+
         const response = await fetch("/api/send-email", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify(formData),
+            body: JSON.stringify(submissionData),
         });
 
         const result = await response.json();
@@ -86,11 +99,11 @@ const handleSubmit = async (e) => {
             throw new Error(result.message || "Failed to send form");
         }
 
-        // Reset form
-        setFormData({
+        const [formData, setFormData] = useState({
             name: "",
             email: "",
             phone: "",
+            phoneFormatted: "",
             company: "",
             projectType: "",
             developers: "",
@@ -100,7 +113,6 @@ const handleSubmit = async (e) => {
             timezone: "New York, Washington (UTC-05:00)"
         });
 
-        // Show success message
         setShowSuccessModal(true);
 
     } catch (error) {
@@ -109,7 +121,6 @@ const handleSubmit = async (e) => {
         alert(
             "Sorry, something went wrong while submitting your request. Please try again."
         );
-
     } finally {
         setIsSubmitting(false);
     }
