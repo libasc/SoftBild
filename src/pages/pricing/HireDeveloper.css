@@ -1136,6 +1136,347 @@
 }
 
 
+
+/* =========================================
+   SUCCESS MODAL
+========================================= */
+
+.hire-success-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 24px;
+
+    background: rgba(10, 22, 25, 0.58);
+
+    backdrop-filter: blur(7px);
+    -webkit-backdrop-filter: blur(7px);
+
+    animation: successOverlayIn 0.25s ease-out;
+}
+
+
+.hire-success-modal {
+    position: relative;
+
+    width: 100%;
+    max-width: 500px;
+
+    overflow: hidden;
+
+    background: #ffffff;
+
+    border-radius: 22px;
+
+    border: 1px solid rgba(15, 118, 110, 0.12);
+
+    box-shadow:
+        0 30px 80px rgba(0, 0, 0, 0.20),
+        0 10px 30px rgba(0, 0, 0, 0.08);
+
+    animation: successModalIn 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+
+/* Close */
+
+.hire-success-close {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+
+    width: 34px;
+    height: 34px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+
+    border: none;
+    border-radius: 50%;
+
+    background: #f3f6f5;
+
+    color: #647174;
+
+    font-size: 23px;
+    line-height: 1;
+
+    cursor: pointer;
+
+    transition: all 0.2s ease;
+}
+
+
+.hire-success-close:hover {
+    background: #e7eeec;
+    color: #0f766e;
+    transform: rotate(90deg);
+}
+
+
+/* Success Icon */
+
+.hire-success-icon {
+    width: 76px;
+    height: 76px;
+
+    margin: 42px auto 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: rgba(15, 118, 110, 0.10);
+
+    border: 8px solid rgba(15, 118, 110, 0.05);
+
+    color: #0f766e;
+
+    font-size: 29px;
+
+    animation: successIconIn 0.45s 0.1s both;
+}
+
+
+/* Content */
+
+.hire-success-content {
+    padding: 23px 40px 27px;
+
+    text-align: center;
+}
+
+
+.hire-success-label {
+    display: block;
+
+    margin-bottom: 10px;
+
+    color: #0f766e;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    letter-spacing: 1.6px;
+}
+
+
+.hire-success-content h2 {
+    margin: 0 0 10px;
+
+    color: #101820;
+
+    font-size: 29px;
+    line-height: 1.25;
+
+    font-weight: 700;
+}
+
+
+.hire-success-main-text {
+    margin: 0 0 9px;
+
+    color: #273438;
+
+    font-size: 16px;
+    line-height: 1.6;
+
+    font-weight: 600;
+}
+
+
+.hire-success-description {
+    max-width: 420px;
+
+    margin: 0 auto;
+
+    color: #6a7779;
+
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+
+/* Footer */
+
+.hire-success-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding: 18px 27px;
+
+    background: #f8faf9;
+
+    border-top: 1px solid #edf1ef;
+}
+
+
+.hire-success-response {
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+
+    color: #687577;
+
+    font-size: 12px;
+    line-height: 1.4;
+}
+
+
+.hire-success-response svg {
+    flex-shrink: 0;
+
+    color: #0f766e;
+
+    font-size: 14px;
+}
+
+
+/* Done Button */
+
+.hire-success-done-btn {
+    flex-shrink: 0;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+
+    padding: 11px 19px;
+
+    border: none;
+    border-radius: 9px;
+
+    background: #0f766e;
+
+    color: #ffffff;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    box-shadow: 0 5px 15px rgba(15, 118, 110, 0.18);
+
+    transition: all 0.2s ease;
+}
+
+
+.hire-success-done-btn:hover {
+    background: #0b625c;
+
+    transform: translateY(-1px);
+
+    box-shadow: 0 7px 18px rgba(15, 118, 110, 0.24);
+}
+
+
+/* =========================================
+   ANIMATIONS
+========================================= */
+
+@keyframes successOverlayIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+
+@keyframes successModalIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.96);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+
+@keyframes successIconIn {
+    from {
+        opacity: 0;
+        transform: scale(0.65);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+    .hire-success-overlay {
+        padding: 16px;
+    }
+
+    .hire-success-modal {
+        border-radius: 19px;
+    }
+
+    .hire-success-icon {
+        width: 68px;
+        height: 68px;
+
+        margin-top: 34px;
+
+        font-size: 26px;
+    }
+
+    .hire-success-content {
+        padding: 20px 24px 23px;
+    }
+
+    .hire-success-content h2 {
+        font-size: 24px;
+    }
+
+    .hire-success-footer {
+        flex-direction: column;
+        align-items: stretch;
+
+        padding: 18px 24px;
+    }
+
+    .hire-success-response {
+        justify-content: center;
+
+        text-align: center;
+    }
+
+    .hire-success-done-btn {
+        width: 100%;
+    }
+}
+
+
 /* =========================================================
    LARGE TABLET
 ========================================================= */

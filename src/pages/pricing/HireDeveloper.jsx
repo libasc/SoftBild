@@ -78,8 +78,6 @@ const handleSubmit = async (e) => {
             throw new Error(result.message || "Failed to send form");
         }
 
-        console.log("Form submitted successfully:", result);
-
         // Reset form
         setFormData({
             name: "",
@@ -94,14 +92,14 @@ const handleSubmit = async (e) => {
             timezone: "New York, Washington (UTC-05:00)"
         });
 
-        // Show custom success modal
+        // Show success message
         setShowSuccessModal(true);
 
     } catch (error) {
         console.error("Form submission error:", error);
 
         alert(
-            "Sorry, something went wrong while submitting the form. Please try again."
+            "Sorry, something went wrong while submitting your request. Please try again."
         );
 
     } finally {
@@ -939,6 +937,84 @@ const handleSubmit = async (e) => {
 
 
             {/* <HomeCta /> */}
+
+
+{showSuccessModal && (
+    <div
+        className="hire-success-overlay"
+        onClick={() => setShowSuccessModal(false)}
+    >
+        <div
+            className="hire-success-modal"
+            onClick={(e) => e.stopPropagation()}
+        >
+
+            {/* Close */}
+            <button
+                type="button"
+                className="hire-success-close"
+                onClick={() => setShowSuccessModal(false)}
+                aria-label="Close"
+            >
+                ×
+            </button>
+
+
+            {/* Success Icon */}
+            <div className="hire-success-icon">
+                <FaCheck />
+            </div>
+
+
+            {/* Message */}
+            <div className="hire-success-content">
+
+                <span className="hire-success-label">
+                    REQUEST RECEIVED
+                </span>
+
+                <h2>
+                    Thank You!
+                </h2>
+
+                <p className="hire-success-main-text">
+                    We've received your request successfully.
+                </p>
+
+                <p className="hire-success-description">
+                    Thank you for reaching out to us. Our team will
+                    review your requirements and get in touch with you
+                    shortly to discuss your project and the next steps.
+                </p>
+
+            </div>
+
+
+            {/* Footer */}
+            <div className="hire-success-footer">
+
+                <div className="hire-success-response">
+                    <FaClock />
+                    <span>
+                        Our team typically responds within 24 hours.
+                    </span>
+                </div>
+
+                <button
+                    type="button"
+                    className="hire-success-done-btn"
+                    onClick={() => setShowSuccessModal(false)}
+                >
+                    Done
+                    <FaArrowRight />
+                </button>
+
+            </div>
+
+        </div>
+    </div>
+)}
+            
 
         </>
     );
