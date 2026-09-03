@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
+import PhoneInput from "react-phone-input-2";
+import "react-phone-input-2/lib/style.css";
 
 import {
     FaCode,
@@ -54,6 +56,13 @@ function HireDeveloper() {
         }));
 
     };
+
+    const handlePhoneChange = (value) => {
+    setFormData({
+        ...formData,
+        phone: value
+    });
+};
 
 const handleSubmit = async (e) => {
     e.preventDefault();
@@ -563,7 +572,7 @@ useEffect(() => {
                                                     <span>*</span>
                                                 </label>
 
-                                                <input
+                                                {/* <input
                                                     type="tel"
                                                     id="phone"
                                                     name="phone"
@@ -572,7 +581,19 @@ useEffect(() => {
                                                     value={formData.phone}
                                                     onChange={handleChange}
                                                     required
-                                                />
+                                                /> */}
+                                                
+<PhoneInput
+    country={"us"}
+    value={formData.phone}
+    onChange={handlePhoneChange}
+    inputClass="form-control"
+    inputStyle={{
+        width: "100%"
+    }}
+    enableSearch={true}
+    placeholder="Enter phone number"
+/>
 
                                             </div>
 
