@@ -1145,18 +1145,13 @@
     position: fixed;
     inset: 0;
     z-index: 99999;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     padding: 24px;
-
-    background: rgba(10, 22, 25, 0.58);
-
-    backdrop-filter: blur(7px);
-    -webkit-backdrop-filter: blur(7px);
-
+    background: #0a161985;
+    /* backdrop-filter: blur(7px); */
+    /* -webkit-backdrop-filter: blur(7px); */
     animation: successOverlayIn 0.25s ease-out;
 }
 

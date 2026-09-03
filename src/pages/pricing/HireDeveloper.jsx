@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 
@@ -55,7 +55,6 @@ function HireDeveloper() {
 
     };
 
-
 const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -106,6 +105,18 @@ const handleSubmit = async (e) => {
         setIsSubmitting(false);
     }
 };
+
+useEffect(() => {
+    if (!showSuccessModal) return;
+
+    const originalOverflow = document.body.style.overflow;
+
+    document.body.style.overflow = "hidden";
+
+    return () => {
+        document.body.style.overflow = originalOverflow;
+    };
+}, [showSuccessModal]);
 
 
     return (
@@ -968,11 +979,6 @@ const handleSubmit = async (e) => {
 
             {/* Message */}
             <div className="hire-success-content">
-
-                <span className="hire-success-label">
-                    REQUEST RECEIVED
-                </span>
-
                 <h2>
                     Thank You!
                 </h2>
@@ -991,7 +997,7 @@ const handleSubmit = async (e) => {
 
 
             {/* Footer */}
-            <div className="hire-success-footer">
+            {/* <div className="hire-success-footer">
 
                 <div className="hire-success-response">
                     <FaClock />
@@ -1009,7 +1015,7 @@ const handleSubmit = async (e) => {
                     <FaArrowRight />
                 </button>
 
-            </div>
+            </div> */}
 
         </div>
     </div>
