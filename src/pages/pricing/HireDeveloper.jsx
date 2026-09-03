@@ -57,11 +57,11 @@ function HireDeveloper() {
 
     };
 
-    const handlePhoneChange = (value) => {
-    setFormData({
-        ...formData,
+const handlePhoneChange = (value) => {
+    setFormData((prev) => ({
+        ...prev,
         phone: value
-    });
+    }));
 };
 
 const handleSubmit = async (e) => {
@@ -572,24 +572,26 @@ useEffect(() => {
                                                     <span>*</span>
                                                 </label>
 
-                                                {/* <input
-                                                    type="tel"
-                                                    id="phone"
-                                                    name="phone"
-                                                    className="form-control"
-                                                    placeholder="e.g. +91 98765 43210"
-                                                    value={formData.phone}
-                                                    onChange={handleChange}
-                                                    required
-                                                /> */}
                                                 
-<PhoneInput
+{/* <PhoneInput
     country={"us"}
     value={formData.phone}
     onChange={handlePhoneChange}
     inputClass="form-control"
     inputStyle={{
         width: "100%"
+    }}
+    enableSearch={true}
+    placeholder="Enter phone number"
+/> */}
+
+<PhoneInput
+    country="us"
+    value={formData.phone}
+    onChange={handlePhoneChange}
+    inputClass="form-control hiredevphone"
+    inputStyle={{
+        width: "100%",
     }}
     enableSearch={true}
     placeholder="Enter phone number"
