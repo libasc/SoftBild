@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import PhoneInput from "react-phone-input-2";
@@ -42,6 +42,60 @@ const [formData, setFormData] = useState({
     dateTime: "",
     timezone: "New York, Washington (UTC-05:00)"
 });
+
+const [captcha, setCaptcha] = useState({
+    challenge: "",
+    type: ""
+});
+
+const [captchaAnswer, setCaptchaAnswer] = useState("");
+const [isCaptchaLoading, setIsCaptchaLoading] = useState(false);
+
+const loadCaptcha = useCallback(async () => {
+    setIsCaptchaLoading(true);
+    setCaptchaAnswer("");
+
+    try {
+        const response = await fetch("/api/captcha", {
+            method: "GET",
+            credentials: "same-origin",
+        });
+
+        const result = await response.json();
+
+        if (!response.ok || !result.success) {
+            throw new Error(
+                result.message ||
+                "Unable to load security verification."
+            );
+        }
+
+        setCaptcha({
+            challenge: result.challenge,
+            type: result.type
+        });
+    } catch (error) {
+        console.error("CAPTCHA loading error:", error);
+
+        setCaptcha({
+            challenge: "",
+            type: ""
+        });
+
+        alert(
+            "Unable to load security verification. Please refresh the page and try again."
+        );
+    } finally {
+        setIsCaptchaLoading(false);
+    }
+}, []);
+useEffect(() => {
+    loadCaptcha();
+}, [loadCaptcha]);
+
+
+
+
 
     const [showSuccessModal, setShowSuccessModal] = useState(false);
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -148,14 +202,18 @@ const handleSubmit = async (e) => {
     // SUBMIT FORM
     // =========================================
 
+    if (!captchaAnswer.trim()) {
+        alert("Please complete the security verification.");
+        return;
+    }
+
     setIsSubmitting(true);
 
     try {
-        const submissionData = {
+       const submissionData = {
             ...formData,
-
-            // Convert to clean international format
             phone: phoneNumber.formatInternational(),
+            captchaAnswer,
         };
 
         const response = await fetch("/api/send-email", {
@@ -197,6 +255,9 @@ const handleSubmit = async (e) => {
 
         setShowSuccessModal(true);
 
+        setCaptchaAnswer("");
+        loadCaptcha();
+
     } catch (error) {
         console.error("Form submission error:", error);
 
@@ -219,6 +280,7 @@ useEffect(() => {
         document.body.style.overflow = originalOverflow;
     };
 }, [showSuccessModal]);
+
 
 
     return (
@@ -969,6 +1031,54 @@ useEffect(() => {
                                             </div>
 
                                         </div>
+
+
+
+
+
+                                        {/* CAPTCHA */}
+<div className="form-group captcha-group">
+    <label htmlFor="captchaAnswer">
+        Security Verification <span>*</span>
+    </label>
+
+    <div className="captcha-row">
+        <div className="captcha-question form-control">
+            {isCaptchaLoading
+                ? "Loading..."
+                : captcha.challenge}
+        </div>
+
+        <button
+            type="button"
+            className="captcha-refresh form-control"
+            onClick={loadCaptcha}
+            disabled={isCaptchaLoading}
+            aria-label="Refresh CAPTCHA"
+            title="Refresh CAPTCHA"
+        >
+            ⟳
+        </button>
+
+        <input
+            type="text"
+            id="captchaAnswer"
+            name="captchaAnswer"
+            value={captchaAnswer}
+            onChange={(e) =>
+                setCaptchaAnswer(e.target.value)
+            }
+            placeholder="Enter the answer"
+            autoComplete="off"
+            required
+            disabled={
+                isCaptchaLoading ||
+                !captcha.challenge
+            }
+            className="captcha-answer form-control"
+        />
+    </div>
+</div>
 
 
                                         {/* SUBMIT */}

@@ -1,4 +1,10 @@
 import nodemailer from "nodemailer";
+import {
+    decryptCaptcha,
+    captchaAnswersMatch,
+    getCaptchaCookieName,
+    clearCaptchaCookie
+} from "../utils/captcha.js";
 
 
 // Escape user input before putting it inside HTML email
@@ -35,7 +41,8 @@ export default async function handler(req, res) {
             requirements,
             consultation,
             dateTime,
-            timezone
+            timezone,
+            captchaAnswer
         } = req.body;
 
 
@@ -44,6 +51,65 @@ export default async function handler(req, res) {
             return res.status(400).json({
                 success: false,
                 message: "Please fill in all required fields.",
+            });
+        }
+
+        // CAPTCHA VALIDATION
+        const cookies = req.headers.cookie || "";
+
+        const captchaCookie = cookies
+            .split(";")
+            .map((cookie) => cookie.trim())
+            .find((cookie) =>
+                cookie.startsWith(
+                    `${getCaptchaCookieName()}=`
+                )
+            );
+
+        const captchaToken = captchaCookie
+            ? captchaCookie.substring(
+                `${getCaptchaCookieName()}=`.length
+            )
+            : null;
+
+        const captchaData = decryptCaptcha(captchaToken);
+
+        // Clear CAPTCHA after every verification attempt.
+        // This makes the challenge one-time use.
+        res.setHeader(
+            "Set-Cookie",
+            clearCaptchaCookie()
+        );
+
+        if (!captchaData) {
+            return res.status(400).json({
+                success: false,
+                message:
+                    "Your CAPTCHA has expired or is invalid. Please refresh the CAPTCHA and try again."
+            });
+        }
+
+        if (
+            !captchaData.expiresAt ||
+            Date.now() > captchaData.expiresAt
+        ) {
+            return res.status(400).json({
+                success: false,
+                message:
+                    "Your CAPTCHA has expired. Please refresh the CAPTCHA and try again."
+            });
+        }
+
+        if (
+            !captchaAnswersMatch(
+                captchaAnswer,
+                captchaData.answer
+            )
+        ) {
+            return res.status(400).json({
+                success: false,
+                message:
+                    "Incorrect CAPTCHA answer. Please try again."
             });
         }
 
