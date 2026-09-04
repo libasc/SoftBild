@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
+import { parsePhoneNumberFromString } from "libphonenumber-js/max";
 
 import {
     FaCode,
@@ -29,22 +30,27 @@ import HomeCta2 from "../../components/app-components/HomeCta2";
 
 function HireDeveloper() {
 
-    const [formData, setFormData] = useState({
-        name: "",
-        email: "",
-        phone: "",
-        company: "",
-        projectType: "",
-        developers: "",
-        requirements: "",
-        consultation: false,
-        dateTime: "",
-        timezone: "New York, Washington (UTC-05:00)"
-    });
+const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    company: "",
+    projectType: "",
+    developers: "",
+    requirements: "",
+    consultation: false,
+    dateTime: "",
+    timezone: "New York, Washington (UTC-05:00)"
+});
 
     const [showSuccessModal, setShowSuccessModal] = useState(false);
     const [isSubmitting, setIsSubmitting] = useState(false);
 
+    const [phoneCountry, setPhoneCountry] = useState({
+    countryCode: "us",
+    dialCode: "1",
+    name: "United States"
+});
 
     const handleChange = (e) => {
 
@@ -57,32 +63,99 @@ function HireDeveloper() {
 
     };
 
-const handlePhoneChange = (value, country, e, formattedValue) => {
+const validatePhoneNumber = (value, country) => {
+    if (!value || !country?.countryCode) {
+        return false;
+    }
+
+    try {
+        const phoneNumber = parsePhoneNumberFromString(`+${value}`);
+
+        if (!phoneNumber) {
+            return false;
+        }
+
+        // Make sure the number belongs
+        // to the selected country.
+        if (
+            phoneNumber.country &&
+            phoneNumber.country.toLowerCase() !==
+                country.countryCode.toLowerCase()
+        ) {
+            return false;
+        }
+
+        return phoneNumber.isValid();
+    } catch {
+        return false;
+    }
+};
+
+
+const handlePhoneChange = (value, country) => {
+    setPhoneCountry(country);
+
     setFormData((prev) => ({
         ...prev,
-        phone: value,
-        phoneFormatted: formattedValue
+        phone: value
     }));
 };
 
-const formatPhoneNumber = (phone) => {
-    if (!phone) return "";
-
-    // Add + before the country code
-    return `+${phone}`;
-};
 
 const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (isSubmitting) return;
 
+    // =========================================
+    // PHONE VALIDATION
+    // =========================================
+
+    if (!formData.phone) {
+        alert("Please enter your phone number.");
+        return;
+    }
+
+    const phoneNumber = parsePhoneNumberFromString(
+        `+${formData.phone}`
+    );
+
+    if (!phoneNumber) {
+        alert("Please enter a valid phone number.");
+        return;
+    }
+
+    // Make sure the phone number belongs
+    // to the country selected in the dropdown.
+    if (
+        phoneNumber.country &&
+        phoneNumber.country.toLowerCase() !==
+            phoneCountry.countryCode.toLowerCase()
+    ) {
+        alert(
+            `Please enter a valid ${phoneCountry.name} phone number.`
+        );
+        return;
+    }
+
+    // Check actual phone number validity.
+    if (!phoneNumber.isValid()) {
+        alert("Please enter a valid phone number.");
+        return;
+    }
+
+    // =========================================
+    // SUBMIT FORM
+    // =========================================
+
     setIsSubmitting(true);
 
     try {
         const submissionData = {
             ...formData,
-            phone: formatPhoneNumber(formData.phone),
+
+            // Convert to clean international format
+            phone: phoneNumber.formatInternational(),
         };
 
         const response = await fetch("/api/send-email", {
@@ -96,14 +169,16 @@ const handleSubmit = async (e) => {
         const result = await response.json();
 
         if (!response.ok) {
-            throw new Error(result.message || "Failed to send form");
+            throw new Error(
+                result.message || "Failed to send form"
+            );
         }
 
-        const [formData, setFormData] = useState({
+        // Reset form
+        setFormData({
             name: "",
             email: "",
             phone: "",
-            phoneFormatted: "",
             company: "",
             projectType: "",
             developers: "",
@@ -111,6 +186,13 @@ const handleSubmit = async (e) => {
             consultation: false,
             dateTime: "",
             timezone: "New York, Washington (UTC-05:00)"
+        });
+
+        // Reset country back to USA
+        setPhoneCountry({
+            countryCode: "us",
+            dialCode: "1",
+            name: "United States"
         });
 
         setShowSuccessModal(true);
@@ -605,7 +687,14 @@ useEffect(() => {
         width: "100%",
     }}
     enableSearch={true}
+    autoFormat={true}
+    countryCodeEditable={false}
     placeholder="Enter phone number"
+    inputProps={{
+        name: "phone",
+        required: true,
+        autoComplete: "tel",
+    }}
 />
 
                                             </div>
@@ -616,13 +705,7 @@ useEffect(() => {
                                             <div className="col-md-6">
 
                                                 <label htmlFor="company">
-
                                                     Company Name
-
-                                                    <small>
-                                                        Optional
-                                                    </small>
-
                                                 </label>
 
                                                 <input
