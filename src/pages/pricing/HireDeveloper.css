@@ -1814,6 +1814,13 @@
     background: #9fb5bd;
 }
 
+.field-error {
+    color: #dc2626;
+    font-size: 13px;
+    margin-top: 7px;
+    line-height: 1.4;
+}
+
 @media (max-width: 576px) {
     .react-datepicker {
         max-width: calc(100vw - 30px);

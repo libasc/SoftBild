@@ -108,7 +108,7 @@ useEffect(() => {
 }, [loadCaptcha]);
 
 
-
+const [formErrors, setFormErrors] = useState({});
 
 
     const [showSuccessModal, setShowSuccessModal] = useState(false);
@@ -120,16 +120,19 @@ useEffect(() => {
     name: "United States"
 });
 
-    const handleChange = (e) => {
+const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
 
-        const { name, value, type, checked } = e.target;
+    setFormData((prev) => ({
+        ...prev,
+        [name]: type === "checkbox" ? checked : value
+    }));
 
-        setFormData((prev) => ({
-            ...prev,
-            [name]: type === "checkbox" ? checked : value
-        }));
-
-    };
+    setFormErrors((prev) => ({
+        ...prev,
+        [name]: ""
+    }));
+};
 
 const validatePhoneNumber = (value, country) => {
     if (!value || !country?.countryCode) {
@@ -167,6 +170,11 @@ const handlePhoneChange = (value, country) => {
         ...prev,
         phone: value
     }));
+
+    setFormErrors((prev) => ({
+        ...prev,
+        phone: ""
+    }));
 };
 
 
@@ -175,56 +183,66 @@ const handleSubmit = async (e) => {
 
     if (isSubmitting) return;
 
+    // Clear previous errors
+    setFormErrors({});
+
+    const errors = {};
+
     // =========================================
     // PHONE VALIDATION
     // =========================================
 
     if (!formData.phone) {
-        alert("Please enter your phone number.");
+        errors.phone = "Please enter your phone number.";
+    } else {
+        const phoneNumber = parsePhoneNumberFromString(
+            `+${formData.phone}`
+        );
+
+        if (!phoneNumber) {
+            errors.phone = "Please enter a valid phone number.";
+        } else if (
+            phoneNumber.country &&
+            phoneNumber.country.toLowerCase() !==
+                phoneCountry.countryCode.toLowerCase()
+        ) {
+            errors.phone = `Please enter a valid ${phoneCountry.name} phone number.`;
+        } else if (!phoneNumber.isValid()) {
+            errors.phone = "Please enter a valid phone number.";
+        }
+    }
+
+    // =========================================
+    // CAPTCHA VALIDATION
+    // =========================================
+
+    if (!captchaAnswer.trim()) {
+        errors.captchaAnswer =
+            "Please complete the security verification.";
+    }
+
+    // =========================================
+    // STOP IF VALIDATION ERRORS EXIST
+    // =========================================
+
+    if (Object.keys(errors).length > 0) {
+        setFormErrors(errors);
         return;
     }
 
+    // Parse phone again after validation
     const phoneNumber = parsePhoneNumberFromString(
         `+${formData.phone}`
     );
-
-    if (!phoneNumber) {
-        alert("Please enter a valid phone number.");
-        return;
-    }
-
-    // Make sure the phone number belongs
-    // to the country selected in the dropdown.
-    if (
-        phoneNumber.country &&
-        phoneNumber.country.toLowerCase() !==
-            phoneCountry.countryCode.toLowerCase()
-    ) {
-        alert(
-            `Please enter a valid ${phoneCountry.name} phone number.`
-        );
-        return;
-    }
-
-    // Check actual phone number validity.
-    if (!phoneNumber.isValid()) {
-        alert("Please enter a valid phone number.");
-        return;
-    }
 
     // =========================================
     // SUBMIT FORM
     // =========================================
 
-    if (!captchaAnswer.trim()) {
-        alert("Please complete the security verification.");
-        return;
-    }
-
     setIsSubmitting(true);
 
     try {
-       const submissionData = {
+        const submissionData = {
             ...formData,
             phone: phoneNumber.formatInternational(),
             captchaAnswer,
@@ -241,12 +259,33 @@ const handleSubmit = async (e) => {
         const result = await response.json();
 
         if (!response.ok) {
+            // CAPTCHA error from server
+            if (
+                result.message &&
+                result.message.toLowerCase().includes("captcha")
+            ) {
+                setFormErrors((prev) => ({
+                    ...prev,
+                    captchaAnswer:
+                        result.message ||
+                        "Incorrect security verification. Please try again.",
+                }));
+
+                setCaptchaAnswer("");
+                loadCaptcha();
+
+                return;
+            }
+
             throw new Error(
                 result.message || "Failed to send form"
             );
         }
 
-        // Reset form
+        // =========================================
+        // RESET FORM
+        // =========================================
+
         setFormData({
             name: "",
             email: "",
@@ -275,9 +314,11 @@ const handleSubmit = async (e) => {
     } catch (error) {
         console.error("Form submission error:", error);
 
-        alert(
-            "Sorry, something went wrong while submitting your request. Please try again."
-        );
+        setFormErrors((prev) => ({
+            ...prev,
+            submit:
+                "Sorry, something went wrong while submitting your request. Please try again."
+        }));
     } finally {
         setIsSubmitting(false);
     }
@@ -1126,6 +1167,12 @@ useEffect(() => {
             className="captcha-answer form-control"
         />
     </div>
+
+{formErrors.captchaAnswer && (
+    <div className="field-error">
+        {formErrors.captchaAnswer}
+    </div>
+)}
 </div>
 
 
