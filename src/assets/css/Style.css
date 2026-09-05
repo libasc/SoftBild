@@ -2238,6 +2238,11 @@ input.subscribe-input:focus {
     margin-bottom: 0;
 }
 
+.small-hdr-phoneemail{
+    display: flex;
+    justify-content: flex-start;
+    gap: 20px;
+}
 
 /* =========================================
    RESPONSIVE

@@ -103,7 +103,7 @@ function Header() {
             <div className="container-fluid bg-blue1 text-white py-10">
                 <div className="container px-0">
                     <div className="small-header">
-                        <div className="d-flex justify-content-start gap-3">
+                        <div className="small-hdr-phoneemail">
                             <div className="sh-email">
                                 <span><img src={email} alt="email" /> &nbsp;: </span>
                                 <Link to="mailto:info@softbild.com">info@softbild.com</Link>

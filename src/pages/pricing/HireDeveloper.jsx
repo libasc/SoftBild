@@ -4,6 +4,8 @@ import { Helmet } from "react-helmet-async";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import { parsePhoneNumberFromString } from "libphonenumber-js/max";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 import {
     FaCode,
@@ -26,6 +28,18 @@ import HomeCta from "../../components/app-components/HomeCta";
 
 import "./HireDeveloper.css";
 import HomeCta2 from "../../components/app-components/HomeCta2";
+
+    const formatDateTimeLocal = (date) => {
+        if (!date) return "";
+
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, "0");
+        const day = String(date.getDate()).padStart(2, "0");
+        const hours = String(date.getHours()).padStart(2, "0");
+        const minutes = String(date.getMinutes()).padStart(2, "0");
+
+        return `${year}-${month}-${day}T${hours}:${minutes}`;
+    };
 
 
 function HireDeveloper() {
@@ -334,10 +348,10 @@ useEffect(() => {
                 HERO / HIRE SECTION
             ========================================== */}
 
-            <section className="hire-developer-section">
+            <section className="container-fluid py-80 position-relative bg-img-top">
 
-                <div className="hire-bg-circle hire-bg-circle-one"></div>
-                <div className="hire-bg-circle hire-bg-circle-two"></div>
+                {/* <div className="hire-bg-circle hire-bg-circle-one"></div>
+                <div className="hire-bg-circle hire-bg-circle-two"></div> */}
 
 
                 <div className="container">
@@ -647,7 +661,7 @@ useEffect(() => {
                             RIGHT FORM
                         ================================= */}
 
-                        <div className="col-lg-6">
+                        <div className="col-lg-6 phone-mt-0">
 
                             <div className="hire-form-wrapper">
 
@@ -961,7 +975,7 @@ useEffect(() => {
                                                         Preferred Date & Time
                                                     </label>
 
-                                                    <div className="hire-input-icon">
+                                                    {/* <div className="hire-input-icon">
 
                                                         <FaCalendarAlt />
 
@@ -974,7 +988,41 @@ useEffect(() => {
                                                             onChange={handleChange}
                                                         />
 
-                                                    </div>
+                                                    </div> */}
+
+
+<div className="hire-date-picker-wrapper">
+    <FaCalendarAlt className="hire-date-picker-icon" />
+
+    <DatePicker
+        selected={
+            formData.dateTime
+                ? new Date(formData.dateTime)
+                : null
+        }
+        onChange={(date) => {
+            setFormData((prev) => ({
+                ...prev,
+                dateTime: formatDateTimeLocal(date),
+            }));
+        }}
+        showTimeSelect
+        timeIntervals={30}
+        timeFormat="hh:mm aa"
+        dateFormat="dd-MM-yyyy hh:mm aa"
+        minDate={new Date()}
+        minTime={new Date(0, 0, 0, 9, 0)}
+        maxTime={new Date(0, 0, 0, 18, 0)}
+        placeholderText="dd-mm-yyyy --:--"
+        id="dateTime"
+        name="dateTime"
+        className="form-control hire-date-picker-input"
+        wrapperClassName="hire-date-picker"
+        autoComplete="off"
+        showPopperArrow={false}
+        popperPlacement="bottom-start"
+    />
+</div>
 
                                                 </div>
 
@@ -1037,7 +1085,7 @@ useEffect(() => {
 
 
                                         {/* CAPTCHA */}
-<div className="form-group captcha-group">
+<div className="form-group captcha-group mt-3">
     <label htmlFor="captchaAnswer">
         Security Verification <span>*</span>
     </label>
@@ -1097,7 +1145,7 @@ useEffect(() => {
                                         <button
                                             type="submit"
                                             disabled={isSubmitting}
-                                            className="hire-submit-btn"
+                                            className="btn btn-primary sf-btn6 mt-20 w-100"
                                         >
                                             {isSubmitting ? (
                                                 <>
@@ -1107,7 +1155,6 @@ useEffect(() => {
                                             ) : (
                                                 <>
                                                     Book Your Consultation Now
-                                                    <FaArrowRight />
                                                 </>
                                             )}
                                         </button>

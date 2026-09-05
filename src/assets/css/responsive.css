@@ -309,6 +309,11 @@
         height: 50%;
     }
 
+    .small-hdr-phoneemail{
+        flex-direction: column;
+        gap: 8px;
+    }
+
 
   }
   

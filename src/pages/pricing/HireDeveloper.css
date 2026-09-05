@@ -11,34 +11,6 @@
 
 
 /* =========================================================
-   BACKGROUND DECORATION
-========================================================= */
-
-.hire-bg-circle {
-    position: absolute;
-    border-radius: 50%;
-    pointer-events: none;
-    opacity: 0.65;
-}
-
-.hire-bg-circle-one {
-    width: 380px;
-    height: 380px;
-    top: -220px;
-    left: -190px;
-    background: #dff5f7;
-}
-
-.hire-bg-circle-two {
-    width: 320px;
-    height: 320px;
-    right: -180px;
-    bottom: -180px;
-    background: #e4f7f8;
-}
-
-
-/* =========================================================
    LEFT CONTENT
 ========================================================= */
 
@@ -155,22 +127,16 @@
 
 .hire-benefit h4 {
     margin: 1px 0 3px;
-
     color: #172635;
-
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 700;
 }
 
 
 .hire-benefit p {
-    max-width: 460px;
-
     margin: 0;
-
     color: #70808a;
-
-    font-size: 14px;
+    font-size: 16px;
     line-height: 1.55;
 }
 
@@ -249,12 +215,9 @@
 
 .hire-small-label {
     display: block;
-
     margin-bottom: 7px;
-
     color: #08aeba;
-
-    font-size: 10px;
+    font-size: 12px;
     font-weight: 700;
     letter-spacing: 1.2px;
 }
@@ -318,21 +281,15 @@
 .hire-process-number {
     position: relative;
     z-index: 2;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     width: 35px;
     height: 35px;
-
     flex-shrink: 0;
-
     border: 3px solid #f4fbfc;
     border-radius: 50%;
-
-    background: #08b8c4;
-
+    background: var(--sf-gradient1);
     color: #ffffff;
 
     font-size: 10px;
@@ -349,22 +306,16 @@
 
 .hire-process-content h4 {
     margin: 0 0 4px;
-
     color: #172635;
-
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 700;
 }
 
 
 .hire-process-content p {
-    max-width: 430px;
-
     margin: 0;
-
     color: #72818a;
-
-    font-size: 14px;
+    font-size: 16px;
     line-height: 1.55;
 }
 
@@ -553,13 +504,9 @@
 
 
 .hire-form-header p {
-    max-width: 500px;
-
     margin: 0;
-
     color: #71818a;
-
-    font-size: 11px;
+    font-size: 12px;
     line-height: 1.55;
 }
 
@@ -605,16 +552,16 @@
 .hire-form-card .form-select {
     min-height: 43px;
     padding: 10px 12px;
-    border: 1px solid #dce7e9;
-    border-radius: 7px;
-    background-color: #fbfdfd;
-    color: #344650;
-    font-size: 12px;
-    box-shadow: none;
-    transition:
+    /* border: 1px solid #dce7e9; */
+    /* border-radius: 7px; */
+    /* background-color: #fbfdfd; */
+    /* color: #344650; */
+    /* font-size: 12px; */
+    /* box-shadow: none; */
+    /* transition:
         border-color 0.2s ease,
         box-shadow 0.2s ease,
-        background 0.2s ease;
+        background 0.2s ease; */
 }
 
 
@@ -847,7 +794,7 @@
 
     color: #ffffff;
 
-    font-size: 11px;
+    font-size: 14px;
     font-weight: 700;
 
     box-shadow: 0 8px 18px rgba(8, 184, 196, 0.18);
@@ -1443,7 +1390,7 @@
     align-items: center;
     padding: 0 26px;
     border: 1px solid #d8e2e7;
-    border-radius: 14px;
+    border-radius: 6px;
     background: #f8fafb;
     color: #17232d;
     font-size: 16px !important;
@@ -1462,7 +1409,7 @@
     justify-content: center;
     padding: 0;
     border: 1px solid #d8e2e7;
-    border-radius: 14px;
+    border-radius: 6px;
     background: #ffffff;
     color: #111827;
     font-size: 24px !important;
@@ -1490,7 +1437,7 @@
     min-width: 0;
     padding: 0 22px;
     border: 1px solid #d8e2e7;
-    border-radius: 14px;
+    border-radius: 6px;
     background: #ffffff;
     color: #17232d;
     font-size: 16px !important;
@@ -1516,6 +1463,393 @@
     cursor: not-allowed;
 }
 
+
+/* =========================================================
+   DATE & TIME PICKER INPUT
+========================================================= */
+
+.hire-date-picker-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.hire-date-picker {
+    display: block;
+    width: 100%;
+}
+
+.hire-date-picker-input {
+    width: 100%;
+    padding: 0 18px 0 52px !important;
+    background: #ffffff !important;
+    cursor: pointer;
+    outline: none;
+    box-sizing: border-box;
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.hire-date-picker-input:hover {
+    border-color: #9bcfd6 !important;
+}
+
+.hire-date-picker-input:focus {
+    border-color: #16a6b5 !important;
+
+    box-shadow:
+        0 0 0 3px rgba(22, 166, 181, 0.1) !important;
+}
+
+.hire-date-picker-input::placeholder {
+    color: #8b9aa3 !important;
+    opacity: 1;
+}
+
+.hire-date-picker-icon {
+    position: absolute;
+
+    left: 18px;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    z-index: 5;
+
+    color: #10a5b5;
+
+    font-size: 18px;
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   DATEPICKER POPUP
+========================================================= */
+
+.react-datepicker-popper {
+    z-index: 9999 !important;
+}
+
+.react-datepicker {
+    display: flex !important;
+
+    border: 1px solid #e1e9ed !important;
+    border-radius: 16px !important;
+
+    overflow: hidden;
+
+    background: #ffffff !important;
+
+    box-shadow:
+        0 20px 50px rgba(20, 45, 60, 0.16),
+        0 6px 18px rgba(20, 45, 60, 0.08) !important;
+
+    font-family: inherit !important;
+}
+
+
+/* =========================================================
+   CALENDAR SECTION
+========================================================= */
+
+.react-datepicker__month-container {
+    padding-bottom: 10px;
+}
+
+.react-datepicker__header {
+    position: relative;
+
+    background: #ffffff !important;
+
+    border-bottom: 1px solid #edf1f3 !important;
+
+    padding: 18px 18px 12px !important;
+}
+
+.react-datepicker__current-month {
+    color: #17232d !important;
+
+    font-size: 17px !important;
+    font-weight: 700 !important;
+
+    line-height: 1.3;
+
+    margin-bottom: 14px;
+}
+
+.react-datepicker__day-names {
+    margin-bottom: 0 !important;
+}
+
+.react-datepicker__day-name {
+    width: 34px !important;
+
+    margin: 3px !important;
+
+    color: #8997a0 !important;
+
+    font-size: 11px !important;
+    font-weight: 700 !important;
+
+    text-transform: uppercase;
+}
+
+.react-datepicker__month {
+    margin: 10px 16px !important;
+}
+
+.react-datepicker__day {
+    width: 34px !important;
+    height: 34px !important;
+
+    margin: 3px !important;
+
+    line-height: 34px !important;
+
+    border-radius: 50% !important;
+
+    color: #34434d !important;
+
+    font-size: 13px !important;
+    font-weight: 500 !important;
+
+    transition:
+        background-color 0.15s ease,
+        color 0.15s ease,
+        transform 0.15s ease;
+}
+
+.react-datepicker__day:hover {
+    background: #e8f7f9 !important;
+
+    color: #078b9a !important;
+}
+
+.react-datepicker__day--selected,
+.react-datepicker__day--keyboard-selected {
+    background: #12a7b6 !important;
+
+    color: #ffffff !important;
+
+    font-weight: 700 !important;
+}
+
+.react-datepicker__day--selected:hover {
+    background: #0d96a4 !important;
+
+    color: #ffffff !important;
+}
+
+.react-datepicker__day--today {
+    color: #fff !important;
+
+    font-weight: 700 !important;
+}
+
+.react-datepicker__day--outside-month {
+    color: #c4ccd1 !important;
+}
+
+.react-datepicker__day--disabled {
+    color: #d0d6da !important;
+
+    cursor: not-allowed !important;
+}
+
+.react-datepicker__day--disabled:hover {
+    background: transparent !important;
+}
+
+
+/* =========================================================
+   MONTH NAVIGATION
+========================================================= */
+
+.react-datepicker__navigation {
+    top: 18px !important;
+
+    width: 30px !important;
+    height: 30px !important;
+}
+
+.react-datepicker__navigation--previous {
+    left: 10px !important;
+}
+
+.react-datepicker__navigation--next {
+    right: 10px !important;
+}
+
+.react-datepicker__navigation-icon::before {
+    border-color: #53646e !important;
+
+    border-width: 2px 2px 0 0 !important;
+
+    width: 7px !important;
+    height: 7px !important;
+}
+
+.react-datepicker__navigation:hover
+.react-datepicker__navigation-icon::before {
+    border-color: #0da0af !important;
+}
+
+
+/* =========================================================
+   TIME SECTION
+========================================================= */
+
+.react-datepicker__time-container {
+    width: 150px !important;
+
+    border-left: 1px solid #edf1f3 !important;
+
+    background: #fbfcfd !important;
+}
+
+.react-datepicker__header--time {
+    padding: 18px 12px 12px !important;
+
+    background: #fbfcfd !important;
+
+    border-bottom: 1px solid #edf1f3 !important;
+
+    color: #17232d !important;
+
+    font-size: 15px !important;
+    font-weight: 700 !important;
+}
+
+.react-datepicker-time__header {
+    color: #17232d !important;
+
+    font-size: 15px !important;
+    font-weight: 700 !important;
+}
+
+.react-datepicker__time {
+    background: #fbfcfd !important;
+}
+
+.react-datepicker__time-box {
+    width: 100% !important;
+}
+
+.react-datepicker__time-list {
+    height: 270px !important;
+
+    overflow-y: auto !important;
+
+    padding: 8px !important;
+
+    box-sizing: border-box;
+
+    scrollbar-width: thin;
+}
+
+
+/* =========================================================
+   TIME OPTIONS
+========================================================= */
+
+.react-datepicker__time-list-item {
+    height: 38px !important;
+
+    margin: 2px 0 !important;
+
+    padding: 0 12px !important;
+
+    border-radius: 8px !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    color: #42525c !important;
+
+    font-size: 13px !important;
+    font-weight: 500 !important;
+
+    transition:
+        background-color 0.15s ease,
+        color 0.15s ease;
+}
+
+.react-datepicker__time-list-item:hover {
+    background: #e7f7f9 !important;
+
+    color: #078b99 !important;
+}
+
+.react-datepicker__time-list-item--selected {
+    background: #12a7b6 !important;
+
+    color: #ffffff !important;
+
+    font-weight: 700 !important;
+}
+
+.react-datepicker__time-list-item--selected:hover {
+    background: #0d96a4 !important;
+
+    color: #ffffff !important;
+}
+
+.react-datepicker__time-list::-webkit-scrollbar {
+    width: 5px;
+}
+
+.react-datepicker__time-list::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.react-datepicker__time-list::-webkit-scrollbar-thumb {
+    background: #cbd8dd;
+    border-radius: 10px;
+}
+
+.react-datepicker__time-list::-webkit-scrollbar-thumb:hover {
+    background: #9fb5bd;
+}
+
+@media (max-width: 576px) {
+    .react-datepicker {
+        max-width: calc(100vw - 30px);
+
+        transform-origin: top left;
+    }
+
+    .react-datepicker__day,
+    .react-datepicker__day-name {
+        width: 30px !important;
+    }
+
+    .react-datepicker__day {
+        height: 30px !important;
+
+        line-height: 30px !important;
+
+        margin: 2px !important;
+    }
+
+    .react-datepicker__month {
+        margin: 8px 10px !important;
+    }
+
+    .react-datepicker__time-container {
+        width: 125px !important;
+    }
+
+    .react-datepicker__time-list {
+        height: 240px !important;
+    }
+
+    .react-datepicker__time-list-item {
+        height: 36px !important;
+    }
+}
 /* =========================================
    MOBILE
 ========================================= */
@@ -1610,11 +1944,6 @@
     }
 
 
-    .hire-main-description {
-        max-width: 700px;
-    }
-
-
     .hire-benefits {
         max-width: 700px;
     }
@@ -1670,18 +1999,6 @@
     }
 
 
-    .hire-main-description {
-        font-size: 14px;
-
-        line-height: 1.65;
-    }
-
-
-    .hire-benefit p {
-        font-size: 14px;
-    }
-
-
     .hire-trust-strip {
         display: grid;
 
@@ -1699,7 +2016,7 @@
 
 
     .hire-trust-item strong {
-        font-size: 22px;
+        font-size: 24px;
     }
 
 
@@ -1721,7 +2038,7 @@
 
 
     .hire-form-header p {
-        font-size: 10px;
+        font-size: 14px;
     }
 
 
@@ -1776,12 +2093,12 @@
 
 
     .hire-trust-item strong {
-        font-size: 20px;
+        font-size: 24px;
     }
 
 
     .hire-trust-item span {
-        font-size: 9px;
+        font-size: 16px;
     }
 
 
