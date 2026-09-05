@@ -31,7 +31,22 @@ export default async function handler(req, res) {
 
     try {
 
+        // const {
+        //     name,
+        //     email,
+        //     phone,
+        //     company,
+        //     projectType,
+        //     developers,
+        //     requirements,
+        //     consultation,
+        //     dateTime,
+        //     timezone,
+        //     captchaAnswer
+        // } = req.body;
+
         const {
+            formType = "hire-developer",
             name,
             email,
             phone,
@@ -42,16 +57,28 @@ export default async function handler(req, res) {
             consultation,
             dateTime,
             timezone,
+            firstName,
+            lastName,
+            message,
             captchaAnswer
         } = req.body;
 
 
         // Validate required fields
-        if (!name || !email || !phone || !requirements) {
-            return res.status(400).json({
-                success: false,
-                message: "Please fill in all required fields.",
-            });
+        if (formType === "contact") {
+            if (!firstName || !email || !phone || !message) {
+                return res.status(400).json({
+                    success: false,
+                    message: "Please fill in all required fields.",
+                });
+            }
+        } else {
+            if (!name || !email || !phone || !requirements) {
+                return res.status(400).json({
+                    success: false,
+                    message: "Please fill in all required fields.",
+                });
+            }
         }
 
         // CAPTCHA VALIDATION
@@ -145,7 +172,7 @@ export default async function handler(req, res) {
         const safeCompany = escapeHtml(company || "Not provided");
         const safeProjectType = escapeHtml(projectType || "Not provided");
         const safeDevelopers = escapeHtml(developers || "Not provided");
-        const safeRequirements = escapeHtml(requirements);
+        const safeRequirements = escapeHtml(requirements || "");
         const safeDateTime = escapeHtml(dateTime || "Not provided");
         const safeTimezone = escapeHtml(timezone || "Not provided");
 
@@ -153,324 +180,575 @@ export default async function handler(req, res) {
             ? "Yes"
             : "No";
 
+        const safeFirstName = escapeHtml(firstName || "");
+        const safeLastName = escapeHtml(lastName || "");
+        const safeMessage = escapeHtml(message || "");
+
+
+       
+
+
 
         // Send email
-        await transporter.sendMail({
+        if (formType === "contact") {
+            await transporter.sendMail({
+                from: process.env.SMTP_FROM,
+                to: process.env.CONTACT_EMAIL,
+                replyTo: email,
+                subject: `New Contact Form Inquiry - ${firstName}${lastName ? ` ${lastName}` : ""}`,
 
-            from: process.env.SMTP_FROM,
+                html: `
+                    <!DOCTYPE html>
+                    <html>
+                    <head>
+                        <meta charset="UTF-8">
+                        <title>New Contact Form Inquiry</title>
+                    </head>
 
-            to: process.env.CONTACT_EMAIL,
-
-            replyTo: email,
-
-            subject: `New Hire Developer Consultation Request - ${name}`,
-
-            html: `
-                <!DOCTYPE html>
-                <html>
-                <head>
-                    <meta charset="UTF-8">
-                    <title>Hire Developer Consultation Request</title>
-                </head>
-
-                <body style="
-                    margin: 0;
-                    padding: 30px 15px;
-                    background-color: #f5f7fa;
-                    font-family: Arial, Helvetica, sans-serif;
-                    color: #333333;
-                ">
-
-                    <div style="
-                        max-width: 700px;
-                        margin: 0 auto;
-                        background: #ffffff;
-                        border-radius: 12px;
-                        overflow: hidden;
-                        border: 1px solid #e5e7eb;
+                    <body style="
+                        margin: 0;
+                        padding: 30px 15px;
+                        background-color: #f5f7fa;
+                        font-family: Arial, Helvetica, sans-serif;
+                        color: #333333;
                     ">
 
-                        <!-- Header -->
                         <div style="
-                            padding: 25px 30px;
-                            background: #111827;
-                            color: #ffffff;
+                            max-width: 700px;
+                            margin: 0 auto;
+                            background: #ffffff;
+                            border-radius: 12px;
+                            overflow: hidden;
+                            border: 1px solid #e5e7eb;
                         ">
 
-                            <h2 style="
-                                margin: 0 0 8px;
-                                font-size: 22px;
+                            <!-- Header -->
+                            <div style="
+                                padding: 25px 30px;
+                                background: #111827;
+                                color: #ffffff;
                             ">
-                                New Hire Developer Consultation Request
-                            </h2>
+                                <h2 style="
+                                    margin: 0 0 8px;
+                                    font-size: 22px;
+                                ">
+                                    New Contact Form Inquiry
+                                </h2>
 
-                            <p style="
-                                margin: 0;
-                                font-size: 14px;
-                                color: #d1d5db;
+                                <p style="
+                                    margin: 0;
+                                    font-size: 14px;
+                                    color: #d1d5db;
+                                ">
+                                    A new inquiry has been submitted through your website.
+                                </p>
+                            </div>
+
+                            <!-- Content -->
+                            <div style="padding: 30px;">
+
+                                <h3 style="
+                                    margin: 0 0 18px;
+                                    font-size: 18px;
+                                    color: #111827;
+                                ">
+                                    Contact Information
+                                </h3>
+
+                                <table style="
+                                    width: 100%;
+                                    border-collapse: collapse;
+                                    font-size: 14px;
+                                ">
+
+                                    <tr>
+                                        <td style="
+                                            padding: 10px 0;
+                                            width: 180px;
+                                            font-weight: bold;
+                                            color: #555555;
+                                        ">
+                                            First Name
+                                        </td>
+
+                                        <td style="padding: 10px 0;">
+                                            ${safeFirstName}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="
+                                            padding: 10px 0;
+                                            font-weight: bold;
+                                            color: #555555;
+                                        ">
+                                            Last Name
+                                        </td>
+
+                                        <td style="padding: 10px 0;">
+                                            ${safeLastName || "Not provided"}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="
+                                            padding: 10px 0;
+                                            font-weight: bold;
+                                            color: #555555;
+                                        ">
+                                            Email
+                                        </td>
+
+                                        <td style="padding: 10px 0;">
+                                            ${safeEmail}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="
+                                            padding: 10px 0;
+                                            font-weight: bold;
+                                            color: #555555;
+                                        ">
+                                            Phone
+                                        </td>
+
+                                        <td style="padding: 10px 0;">
+                                            ${safePhone}
+                                        </td>
+                                    </tr>
+
+                                </table>
+
+                                <hr style="
+                                    margin: 25px 0;
+                                    border: 0;
+                                    border-top: 1px solid #eeeeee;
+                                ">
+
+                                <h3 style="
+                                    margin: 0 0 18px;
+                                    font-size: 18px;
+                                    color: #111827;
+                                ">
+                                    Message
+                                </h3>
+
+                                <div style="
+                                    padding: 18px;
+                                    background: #f9fafb;
+                                    border: 1px solid #e5e7eb;
+                                    border-radius: 8px;
+                                    line-height: 1.7;
+                                    font-size: 14px;
+                                    white-space: pre-wrap;
+                                ">
+                                    ${safeMessage}
+                                </div>
+
+                                <hr style="
+                                    margin: 25px 0;
+                                    border: 0;
+                                    border-top: 1px solid #eeeeee;
+                                ">
+
+                                <h3 style="
+                                    margin: 0 0 18px;
+                                    font-size: 18px;
+                                    color: #111827;
+                                ">
+                                    Consultation Schedule
+                                </h3>
+
+                                <table style="
+                                    width: 100%;
+                                    border-collapse: collapse;
+                                    font-size: 14px;
+                                ">
+
+                                    <tr>
+                                        <td style="
+                                            padding: 10px 0;
+                                            width: 180px;
+                                            font-weight: bold;
+                                            color: #555555;
+                                        ">
+                                            Consultation
+                                        </td>
+
+                                        <td style="padding: 10px 0;">
+                                            ${safeConsultation}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="
+                                            padding: 10px 0;
+                                            font-weight: bold;
+                                            color: #555555;
+                                        ">
+                                            Date & Time
+                                        </td>
+
+                                        <td style="padding: 10px 0;">
+                                            ${safeDateTime}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="
+                                            padding: 10px 0;
+                                            font-weight: bold;
+                                            color: #555555;
+                                        ">
+                                            Timezone
+                                        </td>
+
+                                        <td style="padding: 10px 0;">
+                                            ${safeTimezone}
+                                        </td>
+                                    </tr>
+
+                                </table>
+
+                            </div>
+
+                            <!-- Footer -->
+                            <div style="
+                                padding: 18px 30px;
+                                background: #f9fafb;
+                                border-top: 1px solid #eeeeee;
+                                font-size: 12px;
+                                color: #777777;
                             ">
-                                A new consultation request has been submitted through your website.
-                            </p>
+                                This email was automatically generated from your website's Contact form.
+                            </div>
 
                         </div>
 
+                    </body>
+                    </html>
+                `,
+            });
+        } else {
+             // Send email
+            await transporter.sendMail({
 
-                        <!-- Content -->
-                        <div style="padding: 30px;">
+                from: process.env.SMTP_FROM,
 
-                            <h3 style="
-                                margin: 0 0 18px;
-                                font-size: 18px;
-                                color: #111827;
-                            ">
-                                Contact Information
-                            </h3>
+                to: process.env.CONTACT_EMAIL,
 
+                replyTo: email,
 
-                            <table style="
-                                width: 100%;
-                                border-collapse: collapse;
-                                font-size: 14px;
-                            ">
+                subject: `New Hire Developer Consultation Request - ${name}`,
 
-                                <tr>
-                                    <td style="
-                                        padding: 10px 0;
-                                        width: 180px;
-                                        font-weight: bold;
-                                        color: #555555;
-                                    ">
-                                        Name
-                                    </td>
+                html: `
+                    <!DOCTYPE html>
+                    <html>
+                    <head>
+                        <meta charset="UTF-8">
+                        <title>Hire Developer Consultation Request</title>
+                    </head>
 
-                                    <td style="padding: 10px 0;">
-                                        ${safeName}
-                                    </td>
-                                </tr>
+                    <body style="
+                        margin: 0;
+                        padding: 30px 15px;
+                        background-color: #f5f7fa;
+                        font-family: Arial, Helvetica, sans-serif;
+                        color: #333333;
+                    ">
 
+                        <div style="
+                            max-width: 700px;
+                            margin: 0 auto;
+                            background: #ffffff;
+                            border-radius: 12px;
+                            overflow: hidden;
+                            border: 1px solid #e5e7eb;
+                        ">
 
-                                <tr>
-                                    <td style="
-                                        padding: 10px 0;
-                                        font-weight: bold;
-                                        color: #555555;
-                                    ">
-                                        Email
-                                    </td>
-
-                                    <td style="padding: 10px 0;">
-                                        ${safeEmail}
-                                    </td>
-                                </tr>
-
-
-                                <tr>
-                                    <td style="
-                                        padding: 10px 0;
-                                        font-weight: bold;
-                                        color: #555555;
-                                    ">
-                                        Phone
-                                    </td>
-
-                                    <td style="padding: 10px 0;">
-                                        ${safePhone}
-                                    </td>
-                                </tr>
-
-
-                                <tr>
-                                    <td style="
-                                        padding: 10px 0;
-                                        font-weight: bold;
-                                        color: #555555;
-                                    ">
-                                        Company
-                                    </td>
-
-                                    <td style="padding: 10px 0;">
-                                        ${safeCompany}
-                                    </td>
-                                </tr>
-
-                            </table>
-
-
-                            <hr style="
-                                margin: 25px 0;
-                                border: 0;
-                                border-top: 1px solid #eeeeee;
-                            ">
-
-
-                            <h3 style="
-                                margin: 0 0 18px;
-                                font-size: 18px;
-                                color: #111827;
-                            ">
-                                Project Information
-                            </h3>
-
-
-                            <table style="
-                                width: 100%;
-                                border-collapse: collapse;
-                                font-size: 14px;
-                            ">
-
-                                <tr>
-                                    <td style="
-                                        padding: 10px 0;
-                                        width: 180px;
-                                        font-weight: bold;
-                                        color: #555555;
-                                    ">
-                                        Project Type
-                                    </td>
-
-                                    <td style="padding: 10px 0;">
-                                        ${safeProjectType}
-                                    </td>
-                                </tr>
-
-
-                                <tr>
-                                    <td style="
-                                        padding: 10px 0;
-                                        font-weight: bold;
-                                        color: #555555;
-                                    ">
-                                        Developers Required
-                                    </td>
-
-                                    <td style="padding: 10px 0;">
-                                        ${safeDevelopers}
-                                    </td>
-                                </tr>
-
-
-                                <tr>
-                                    <td style="
-                                        padding: 10px 0;
-                                        font-weight: bold;
-                                        color: #555555;
-                                    ">
-                                        Consultation Required
-                                    </td>
-
-                                    <td style="padding: 10px 0;">
-                                        ${safeConsultation}
-                                    </td>
-                                </tr>
-
-                            </table>
-
-
-                            <hr style="
-                                margin: 25px 0;
-                                border: 0;
-                                border-top: 1px solid #eeeeee;
-                            ">
-
-
-                            <h3 style="
-                                margin: 0 0 12px;
-                                font-size: 18px;
-                                color: #111827;
-                            ">
-                                Project Requirements
-                            </h3>
-
-
+                            <!-- Header -->
                             <div style="
-                                padding: 18px;
-                                background: #f9fafb;
-                                border: 1px solid #e5e7eb;
-                                border-radius: 8px;
-                                line-height: 1.7;
-                                font-size: 14px;
-                                white-space: pre-wrap;
+                                padding: 25px 30px;
+                                background: #111827;
+                                color: #ffffff;
                             ">
-                                ${safeRequirements}
+
+                                <h2 style="
+                                    margin: 0 0 8px;
+                                    font-size: 22px;
+                                ">
+                                    New Hire Developer Consultation Request
+                                </h2>
+
+                                <p style="
+                                    margin: 0;
+                                    font-size: 14px;
+                                    color: #d1d5db;
+                                ">
+                                    A new consultation request has been submitted through your website.
+                                </p>
+
                             </div>
 
 
-                            <hr style="
-                                margin: 25px 0;
-                                border: 0;
+                            <!-- Content -->
+                            <div style="padding: 30px;">
+
+                                <h3 style="
+                                    margin: 0 0 18px;
+                                    font-size: 18px;
+                                    color: #111827;
+                                ">
+                                    Contact Information
+                                </h3>
+
+
+                                <table style="
+                                    width: 100%;
+                                    border-collapse: collapse;
+                                    font-size: 14px;
+                                ">
+
+                                    <tr>
+                                        <td style="
+                                            padding: 10px 0;
+                                            width: 180px;
+                                            font-weight: bold;
+                                            color: #555555;
+                                        ">
+                                            Name
+                                        </td>
+
+                                        <td style="padding: 10px 0;">
+                                            ${safeName}
+                                        </td>
+                                    </tr>
+
+
+                                    <tr>
+                                        <td style="
+                                            padding: 10px 0;
+                                            font-weight: bold;
+                                            color: #555555;
+                                        ">
+                                            Email
+                                        </td>
+
+                                        <td style="padding: 10px 0;">
+                                            ${safeEmail}
+                                        </td>
+                                    </tr>
+
+
+                                    <tr>
+                                        <td style="
+                                            padding: 10px 0;
+                                            font-weight: bold;
+                                            color: #555555;
+                                        ">
+                                            Phone
+                                        </td>
+
+                                        <td style="padding: 10px 0;">
+                                            ${safePhone}
+                                        </td>
+                                    </tr>
+
+
+                                    <tr>
+                                        <td style="
+                                            padding: 10px 0;
+                                            font-weight: bold;
+                                            color: #555555;
+                                        ">
+                                            Company
+                                        </td>
+
+                                        <td style="padding: 10px 0;">
+                                            ${safeCompany}
+                                        </td>
+                                    </tr>
+
+                                </table>
+
+
+                                <hr style="
+                                    margin: 25px 0;
+                                    border: 0;
+                                    border-top: 1px solid #eeeeee;
+                                ">
+
+
+                                <h3 style="
+                                    margin: 0 0 18px;
+                                    font-size: 18px;
+                                    color: #111827;
+                                ">
+                                    Project Information
+                                </h3>
+
+
+                                <table style="
+                                    width: 100%;
+                                    border-collapse: collapse;
+                                    font-size: 14px;
+                                ">
+
+                                    <tr>
+                                        <td style="
+                                            padding: 10px 0;
+                                            width: 180px;
+                                            font-weight: bold;
+                                            color: #555555;
+                                        ">
+                                            Project Type
+                                        </td>
+
+                                        <td style="padding: 10px 0;">
+                                            ${safeProjectType}
+                                        </td>
+                                    </tr>
+
+
+                                    <tr>
+                                        <td style="
+                                            padding: 10px 0;
+                                            font-weight: bold;
+                                            color: #555555;
+                                        ">
+                                            Developers Required
+                                        </td>
+
+                                        <td style="padding: 10px 0;">
+                                            ${safeDevelopers}
+                                        </td>
+                                    </tr>
+
+
+                                    <tr>
+                                        <td style="
+                                            padding: 10px 0;
+                                            font-weight: bold;
+                                            color: #555555;
+                                        ">
+                                            Consultation Required
+                                        </td>
+
+                                        <td style="padding: 10px 0;">
+                                            ${safeConsultation}
+                                        </td>
+                                    </tr>
+
+                                </table>
+
+
+                                <hr style="
+                                    margin: 25px 0;
+                                    border: 0;
+                                    border-top: 1px solid #eeeeee;
+                                ">
+
+
+                                <h3 style="
+                                    margin: 0 0 12px;
+                                    font-size: 18px;
+                                    color: #111827;
+                                ">
+                                    Project Requirements
+                                </h3>
+
+
+                                <div style="
+                                    padding: 18px;
+                                    background: #f9fafb;
+                                    border: 1px solid #e5e7eb;
+                                    border-radius: 8px;
+                                    line-height: 1.7;
+                                    font-size: 14px;
+                                    white-space: pre-wrap;
+                                ">
+                                    ${safeRequirements}
+                                </div>
+
+
+                                <hr style="
+                                    margin: 25px 0;
+                                    border: 0;
+                                    border-top: 1px solid #eeeeee;
+                                ">
+
+
+                                <h3 style="
+                                    margin: 0 0 18px;
+                                    font-size: 18px;
+                                    color: #111827;
+                                ">
+                                    Preferred Consultation Schedule
+                                </h3>
+
+
+                                <table style="
+                                    width: 100%;
+                                    border-collapse: collapse;
+                                    font-size: 14px;
+                                ">
+
+                                    <tr>
+                                        <td style="
+                                            padding: 10px 0;
+                                            width: 180px;
+                                            font-weight: bold;
+                                            color: #555555;
+                                        ">
+                                            Date & Time
+                                        </td>
+
+                                        <td style="padding: 10px 0;">
+                                            ${safeDateTime}
+                                        </td>
+                                    </tr>
+
+
+                                    <tr>
+                                        <td style="
+                                            padding: 10px 0;
+                                            font-weight: bold;
+                                            color: #555555;
+                                        ">
+                                            Timezone
+                                        </td>
+
+                                        <td style="padding: 10px 0;">
+                                            ${safeTimezone}
+                                        </td>
+                                    </tr>
+
+                                </table>
+
+                            </div>
+
+
+                            <!-- Footer -->
+                            <div style="
+                                padding: 18px 30px;
+                                background: #f9fafb;
                                 border-top: 1px solid #eeeeee;
+                                font-size: 12px;
+                                color: #777777;
                             ">
 
+                                This email was automatically generated from your website's Hire Developer form.
 
-                            <h3 style="
-                                margin: 0 0 18px;
-                                font-size: 18px;
-                                color: #111827;
-                            ">
-                                Preferred Consultation Schedule
-                            </h3>
-
-
-                            <table style="
-                                width: 100%;
-                                border-collapse: collapse;
-                                font-size: 14px;
-                            ">
-
-                                <tr>
-                                    <td style="
-                                        padding: 10px 0;
-                                        width: 180px;
-                                        font-weight: bold;
-                                        color: #555555;
-                                    ">
-                                        Date & Time
-                                    </td>
-
-                                    <td style="padding: 10px 0;">
-                                        ${safeDateTime}
-                                    </td>
-                                </tr>
-
-
-                                <tr>
-                                    <td style="
-                                        padding: 10px 0;
-                                        font-weight: bold;
-                                        color: #555555;
-                                    ">
-                                        Timezone
-                                    </td>
-
-                                    <td style="padding: 10px 0;">
-                                        ${safeTimezone}
-                                    </td>
-                                </tr>
-
-                            </table>
+                            </div>
 
                         </div>
 
-
-                        <!-- Footer -->
-                        <div style="
-                            padding: 18px 30px;
-                            background: #f9fafb;
-                            border-top: 1px solid #eeeeee;
-                            font-size: 12px;
-                            color: #777777;
-                        ">
-
-                            This email was automatically generated from your website's Hire Developer form.
-
-                        </div>
-
-                    </div>
-
-                </body>
-                </html>
-            `,
-        });
+                    </body>
+                    </html>
+                `,
+            });
+        }
 
 
         return res.status(200).json({
@@ -480,12 +758,11 @@ export default async function handler(req, res) {
 
 
     } catch (error) {
-
         console.error("Email error:", error);
 
         return res.status(500).json({
             success: false,
-            message: "Failed to send email",
+            message: error.message || "Failed to send email",
         });
     }
 }

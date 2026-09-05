@@ -38,16 +38,16 @@ function About(){
                     <div className="col-lg-6">
                         <div className="info-img4-wrapper">
                             <div className="info-img4-sec1">
-                                <h3 className="light-headline">12 +</h3>
+                                <h3 className="light-headline">7 +</h3>
                                 <p className="text-white text-center mb-0">Years Of Experience</p>
                             </div>
                             <div className="info-img4-sec2">
-                                <h3 className="dark-headline">2800</h3>
+                                <h3 className="dark-headline">100 +</h3>
                                 <p>Projects Done</p>
                             </div>
                             <div className="info-img4-sec3">
-                                <h3 className="dark-headline">800</h3>
-                                <p>Happy Clients</p>
+                                <h3 className="dark-headline">15 +</h3>
+                                <p>Countries Served</p>
                             </div>
                             <div className="info-img4-sec4">
                             <h3 className="dark-headline">20 +</h3>

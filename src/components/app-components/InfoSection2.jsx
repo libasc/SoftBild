@@ -20,7 +20,7 @@ function InfoSection2(){
                                     <img src={imgInfo2} alt="" />
                                 </div>
                                 <div className="info-img3-sec2details text-center">
-                                    <h3 className="dark-headline text-gradient1">12 +</h3>
+                                    <h3 className="dark-headline text-gradient1">7 +</h3>
                                     <p className='mb-0'>Years Of Experience</p>
                                 </div>
                             </div>
