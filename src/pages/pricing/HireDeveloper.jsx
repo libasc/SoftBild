@@ -120,6 +120,10 @@ const [formErrors, setFormErrors] = useState({});
     name: "United States"
 });
 
+
+const [selectedDateTime, setSelectedDateTime] = useState(null);
+const [selectedDate, setSelectedDate] = useState(null);
+
 const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
 
@@ -241,87 +245,85 @@ const handleSubmit = async (e) => {
 
     setIsSubmitting(true);
 
-    try {
-        const submissionData = {
-            ...formData,
-            phone: phoneNumber.formatInternational(),
-            captchaAnswer,
-        };
+try {
+    const submissionData = {
+        ...formData,
+        phone: phoneNumber.formatInternational(),
+        captchaAnswer,
+    };
 
-        const response = await fetch("/api/send-email", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(submissionData),
-        });
+    const response = await fetch("/api/send-email", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(submissionData),
+    });
 
-        const result = await response.json();
+    const result = await response.json();
 
-        if (!response.ok) {
-            // CAPTCHA error from server
-            if (
-                result.message &&
-                result.message.toLowerCase().includes("captcha")
-            ) {
-                setFormErrors((prev) => ({
-                    ...prev,
-                    captchaAnswer:
-                        result.message ||
-                        "Incorrect security verification. Please try again.",
-                }));
+    if (!response.ok) {
+        // CAPTCHA error from server
+        if (
+            result.message &&
+            result.message.toLowerCase().includes("captcha")
+        ) {
+            setFormErrors((prev) => ({
+                ...prev,
+                captchaAnswer:
+                    result.message ||
+                    "Incorrect security verification. Please try again.",
+            }));
 
-                setCaptchaAnswer("");
-                loadCaptcha();
+            setCaptchaAnswer("");
+            loadCaptcha();
 
-                return;
-            }
-
-            throw new Error(
-                result.message || "Failed to send form"
-            );
+            return;
         }
 
-        // =========================================
-        // RESET FORM
-        // =========================================
-
-        setFormData({
-            name: "",
-            email: "",
-            phone: "",
-            company: "",
-            projectType: "",
-            developers: "",
-            requirements: "",
-            consultation: false,
-            dateTime: "",
-            timezone: "New York, Washington (UTC-05:00)"
-        });
-
-        // Reset country back to USA
-        setPhoneCountry({
-            countryCode: "us",
-            dialCode: "1",
-            name: "United States"
-        });
-
-        setShowSuccessModal(true);
-
-        setCaptchaAnswer("");
-        loadCaptcha();
-
-    } catch (error) {
-        console.error("Form submission error:", error);
-
-        setFormErrors((prev) => ({
-            ...prev,
-            submit:
-                "Sorry, something went wrong while submitting your request. Please try again."
-        }));
-    } finally {
-        setIsSubmitting(false);
+        throw new Error(
+            result.message || "Failed to send form"
+        );
     }
+
+    // Reset form after successful submission
+    setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        company: "",
+        projectType: "",
+        developers: "",
+        requirements: "",
+        consultation: false,
+        dateTime: "",
+        timezone: "New York, Washington (UTC-05:00)"
+    });
+
+    setSelectedDateTime(null);
+
+    setPhoneCountry({
+        countryCode: "us",
+        dialCode: "1",
+        name: "United States"
+    });
+
+    setShowSuccessModal(true);
+
+    setCaptchaAnswer("");
+    loadCaptcha();
+
+} catch (error) {
+    console.error("Form submission error:", error);
+
+    setFormErrors((prev) => ({
+        ...prev,
+        submit:
+            "Sorry, something went wrong while submitting your request. Please try again."
+    }));
+} finally {
+    setIsSubmitting(false);
+}
 };
 
 useEffect(() => {
@@ -1011,59 +1013,65 @@ useEffect(() => {
                                                 {/* DATE TIME */}
 
                                                 <div className="col-md-7">
-
                                                     <label htmlFor="dateTime">
                                                         Preferred Date & Time
                                                     </label>
+                                                    <div className="hire-date-picker-wrapper">
+                                                        <FaCalendarAlt className="hire-date-picker-icon" />
 
-                                                    {/* <div className="hire-input-icon">
+<DatePicker
+    selected={selectedDateTime}
+    onChange={(date) => {
+        setSelectedDateTime(date);
+        setSelectedDate(date);
 
-                                                        <FaCalendarAlt />
+        setFormData((prev) => ({
+            ...prev,
+            dateTime: formatDateTimeLocal(date),
+        }));
+    }}
+    onSelect={(date) => {
+        setSelectedDate(date);
+    }}
+    showTimeSelect
+    timeIntervals={30}
+    timeFormat="hh:mm aa"
+    dateFormat="dd-MM-yyyy hh:mm aa"
+    minDate={new Date()}
 
-                                                        <input
-                                                            type="datetime-local"
-                                                            id="dateTime"
-                                                            name="dateTime"
-                                                            className="form-control"
-                                                            value={formData.dateTime}
-                                                            onChange={handleChange}
-                                                        />
+    minTime={new Date(0, 0, 0, 9, 0)}
+    maxTime={new Date(0, 0, 0, 18, 0)}
 
-                                                    </div> */}
+    filterTime={(time) => {
+        const now = new Date();
 
-
-<div className="hire-date-picker-wrapper">
-    <FaCalendarAlt className="hire-date-picker-icon" />
-
-    <DatePicker
-        selected={
-            formData.dateTime
-                ? new Date(formData.dateTime)
-                : null
+        // If no date has been selected yet,
+        // allow all available business hours.
+        if (!selectedDate) {
+            return true;
         }
-        onChange={(date) => {
-            setFormData((prev) => ({
-                ...prev,
-                dateTime: formatDateTimeLocal(date),
-            }));
-        }}
-        showTimeSelect
-        timeIntervals={30}
-        timeFormat="hh:mm aa"
-        dateFormat="dd-MM-yyyy hh:mm aa"
-        minDate={new Date()}
-        minTime={new Date(0, 0, 0, 9, 0)}
-        maxTime={new Date(0, 0, 0, 18, 0)}
-        placeholderText="dd-mm-yyyy --:--"
-        id="dateTime"
-        name="dateTime"
-        className="form-control hire-date-picker-input"
-        wrapperClassName="hire-date-picker"
-        autoComplete="off"
-        showPopperArrow={false}
-        popperPlacement="bottom-start"
-    />
-</div>
+
+        // For future dates, allow 9 AM - 6 PM.
+        if (
+            selectedDate.toDateString() !== now.toDateString()
+        ) {
+            return true;
+        }
+
+        // For today, disable times that have already passed.
+        return time.getTime() > now.getTime();
+    }}
+
+    placeholderText="dd-mm-yyyy --:--"
+    id="dateTime"
+    name="dateTime"
+    className="form-control hire-date-picker-input"
+    wrapperClassName="hire-date-picker"
+    autoComplete="off"
+    showPopperArrow={false}
+    popperPlacement="bottom-start"
+/>
+                                                    </div>
 
                                                 </div>
 
