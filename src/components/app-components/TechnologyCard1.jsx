@@ -9,6 +9,7 @@ import reactIcon from '../../assets/icons/technology-icon/tech-react.png';
 import nodeIcon from '../../assets/icons/technology-icon/tech-node.png';
 import angularIcon from '../../assets/icons/technology-icon/tech-angular.png';
 import dudaIcon from '../../assets/icons/technology-icon/tech-duda.png';
+import pythonIcon from '../../assets/icons/technology-icon/python-icon.png';
 
 function TechnologyCard1() {
 
@@ -28,6 +29,10 @@ function TechnologyCard1() {
         {
             techIcon: dotnetIcon,
             techName: ".Net Core"
+        },
+        {
+            techIcon: pythonIcon,
+            techName: "Python"
         },
         {
             techIcon: laravelIcon,
