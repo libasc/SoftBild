@@ -122,7 +122,13 @@ const [formErrors, setFormErrors] = useState({});
 
 
 const [selectedDateTime, setSelectedDateTime] = useState(null);
-const [selectedDate, setSelectedDate] = useState(null);
+
+useEffect(() => {
+    setFormData((prev) => ({
+        ...prev,
+        dateTime: formatDateTimeLocal(selectedDateTime),
+    }));
+}, [selectedDateTime]);
 
 const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -1018,61 +1024,26 @@ useEffect(() => {
                                                     </label>
                                                     <div className="hire-date-picker-wrapper">
                                                         <FaCalendarAlt className="hire-date-picker-icon" />
-
-<DatePicker
-    selected={selectedDateTime}
-    onChange={(date) => {
-        setSelectedDateTime(date);
-        setSelectedDate(date);
-
-        setFormData((prev) => ({
-            ...prev,
-            dateTime: formatDateTimeLocal(date),
-        }));
-    }}
-    onSelect={(date) => {
-        setSelectedDate(date);
-    }}
-    showTimeSelect
-    timeIntervals={30}
-    timeFormat="hh:mm aa"
-    dateFormat="dd-MM-yyyy hh:mm aa"
-    minDate={new Date()}
-
-    minTime={new Date(0, 0, 0, 9, 0)}
-    maxTime={new Date(0, 0, 0, 18, 0)}
-
-    filterTime={(time) => {
-        const now = new Date();
-
-        // If no date has been selected yet,
-        // allow all available business hours.
-        if (!selectedDate) {
-            return true;
-        }
-
-        // For future dates, allow 9 AM - 6 PM.
-        if (
-            selectedDate.toDateString() !== now.toDateString()
-        ) {
-            return true;
-        }
-
-        // For today, disable times that have already passed.
-        return time.getTime() > now.getTime();
-    }}
-
-    placeholderText="dd-mm-yyyy --:--"
-    id="dateTime"
-    name="dateTime"
-    className="form-control hire-date-picker-input"
-    wrapperClassName="hire-date-picker"
-    autoComplete="off"
-    showPopperArrow={false}
-    popperPlacement="bottom-start"
-/>
+                                                        <DatePicker
+                                                            selected={selectedDateTime}
+                                                            onChange={(date) => {
+                                                                setSelectedDateTime(date);
+                                                            }}
+                                                            showTimeSelect
+                                                            timeIntervals={30}
+                                                            timeFormat="hh:mm aa"
+                                                            dateFormat="dd-MM-yyyy hh:mm aa"
+                                                            minDate={new Date()}
+                                                            placeholderText="dd-mm-yyyy --:--"
+                                                            id="dateTime"
+                                                            name="dateTime"
+                                                            className="form-control hire-date-picker-input"
+                                                            wrapperClassName="hire-date-picker"
+                                                            autoComplete="off"
+                                                            showPopperArrow={false}
+                                                            popperPlacement="bottom-start"
+                                                        />
                                                     </div>
-
                                                 </div>
 
 
