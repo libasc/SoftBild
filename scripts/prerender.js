@@ -1,4 +1,5 @@
 import puppeteer from "puppeteer";
+import chromium from "@sparticuz/chromium";
 import { spawn } from "child_process";
 import fs from "fs";
 import path from "path";
@@ -323,15 +324,36 @@ async function prerender() {
       "✅ Vite preview server is ready\n"
     );
 
-    const browser = await puppeteer.launch({
-      headless: true,
+    const isVercel = process.env.VERCEL === "1";
 
-      args: [
-        "--no-sandbox",
-        "--disable-setuid-sandbox",
-        "--disable-dev-shm-usage",
-      ],
+let browser;
+
+if (isVercel) {
+    console.log("☁️ Running prerender on Vercel");
+    console.log("🧩 Using serverless Chromium");
+
+    const executablePath = await chromium.executablePath();
+
+    browser = await puppeteer.launch({
+        executablePath,
+        args: [
+            ...chromium.args,
+            "--no-sandbox",
+            "--disable-setuid-sandbox",
+        ],
+        headless: true,
     });
+} else {
+    console.log("💻 Running prerender locally");
+
+    browser = await puppeteer.launch({
+        args: [
+            "--no-sandbox",
+            "--disable-setuid-sandbox",
+        ],
+        headless: true,
+    });
+}
 
     try {
       /*
