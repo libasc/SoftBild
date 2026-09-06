@@ -191,6 +191,7 @@ const handlePhoneChange = (value, country) => {
 const handleSubmit = async (e) => {
     e.preventDefault();
 
+    // Prevent duplicate submissions
     if (isSubmitting) return;
 
     // Clear previous errors
@@ -199,11 +200,41 @@ const handleSubmit = async (e) => {
     const errors = {};
 
     // =========================================
+    // NAME VALIDATION
+    // =========================================
+
+    if (!formData.name.trim()) {
+        errors.name = "Your Name is required.";
+    } else if (!/^[a-zA-Z\s]+$/.test(formData.name.trim())) {
+        errors.name = "Please enter a valid name.";
+    } else if (formData.name.trim().length < 2) {
+        errors.name = "Your Name must be at least 2 characters.";
+    } else if (formData.name.trim().length > 50) {
+        errors.name = "Your Name cannot exceed 50 characters.";
+    }
+
+
+    // =========================================
+    // EMAIL VALIDATION
+    // =========================================
+
+    if (!formData.email.trim()) {
+        errors.email = "Contact Email is required.";
+    } else if (
+        !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(
+            formData.email.trim()
+        )
+    ) {
+        errors.email = "Please enter a valid email.";
+    }
+
+
+    // =========================================
     // PHONE VALIDATION
     // =========================================
 
     if (!formData.phone) {
-        errors.phone = "Please enter your phone number.";
+        errors.phone = "Phone is required.";
     } else {
         const phoneNumber = parsePhoneNumberFromString(
             `+${formData.phone}`
@@ -213,6 +244,7 @@ const handleSubmit = async (e) => {
             errors.phone = "Please enter a valid phone number.";
         } else if (
             phoneNumber.country &&
+            phoneCountry?.countryCode &&
             phoneNumber.country.toLowerCase() !==
                 phoneCountry.countryCode.toLowerCase()
         ) {
@@ -221,6 +253,17 @@ const handleSubmit = async (e) => {
             errors.phone = "Please enter a valid phone number.";
         }
     }
+
+
+    // =========================================
+    // PROJECT REQUIREMENTS VALIDATION
+    // =========================================
+
+    if (!formData.requirements.trim()) {
+        errors.requirements =
+            "Project requirements are required.";
+    }
+
 
     // =========================================
     // CAPTCHA VALIDATION
@@ -231,8 +274,19 @@ const handleSubmit = async (e) => {
             "Please complete the security verification.";
     }
 
+
     // =========================================
-    // STOP IF VALIDATION ERRORS EXIST
+    // CONSULTATION DATE/TIME VALIDATION
+    // =========================================
+
+    if (formData.consultation && !selectedDateTime) {
+        errors.dateTime =
+            "Please select a preferred date and time.";
+    }
+
+
+    // =========================================
+    // SHOW VALIDATION ERRORS
     // =========================================
 
     if (Object.keys(errors).length > 0) {
@@ -240,96 +294,152 @@ const handleSubmit = async (e) => {
         return;
     }
 
-    // Parse phone again after validation
-    const phoneNumber = parsePhoneNumberFromString(
-        `+${formData.phone}`
-    );
 
     // =========================================
-    // SUBMIT FORM
+    // START SUBMISSION
     // =========================================
 
     setIsSubmitting(true);
 
-try {
+
+    // =========================================
+    // PREPARE SUBMISSION DATA
+    // =========================================
+
     const submissionData = {
-        ...formData,
-        phone: phoneNumber.formatInternational(),
-        captchaAnswer,
+        formType: "hire-developer",
+
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        company: formData.company,
+
+        projectType: formData.projectType,
+        developers: formData.developers,
+
+        requirements: formData.requirements,
+
+        consultation: formData.consultation,
+
+        dateTime: selectedDateTime
+            ? selectedDateTime.toLocaleString()
+            : "",
+
+        timezone: formData.timezone,
+
+        captchaAnswer: captchaAnswer,
     };
 
-    const response = await fetch("/api/send-email", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify(submissionData),
-    });
 
-    const result = await response.json();
+    // =========================================
+    // SEND TO NODEMAILER API
+    // =========================================
 
-    if (!response.ok) {
-        // CAPTCHA error from server
-        if (
-            result.message &&
-            result.message.toLowerCase().includes("captcha")
-        ) {
-            setFormErrors((prev) => ({
-                ...prev,
-                captchaAnswer:
-                    result.message ||
-                    "Incorrect security verification. Please try again.",
-            }));
+    try {
+        const response = await fetch("/api/send-email", {
+            method: "POST",
 
-            setCaptchaAnswer("");
-            loadCaptcha();
+            headers: {
+                "Content-Type": "application/json",
+            },
+
+            credentials: "same-origin",
+
+            body: JSON.stringify(submissionData),
+        });
+
+
+        const result = await response.json();
+
+
+        // =========================================
+        // HANDLE API ERROR
+        // =========================================
+
+        if (!response.ok) {
+
+            // CAPTCHA ERROR
+            if (
+                result.message &&
+                result.message
+                    .toLowerCase()
+                    .includes("captcha")
+            ) {
+                setFormErrors((prev) => ({
+                    ...prev,
+                    captchaAnswer:
+                        result.message ||
+                        "Invalid CAPTCHA. Please try again.",
+                }));
+
+                // Clear entered CAPTCHA
+                setCaptchaAnswer("");
+
+                // Generate new CAPTCHA
+                await loadCaptcha();
+
+            } else {
+                setFormErrors((prev) => ({
+                    ...prev,
+                    submit:
+                        result.message ||
+                        "Failed to send your request. Please try again.",
+                }));
+            }
 
             return;
         }
 
-        throw new Error(
-            result.message || "Failed to send form"
+
+        // =========================================
+        // SUCCESS
+        // =========================================
+
+        setShowSuccessModal(true);
+
+
+        // =========================================
+        // RESET FORM
+        // =========================================
+
+        setFormData({
+            name: "",
+            email: "",
+            phone: "",
+            company: "",
+            projectType: "",
+            developers: "",
+            requirements: "",
+            consultation: false,
+            timezone: "New York, Washington (UTC-05:00)",
+        });
+
+        setSelectedDateTime(null);
+
+        setFormErrors({});
+
+        setCaptchaAnswer("");
+
+        // Load fresh CAPTCHA
+        await loadCaptcha();
+
+
+    } catch (error) {
+
+        console.error(
+            "Failed to send Hire Developer form:",
+            error
         );
+
+        setFormErrors((prev) => ({
+            ...prev,
+            submit:
+                "Something went wrong while sending your request. Please try again.",
+        }));
+
+    } finally {
+        setIsSubmitting(false);
     }
-
-    // Reset form after successful submission
-    setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        company: "",
-        projectType: "",
-        developers: "",
-        requirements: "",
-        consultation: false,
-        dateTime: "",
-        timezone: "New York, Washington (UTC-05:00)"
-    });
-
-    setSelectedDateTime(null);
-
-    setPhoneCountry({
-        countryCode: "us",
-        dialCode: "1",
-        name: "United States"
-    });
-
-    setShowSuccessModal(true);
-
-    setCaptchaAnswer("");
-    loadCaptcha();
-
-} catch (error) {
-    console.error("Form submission error:", error);
-
-    setFormErrors((prev) => ({
-        ...prev,
-        submit:
-            "Sorry, something went wrong while submitting your request. Please try again."
-    }));
-} finally {
-    setIsSubmitting(false);
-}
 };
 
 useEffect(() => {
@@ -585,123 +695,45 @@ useEffect(() => {
                                                 <h4>
                                                     We Review Your Request
                                                 </h4>
-
                                                 <p>
                                                     Our technology experts review
                                                     your requirements and identify
                                                     the right skills for your project.
                                                 </p>
-
                                             </div>
-
                                         </div>
-
-
                                         <div className="hire-process-item">
-
                                             <div className="hire-process-number">
                                                 02
                                             </div>
-
                                             <div className="hire-process-content">
-
                                                 <h4>
                                                     We Contact You
                                                 </h4>
-
                                                 <p>
                                                     We get in touch within 24 hours
                                                     to understand your project,
                                                     timeline and technical needs.
                                                 </p>
-
                                             </div>
-
                                         </div>
-
-
                                         <div className="hire-process-item">
-
                                             <div className="hire-process-number">
                                                 03
                                             </div>
-
                                             <div className="hire-process-content">
-
                                                 <h4>
                                                     We Build Your Team
                                                 </h4>
-
                                                 <p>
                                                     Get matched with developers and
                                                     technology specialists suited to
                                                     your project.
                                                 </p>
-
                                             </div>
-
                                         </div>
-
-
                                     </div>
-
                                 </div>
-
-
-                                {/* CONTACT OPTIONS */}
-
-                                {/* <div className="hire-contact-row">
-
-
-                                    <a
-                                        href="tel:+919000000000"
-                                        className="hire-contact-box"
-                                    >
-
-                                        <div className="hire-contact-icon">
-                                            <FaPhoneAlt />
-                                        </div>
-
-                                        <div>
-                                            <small>CALL US</small>
-                                            <strong>+91 90000 00000</strong>
-                                        </div>
-
-                                    </a>
-
-
-                                    <a
-                                        href="mailto:info@softbild.com"
-                                        className="hire-contact-box"
-                                    >
-
-                                        <div className="hire-contact-icon">
-                                            <FaEnvelope />
-                                        </div>
-
-                                        <div>
-                                            <small>EMAIL US</small>
-                                            <strong>info@softbild.com</strong>
-                                        </div>
-
-                                    </a>
-
-
-                                    <div className="hire-contact-box">
-
-                                        <div className="hire-contact-icon">
-                                            <FaComments />
-                                        </div>
-
-                                        <div>
-                                            <small>CHAT WITH US</small>
-                                            <strong>Let's discuss your project</strong>
-                                        </div>
-
-                                    </div>
-
-
-                                </div> */}
                             </div>
                         </div>
 
@@ -743,7 +775,7 @@ useEffect(() => {
 
                                                 <label htmlFor="name">
                                                     Your Name
-                                                    <span>*</span>
+                                                    <span class="text-danger">*</span>
                                                 </label>
 
                                                 <input
@@ -754,8 +786,13 @@ useEffect(() => {
                                                     placeholder="e.g. John Smith"
                                                     value={formData.name}
                                                     onChange={handleChange}
-                                                    required
                                                 />
+
+                                                {formErrors.name && (
+                                                    <div className="field-error">
+                                                        {formErrors.name}
+                                                    </div>
+                                                )}
 
                                             </div>
 
@@ -764,7 +801,7 @@ useEffect(() => {
 
                                                 <label htmlFor="email">
                                                     Contact Email
-                                                    <span>*</span>
+                                                    <span class="text-danger">*</span>
                                                 </label>
 
                                                 <input
@@ -775,8 +812,12 @@ useEffect(() => {
                                                     placeholder="e.g. you@example.com"
                                                     value={formData.email}
                                                     onChange={handleChange}
-                                                    required
                                                 />
+                                                {formErrors.email && (
+                                                    <div className="field-error">
+                                                        {formErrors.email}
+                                                    </div>
+                                                )}
 
                                             </div>
 
@@ -787,7 +828,7 @@ useEffect(() => {
 
                                                 <label htmlFor="phone">
                                                     Phone
-                                                    <span>*</span>
+                                                    <span class="text-danger">*</span>
                                                 </label>
 
                                                 
@@ -817,10 +858,15 @@ useEffect(() => {
     placeholder="Enter phone number"
     inputProps={{
         name: "phone",
-        required: true,
         autoComplete: "tel",
     }}
 />
+
+{formErrors.phone && (
+    <div className="field-error">
+        {formErrors.phone}
+    </div>
+)}
 
                                             </div>
 
@@ -946,7 +992,7 @@ useEffect(() => {
 
                                                 <label htmlFor="requirements">
                                                     Tell Us About Your Project
-                                                    <span>*</span>
+                                                    <span class="text-danger">*</span>
                                                 </label>
 
                                                 <textarea
@@ -956,8 +1002,13 @@ useEffect(() => {
                                                     placeholder="Tell us about your project, required developers, technologies, timeline or any other requirements..."
                                                     value={formData.requirements}
                                                     onChange={handleChange}
-                                                    required
                                                 ></textarea>
+
+                                                {formErrors.requirements && (
+                                                    <div className="field-error">
+                                                        {formErrors.requirements}
+                                                    </div>
+                                                )}
 
                                             </div>
 
@@ -1043,6 +1094,12 @@ useEffect(() => {
                                                             showPopperArrow={false}
                                                             popperPlacement="bottom-start"
                                                         />
+
+                                                        {formErrors.dateTime && (
+                                                            <div className="field-error">
+                                                                {formErrors.dateTime}
+                                                            </div>
+                                                        )}
                                                     </div>
                                                 </div>
 
@@ -1107,7 +1164,7 @@ useEffect(() => {
                                         {/* CAPTCHA */}
 <div className="form-group captcha-group mt-3">
     <label htmlFor="captchaAnswer">
-        Security Verification <span>*</span>
+        Security Verification <span class="text-danger">*</span>
     </label>
 
     <div className="captcha-row">
@@ -1138,7 +1195,6 @@ useEffect(() => {
             }
             placeholder="Enter the answer"
             autoComplete="off"
-            required
             disabled={
                 isCaptchaLoading ||
                 !captcha.challenge
@@ -1147,11 +1203,11 @@ useEffect(() => {
         />
     </div>
 
-{formErrors.captchaAnswer && (
-    <div className="field-error">
-        {formErrors.captchaAnswer}
-    </div>
-)}
+    {formErrors.captchaAnswer && (
+        <div className="field-error">
+            {formErrors.captchaAnswer}
+        </div>
+    )}
 </div>
 
 

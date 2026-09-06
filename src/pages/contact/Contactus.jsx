@@ -104,11 +104,11 @@ const [showSuccessModal, setShowSuccessModal] = useState(false);
    * ==========================================
    */
 
-const handleCountryChange = (value) => {
-  setData({
-    ...data,
+const handleCountryChange = (value, country) => {
+  setData((prev) => ({
+    ...prev,
     phone: value,
-  });
+  }));
 
   if (errors.phone) {
     setErrors((prev) => ({
@@ -170,13 +170,11 @@ const validateForm = () => {
     ? data.description.trim().split(/\s+/).length
     : 0;
 
-  if (!data.description.trim()) {
-    newErrors.description = "Message is required.";
-  } else if (wordCount < 6) {
-    newErrors.description = "Message must contain at least 6 words.";
-  } else if (data.description.length > 250) {
-    newErrors.description = "Message cannot exceed 250 characters.";
-  }
+if (!data.description.trim()) {
+  newErrors.description = "Message is required.";
+} else if (data.description.length > 250) {
+  newErrors.description = "Message cannot exceed 250 characters.";
+}
 
   // CAPTCHA Validation
   if (!captchaAnswer.trim()) {
@@ -499,7 +497,7 @@ const validateForm = () => {
                     </label>
 
                     <PhoneInput
-                      country={"us"}
+                      country="us"
                       value={data.phone}
                       onChange={handleCountryChange}
                       inputClass={`form-control ${
@@ -512,7 +510,13 @@ const validateForm = () => {
                           : "#ced4da",
                       }}
                       enableSearch={true}
+                      autoFormat={true}
+                      countryCodeEditable={false}
                       placeholder="Enter phone number"
+                      inputProps={{
+                        name: "phone",
+                        autoComplete: "tel",
+                      }}
                     />
 
                     {errors.phone && (
