@@ -213,11 +213,10 @@ if (!data.description.trim()) {
      * Send Contact Form to NodeMailer API
      */
 
-    const submissionData = {
+const submissionData = {
   formType: "contact",
 
-  firstName: data.name,
-  lastName: "",
+  name: data.name,
   email: data.email,
   phone: data.phone,
   company: data.company,
