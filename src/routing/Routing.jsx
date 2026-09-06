@@ -1,5 +1,6 @@
 import React from 'react'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
+
 import Home from '../pages/home/Home'
 import About from '../pages/about/About'
 import Services from '../pages/services/Services'
@@ -18,38 +19,73 @@ import HireDeveloper from '../pages/pricing/HireDeveloper'
 function Routing() {
   return (
     <>
-    <section className='main'>
-      {/* <BrowserRouter> */}
+      <section className="main">
 
         <ScrollToTop />
-          <Routes>
-            <Route path='/' element={<AppLayout />}>
-                <Route path='/' element={<Home></Home>}></Route>
-                <Route path='/Aboutus' element={<About></About>}></Route>
-                <Route path='/Services' element={<Services></Services>}></Route>
-                <Route path='/OnDemand-Resourse' element={<OnDemandResource></OnDemandResource>}></Route>
-                <Route path='/Blog' element={<Blog></Blog>}></Route>
-                <Route path='/Portfolio' element={<Portfolio></Portfolio>}></Route>
-                <Route path='/Portfolio/:slug' element={<PortfolioDetail />}/>
-                <Route path='/Pages' element={<Page></Page>}></Route>
-                <Route path='/Contact' element={<Contactus></Contactus>}></Route>
 
-                <Route path='/BlogDetails/:id' element={<BlogDetails></BlogDetails>}></Route>
-                <Route path='/EditBlog/:id' element={<Page></Page>}></Route>
-                <Route path='/DeleteBlog/:id' element={<Page></Page>}></Route>
+        <Routes>
 
-                {/* <Route path='/' element={<ResourcePricing></ResourcePricing>}></Route> */}
-                <Route path='/ResourcePricing' element={<ResourcePricing />} />
-                <Route path="/HireDeveloper" element={<HireDeveloper />}
-/>
-            </Route>
+          <Route path="/" element={<AppLayout />}>
 
-            <Route path='*' element={<h1>Sorry!, Page not found</h1>}></Route>
-          </Routes>
-      {/* </BrowserRouter> */}
-    </section>
+            <Route path="/" element={<Home />} />
 
-    {/* <Footer></Footer> */}
+            <Route path="/Aboutus" element={<About />} />
+
+            <Route path="/Services" element={<Services />} />
+
+            <Route
+              path="/OnDemand-Resourse"
+              element={<OnDemandResource />}
+            />
+
+            <Route path="/Blog" element={<Blog />} />
+
+            <Route path="/Portfolio" element={<Portfolio />} />
+
+            <Route
+              path="/Portfolio/:slug"
+              element={<PortfolioDetail />}
+            />
+
+            <Route path="/Pages" element={<Page />} />
+
+            <Route path="/Contact" element={<Contactus />} />
+
+            <Route
+              path="/BlogDetails/:id"
+              element={<BlogDetails />}
+            />
+
+            <Route
+              path="/EditBlog/:id"
+              element={<Page />}
+            />
+
+            <Route
+              path="/DeleteBlog/:id"
+              element={<Page />}
+            />
+
+            <Route
+              path="/ResourcePricing"
+              element={<ResourcePricing />}
+            />
+
+            <Route
+              path="/HireDeveloper"
+              element={<HireDeveloper />}
+            />
+
+          </Route>
+
+          <Route
+            path="*"
+            element={<h1>Sorry!, Page not found</h1>}
+          />
+
+        </Routes>
+
+      </section>
     </>
   )
 }

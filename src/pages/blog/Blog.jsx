@@ -29,6 +29,7 @@ import readMoreIcon from "../../assets/icons/arrow-right-blue.svg";
 import BlogHeroSection from "../../components/app-components/BlogHeroSection"
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 function Blog(){
 
@@ -45,6 +46,91 @@ function Blog(){
 
     return(
         <>
+
+<Helmet>
+    <title>Software Development Blog | Insights & Technology Trends | SoftBild</title>
+
+    <meta
+        name="description"
+        content="Read the SoftBild blog for insights on software development, web and mobile apps, UI/UX design, eCommerce, AI, technology trends, and digital solutions."
+    />
+
+    <meta name="author" content="SoftBild" />
+    <meta name="robots" content="index, follow" />
+
+    <link
+        rel="canonical"
+        href="https://softbild.com/Blog"
+    />
+
+    {/* Open Graph */}
+    <meta
+        property="og:title"
+        content="Software Development Blog | Insights & Technology Trends | SoftBild"
+    />
+
+    <meta
+        property="og:description"
+        content="Explore software development insights, technology trends, UI/UX, web and mobile development, eCommerce, AI, and digital transformation from SoftBild."
+    />
+
+    <meta
+        property="og:url"
+        content="https://softbild.com/Blog"
+    />
+
+    <meta
+        property="og:type"
+        content="website"
+    />
+
+    <meta
+        property="og:site_name"
+        content="SoftBild"
+    />
+
+    <meta
+        property="og:image"
+        content="https://softbild.com/assets/SoftBild-Home-Hero2-D3rWtMF6.png"
+    />
+
+    <meta
+        property="og:image:alt"
+        content="SoftBild Software Development Blog"
+    />
+
+    {/* Twitter */}
+    <meta
+        name="twitter:card"
+        content="summary_large_image"
+    />
+
+    <meta
+        name="twitter:site"
+        content="@SoftBild"
+    />
+
+    <meta
+        name="twitter:title"
+        content="Software Development Blog | Insights & Technology Trends | SoftBild"
+    />
+
+    <meta
+        name="twitter:description"
+        content="Explore software development insights, technology trends, UI/UX, web and mobile development, eCommerce, AI, and digital transformation from SoftBild."
+    />
+
+    <meta
+        name="twitter:image"
+        content="https://softbild.com/assets/SoftBild-Home-Hero2-D3rWtMF6.png"
+    />
+
+    <meta
+        name="twitter:image:alt"
+        content="SoftBild Software Development Blog"
+    />
+</Helmet>
+
         <BlogHeroSection></BlogHeroSection>
 
         {/* Blog Section Starts  */}
