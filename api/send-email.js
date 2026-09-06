@@ -208,7 +208,7 @@ if (formType === "contact") {
         from: process.env.SMTP_FROM,
         to: process.env.CONTACT_EMAIL,
         replyTo: email,
-        subject: `New Contact Form Inquiry - ${firstName}`,
+        subject: `New Contact Form Inquiry - ${name}`,
         html: `
             <div style="
                 margin: 0;
@@ -288,7 +288,7 @@ if (formType === "contact") {
                                     color: #374151;
                                     vertical-align: top;
                                 ">
-                                    ${safeFirstName || "Not provided"}
+                                    ${safeName || "Not provided"}
                                 </td>
                             </tr>
 
