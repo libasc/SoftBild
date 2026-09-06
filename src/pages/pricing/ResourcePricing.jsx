@@ -170,41 +170,96 @@ function ResourcePricing() {
 
     return (
         <>
-            <Helmet>
-                <title>
-                    Resource Pricing - Hire Skilled Developers | SoftBild
-                </title>
+<Helmet>
+    <title>Developer Pricing & Hourly Rates | SoftBild</title>
 
-                <meta
-                    name="description"
-                    content="Hire skilled developers, designers, AI engineers and technology specialists from SoftBild at flexible hourly rates."
-                />
+    <meta
+        name="description"
+        content="Explore flexible developer pricing and hourly rates for skilled developers, designers, AI engineers, and technology specialists from SoftBild."
+    />
 
-                <meta
-                    name="keywords"
-                    content="developer pricing, hire developers, software developers, React developers, Node.js developers, AI developers, blockchain developers, mobile developers, SoftBild"
-                />
+    <meta
+        name="author"
+        content="SoftBild"
+    />
 
-                <meta name="author" content="SoftBild" />
-                <meta name="robots" content="index, follow" />
+    <meta
+        name="robots"
+        content="index, follow"
+    />
 
-                <meta
-                    property="og:title"
-                    content="Resource Pricing - Hire Skilled Developers | SoftBild"
-                />
+    <link
+        rel="canonical"
+        href="https://softbild.com/ResourcePricing"
+    />
 
-                <meta
-                    property="og:description"
-                    content="Build your development team with skilled developers and technology specialists from SoftBild."
-                />
+    {/* Open Graph */}
+    <meta
+        property="og:title"
+        content="Developer Pricing & Hourly Rates | SoftBild"
+    />
 
-                <meta
-                    property="og:url"
-                    content="https://softbild.com/ResourcePricing"
-                />
+    <meta
+        property="og:description"
+        content="Explore flexible hourly rates for skilled developers, designers, AI engineers, and technology specialists from SoftBild."
+    />
 
-                <meta property="og:type" content="website" />
-            </Helmet>
+    <meta
+        property="og:url"
+        content="https://softbild.com/ResourcePricing"
+    />
+
+    <meta
+        property="og:type"
+        content="website"
+    />
+
+    <meta
+        property="og:site_name"
+        content="SoftBild"
+    />
+
+    <meta
+        property="og:image"
+        content="https://softbild.com/assets/about-tech-img-01-D3KB0iWV.jpeg"
+    />
+
+    <meta
+        property="og:image:alt"
+        content="SoftBild Developer Pricing and Hourly Rates"
+    />
+
+    {/* Twitter / X */}
+    <meta
+        name="twitter:card"
+        content="summary_large_image"
+    />
+
+    <meta
+        name="twitter:site"
+        content="@SoftBild"
+    />
+
+    <meta
+        name="twitter:title"
+        content="Developer Pricing & Hourly Rates | SoftBild"
+    />
+
+    <meta
+        name="twitter:description"
+        content="Explore flexible hourly rates for skilled developers, designers, AI engineers, and technology specialists from SoftBild."
+    />
+
+    <meta
+        name="twitter:image"
+        content="https://softbild.com/assets/about-tech-img-01-D3KB0iWV.jpeg"
+    />
+
+    <meta
+        name="twitter:image:alt"
+        content="SoftBild Developer Pricing and Hourly Rates"
+    />
+</Helmet>
 
             <ResourceHeroSection />
 

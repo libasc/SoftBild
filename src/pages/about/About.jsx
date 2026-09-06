@@ -9,18 +9,61 @@ import { Helmet } from "react-helmet-async";
 function About(){
     return(
         <>
-        <Helmet>
-        <title>About SoftBild - Your Trusted Tech Partner</title>
-        <meta name="description" content="Learn about SoftBild, a leading IT services provider. We specialize in custom software, app development, and technology solutions to transform businesses." />
-        <meta name="keywords" content="about SoftBild, IT services provider, software company, technology solutions, business transformation, custom app development" />
-        <meta name="author" content="SoftBild" />
-        <meta name="robots" content="index, follow" />
-        <meta property="og:title" content="About SoftBild - Your Trusted Tech Partner" />
-        <meta property="og:description" content="Discover SoftBild's journey and expertise in delivering top-notch IT solutions for businesses worldwide." />
-        <meta property="og:image" content="https://softbild.com/src/assets/images/about-tech-img-01.jpeg" />
-        <meta property="og:url" content="https://softbild.com/Aboutus" />
-        <meta property="og:type" content="website" />
-        </Helmet>
+<Helmet>
+    <title>About SoftBild | Custom Software & IT Solutions Company</title>
+    <meta
+        name="description"
+        content="Learn about SoftBild, a software development and IT solutions company delivering custom software, web and mobile apps, eCommerce solutions, UI/UX, and technology consulting for businesses worldwide."
+    />
+    <meta name="author" content="SoftBild" />
+    <meta name="robots" content="index, follow" />
+    <link
+        rel="canonical"
+        href="https://softbild.com/Aboutus"
+    />
+    {/* Open Graph */}
+    <meta
+        property="og:title"
+        content="About SoftBild | Custom Software & IT Solutions Company"
+    />
+    <meta
+        property="og:description"
+        content="Learn about SoftBild and our expertise in custom software, web and mobile app development, eCommerce, UI/UX, and technology solutions."
+    />
+    <meta
+        property="og:image"
+        content="https://softbild.com/assets/softbild-info3-DukEY_uB.png"
+    />
+    <meta
+        property="og:image:alt"
+        content="About SoftBild - Custom Software and IT Solutions"
+    />
+    <meta
+        property="og:url"
+        content="https://softbild.com/Aboutus"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="SoftBild" />
+    {/* Twitter / X */}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@SoftBild" />
+    <meta
+        name="twitter:title"
+        content="About SoftBild | Custom Software & IT Solutions Company"
+    />
+    <meta
+        name="twitter:description"
+        content="Learn about SoftBild and our expertise in custom software, web and mobile app development, eCommerce, UI/UX, and technology solutions."
+    />
+    <meta
+        name="twitter:image"
+        content="https://softbild.com/assets/softbild-info3-DukEY_uB.png"
+    />
+    <meta
+        name="twitter:image:alt"
+        content="About SoftBild - Custom Software and IT Solutions"
+    />
+</Helmet>
         <AboutHeroSection></AboutHeroSection>
         <AboutInfo></AboutInfo>
 

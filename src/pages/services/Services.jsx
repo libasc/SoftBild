@@ -9,17 +9,95 @@ function Services(){
     return(
         <>
         <Helmet>
-            <title>Our Services - SoftBild | Empowering Businesses with Technology</title>
-            <meta name="description" content="Explore SoftBild's wide range of services, including UI/UX design, on-demand developers, eCommerce solutions, AI, and custom application development." />
-            <meta name="keywords" content="SoftBild services, UI/UX design, on-demand developers, eCommerce solutions, AI services, custom software development, technology solutions" />
-            <meta name="author" content="SoftBild" />
-            <meta name="robots" content="index, follow" />
-            <meta property="og:title" content="Our Services - SoftBild | Empowering Businesses with Technology" />
-            <meta property="og:description" content="SoftBild provides top-notch services tailored to meet your business needs, from design to deployment." />
-            <meta property="og:image" content="https://softbild.com/src/assets/images/softbild-info1.jpeg" />
-            <meta property="og:url" content="https://softbild.com/Services" />
-            <meta property="og:type" content="website" />
-        </Helmet>
+    <title>Software Development Services | SoftBild</title>
+
+    <meta
+        name="description"
+        content="Explore SoftBild's software development services, including custom software, web and mobile app development, UI/UX design, eCommerce, AI solutions, and dedicated development teams."
+    />
+
+    <meta
+        name="author"
+        content="SoftBild"
+    />
+
+    <meta
+        name="robots"
+        content="index, follow"
+    />
+
+    <link
+        rel="canonical"
+        href="https://softbild.com/Services"
+    />
+
+    {/* Open Graph */}
+    <meta
+        property="og:title"
+        content="Software Development Services | SoftBild"
+    />
+
+    <meta
+        property="og:description"
+        content="Explore SoftBild's software development services, including custom software, web and mobile apps, UI/UX design, eCommerce, AI solutions, and dedicated development teams."
+    />
+
+    <meta
+        property="og:image"
+        content="https://softbild.com/assets/softbild-info1-B6ivxKpi.png"
+    />
+
+    <meta
+        property="og:image:alt"
+        content="SoftBild Software Development Services"
+    />
+
+    <meta
+        property="og:url"
+        content="https://softbild.com/Services"
+    />
+
+    <meta
+        property="og:type"
+        content="website"
+    />
+
+    <meta
+        property="og:site_name"
+        content="SoftBild"
+    />
+
+    {/* Twitter / X */}
+    <meta
+        name="twitter:card"
+        content="summary_large_image"
+    />
+
+    <meta
+        name="twitter:site"
+        content="@SoftBild"
+    />
+
+    <meta
+        name="twitter:title"
+        content="Software Development Services | SoftBild"
+    />
+
+    <meta
+        name="twitter:description"
+        content="Explore SoftBild's software development services, including custom software, web and mobile apps, UI/UX design, eCommerce, AI solutions, and dedicated development teams."
+    />
+
+    <meta
+        name="twitter:image"
+        content="https://softbild.com/assets/softbild-info1-B6ivxKpi.png"
+    />
+
+    <meta
+        name="twitter:image:alt"
+        content="SoftBild Software Development Services"
+    />
+</Helmet>
         <ServicesHeroSection></ServicesHeroSection>
 
         {/* Services Section Starts */}

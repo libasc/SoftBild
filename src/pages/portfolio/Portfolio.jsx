@@ -10,17 +10,74 @@ function Portfolio(){
     return(
         <>
         <Helmet>
-        <title>Portfolio SoftBild - Your Trusted Tech Partner</title>
-        <meta name="description" content="Learn about SoftBild, a leading IT services provider. We specialize in custom software, app development, and technology solutions to transform businesses." />
-        <meta name="keywords" content="about SoftBild, IT services provider, software company, technology solutions, business transformation, custom app development" />
-        <meta name="author" content="SoftBild" />
-        <meta name="robots" content="index, follow" />
-        <meta property="og:title" content="About SoftBild - Your Trusted Tech Partner" />
-        <meta property="og:description" content="Discover SoftBild's journey and expertise in delivering top-notch IT solutions for businesses worldwide." />
-        <meta property="og:image" content="https://softbild.com/src/assets/images/about-tech-img-01.jpeg" />
-        <meta property="og:url" content="https://softbild.com/Aboutus" />
-        <meta property="og:type" content="website" />
-        </Helmet>
+    <title>Software Development Portfolio | SoftBild</title>
+
+    <meta
+        name="description"
+        content="Explore SoftBild's software development portfolio featuring web applications, mobile apps, eCommerce platforms, custom software, UI/UX solutions, and digital products built for businesses worldwide."
+    />
+
+    <meta name="author" content="SoftBild" />
+    <meta name="robots" content="index, follow" />
+
+    <link
+        rel="canonical"
+        href="https://softbild.com/Portfolio"
+    />
+
+    {/* Open Graph */}
+    <meta
+        property="og:title"
+        content="Software Development Portfolio | SoftBild"
+    />
+
+    <meta
+        property="og:description"
+        content="Explore SoftBild's portfolio of web and mobile applications, custom software, eCommerce platforms, UI/UX solutions, and digital products."
+    />
+
+    <meta
+        property="og:image"
+        content="https://softbild.com/assets/softbild-artinal-DVpdm-j-.png"
+    />
+
+    <meta
+        property="og:image:alt"
+        content="SoftBild Software Development Portfolio"
+    />
+
+    <meta
+        property="og:url"
+        content="https://softbild.com/Portfolio"
+    />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="SoftBild" />
+
+    {/* Twitter / X */}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@SoftBild" />
+
+    <meta
+        name="twitter:title"
+        content="Software Development Portfolio | SoftBild"
+    />
+
+    <meta
+        name="twitter:description"
+        content="Explore SoftBild's portfolio of web and mobile applications, custom software, eCommerce platforms, UI/UX solutions, and digital products."
+    />
+
+    <meta
+        name="twitter:image"
+        content="https://softbild.com/assets/softbild-artinal-DVpdm-j-.png"
+    />
+
+    <meta
+        name="twitter:image:alt"
+        content="SoftBild Software Development Portfolio"
+    />
+</Helmet>
         <PortfolioHeroSection></PortfolioHeroSection>
 
         {/* Services Section Starts */}

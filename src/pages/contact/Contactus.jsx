@@ -336,43 +336,95 @@ const submissionData = {
   return (
     <>
       <Helmet>
-        <title>Contact SoftBild - Let's Connect and Collaborate</title>
+    <title>Contact SoftBild | Discuss Your Project & Get in Touch</title>
 
-        <meta
-          name="description"
-          content="Get in touch with SoftBild for innovative IT solutions. Contact us to discuss your project requirements or for business inquiries."
-        />
+    <meta
+        name="description"
+        content="Contact SoftBild to discuss your software, web, mobile app, eCommerce, UI/UX, or technology project. Get in touch with our team to explore how we can help."
+    />
 
-        <meta
-          name="keywords"
-          content="contact SoftBild, get in touch, business inquiries, IT solutions, custom app development, collaboration"
-        />
+    <meta
+        name="author"
+        content="SoftBild"
+    />
 
-        <meta name="author" content="SoftBild" />
-        <meta name="robots" content="index, follow" />
+    <meta
+        name="robots"
+        content="index, follow"
+    />
 
-        <meta
-          property="og:title"
-          content="Contact SoftBild - Let's Connect and Collaborate"
-        />
+    <link
+        rel="canonical"
+        href="https://softbild.com/Contact"
+    />
 
-        <meta
-          property="og:description"
-          content="Contact SoftBild today to discuss your project or partnership opportunities. We're here to help."
-        />
+    {/* Open Graph */}
+    <meta
+        property="og:title"
+        content="Contact SoftBild | Discuss Your Project & Get in Touch"
+    />
 
-        <meta
-          property="og:image"
-          content="https://softbild.com/src/assets/images/SoftBild-contact-img-01.png"
-        />
+    <meta
+        property="og:description"
+        content="Contact SoftBild to discuss your software, web, mobile app, eCommerce, UI/UX, or technology project with our team."
+    />
 
-        <meta
-          property="og:url"
-          content="https://softbild.com/Contact"
-        />
+    <meta
+        property="og:image"
+        content="https://softbild.com/src/assets/images/SoftBild-contact-img-01.png"
+    />
 
-        <meta property="og:type" content="website" />
-      </Helmet>
+    <meta
+        property="og:image:alt"
+        content="Contact SoftBild - Discuss Your Technology Project"
+    />
+
+    <meta
+        property="og:url"
+        content="https://softbild.com/Contact"
+    />
+
+    <meta
+        property="og:type"
+        content="website"
+    />
+
+    <meta
+        property="og:site_name"
+        content="SoftBild"
+    />
+
+    {/* Twitter / X */}
+    <meta
+        name="twitter:card"
+        content="summary_large_image"
+    />
+
+    <meta
+        name="twitter:site"
+        content="@SoftBild"
+    />
+
+    <meta
+        name="twitter:title"
+        content="Contact SoftBild | Discuss Your Project & Get in Touch"
+    />
+
+    <meta
+        name="twitter:description"
+        content="Contact SoftBild to discuss your software, web, mobile app, eCommerce, UI/UX, or technology project with our team."
+    />
+
+    <meta
+        name="twitter:image"
+        content="https://softbild.com/src/assets/images/SoftBild-contact-img-01.png"
+    />
+
+    <meta
+        name="twitter:image:alt"
+        content="Contact SoftBild - Discuss Your Technology Project"
+    />
+</Helmet>
 
 
       <ContactHeroSection />

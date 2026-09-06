@@ -15,18 +15,42 @@ function Home(){
     return(
         <>
         <Helmet>
-        <title>SoftBild - Innovative IT Solutions for Your Business</title>
-        <meta name="description" content="SoftBild offers cutting-edge IT solutions, including UI/UX design, website development, custom apps, and eCommerce solutions. Empower your business with innovation." />
-        <meta name="keywords" content="IT solutions, UI/UX design, website development, custom app development, eCommerce solutions, software development, SoftBild" />
-        <meta name="author" content="SoftBild" />
-        <meta name="robots" content="index, follow" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta property="og:title" content="SoftBild - Innovative IT Solutions for Your Business" />
-        <meta property="og:description" content="SoftBild provides innovative IT services to help businesses grow. Specializing in custom app development, website design, and more." />
-        <meta property="og:image" content="https://softbild.com/src/assets/images/SoftBild-contact-img-01.png" />
-        <meta property="og:url" content="https://softbild.com/" />
-        <meta property="og:type" content="website" />
+            <title>SoftBild | Custom Software, Web & Mobile App Development</title>
+            <meta name="description" content="SoftBild is a software development company delivering custom software, web and mobile app development, UI/UX design, eCommerce, and digital solutions for businesses worldwide." />
+            <meta name="author" content="SoftBild" />
+            <meta name="robots" content="index, follow" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+            <link rel="canonical" href="https://softbild.com/" />
+            <meta property="og:title" content="SoftBild | Custom Software, Web & Mobile App Development" />
+            <meta property="og:description" content="SoftBild delivers custom software, web and mobile app development, UI/UX design, eCommerce, and digital solutions for businesses worldwide." />
+            <meta property="og:image" content="https://softbild.com/assets/SoftBild-Home-Hero2-D3rWtMF6.png" />
+            <meta property="og:url" content="https://softbild.com/" />
+            <meta property="og:type" content="website" />
+            <meta property="og:site_name" content="SoftBild" />
+            <meta name="twitter:card" content="summary_large_image" />
+            <meta name="twitter:site" content="@SoftBild" />
+            <meta name="twitter:title" content="SoftBild | Custom Software, Web & Mobile App Development" />
+            <meta name="twitter:description" content="SoftBild delivers custom software, web and mobile app development, UI/UX design, eCommerce, and digital solutions for businesses worldwide." />
+            <meta name="twitter:image" content="https://softbild.com/assets/SoftBild-Home-Hero2-D3rWtMF6.png" />
+            <meta property="og:image:alt" content="SoftBild - Custom Software, Web and Mobile App Development" />
+            <meta name="twitter:image:alt" content="SoftBild - Custom Software, Web and Mobile App Development" />
 
+              {/* Organization Schema */}
+            <script type="application/ld+json">
+                {JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "Organization",
+                name: "SoftBild",
+                url: "https://softbild.com/",
+                logo: "https://softbild.com/assets/softbild-logo-BJ7k8QhN.svg",
+                sameAs: [
+                    "https://x.com/SoftBild",
+                    "https://in.linkedin.com/company/softbild",
+                    "https://www.instagram.com/softbild/",
+                    "https://www.facebook.com/softbild"
+                ]
+                })}
+            </script>
         </Helmet>
         <HomeBanner></HomeBanner>
         

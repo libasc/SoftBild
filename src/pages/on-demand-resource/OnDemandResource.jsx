@@ -15,18 +15,75 @@ import { Helmet } from "react-helmet-async";
 function OnDemandResource() {
   return (
     <>
-    <Helmet>
-        <title>On-Demand Resource - SoftBild | Hire Skilled Professionals</title>
-        <meta name="description" content="Hire experienced developers on demand with SoftBild. Flexible and skilled professionals ready to deliver exceptional results for your projects." />
-        <meta name="keywords" content="on-demand developers, hire developers, skilled developers, flexible hiring, IT professionals, software developers, SoftBild" />
-        <meta name="author" content="SoftBild" />
-        <meta name="robots" content="index, follow" />
-        <meta property="og:title" content="On-Demand Developers - SoftBild | Hire Skilled Professionals" />
-        <meta property="og:description" content="Get access to skilled on-demand developers for your business needs. Flexible and reliable solutions from SoftBild." />
-        <meta property="og:image" content="https://softbild.com/src/assets/images/softbild-ondemand-01.png" />
-        <meta property="og:url" content="https://softbild.com/OnDemand-Resourse" />
-        <meta property="og:type" content="website" />
-    </Helmet>
+<Helmet>
+    <title>On-Demand Developers | Hire Skilled Professionals | SoftBild</title>
+
+    <meta
+        name="description"
+        content="Hire skilled developers on demand with SoftBild. Get flexible access to experienced software professionals for web, mobile, and custom software development projects."
+    />
+
+    <meta name="author" content="SoftBild" />
+    <meta name="robots" content="index, follow" />
+
+    <link
+        rel="canonical"
+        href="https://softbild.com/OnDemand-Resourse"
+    />
+
+    {/* Open Graph */}
+    <meta
+        property="og:title"
+        content="On-Demand Developers | Hire Skilled Professionals | SoftBild"
+    />
+
+    <meta
+        property="og:description"
+        content="Get flexible access to experienced developers for web, mobile, and custom software development projects with SoftBild."
+    />
+
+    <meta
+        property="og:image"
+        content="https://softbild.com/assets/softbild-ondemand-01-csZ6hQlh.png"
+    />
+
+    <meta
+        property="og:image:alt"
+        content="SoftBild On-Demand Developers and IT Professionals"
+    />
+
+    <meta
+        property="og:url"
+        content="https://softbild.com/OnDemand-Resourse"
+    />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="SoftBild" />
+
+    {/* Twitter / X */}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@SoftBild" />
+
+    <meta
+        name="twitter:title"
+        content="On-Demand Developers | Hire Skilled Professionals | SoftBild"
+    />
+
+    <meta
+        name="twitter:description"
+        content="Get flexible access to experienced developers for web, mobile, and custom software development projects with SoftBild."
+    />
+
+    <meta
+        name="twitter:image"
+        content="https://softbild.com/assets/softbild-ondemand-01-csZ6hQlh.png"
+    />
+
+    <meta
+        name="twitter:image:alt"
+        content="SoftBild On-Demand Developers and IT Professionals"
+    />
+</Helmet>
     <OnDemandHeroSection />
     <div className="container-fluid py-60">
         <div className="container">

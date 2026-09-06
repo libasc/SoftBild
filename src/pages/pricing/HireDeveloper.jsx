@@ -459,48 +459,96 @@ useEffect(() => {
     return (
         <>
 
-            <Helmet>
+<Helmet>
+    <title>Hire Developers & Technology Experts | SoftBild</title>
 
-                <title>
-                    Hire Developers & Technology Experts | SoftBild
-                </title>
+    <meta
+        name="description"
+        content="Hire experienced developers, designers, and technology specialists from SoftBild. Build a dedicated development team tailored to your project requirements and business goals."
+    />
 
-                <meta
-                    name="description"
-                    content="Hire experienced developers, designers and technology specialists from SoftBild. Build your dedicated development team based on your project requirements."
-                />
+    <meta
+        name="author"
+        content="SoftBild"
+    />
 
-                <meta
-                    name="keywords"
-                    content="hire developers, hire software developers, dedicated developers, dedicated development team, software development team, hire technology experts"
-                />
+    <meta
+        name="robots"
+        content="index, follow"
+    />
 
-                <meta
-                    name="author"
-                    content="SoftBild"
-                />
+    <link
+        rel="canonical"
+        href="https://softbild.com/HireDeveloper"
+    />
 
-                <meta
-                    name="robots"
-                    content="index, follow"
-                />
+    {/* Open Graph */}
+    <meta
+        property="og:title"
+        content="Hire Developers & Technology Experts | SoftBild"
+    />
 
-                <meta
-                    property="og:title"
-                    content="Hire Developers & Technology Experts | SoftBild"
-                />
+    <meta
+        property="og:description"
+        content="Hire experienced developers, designers, and technology specialists from SoftBild to build a dedicated development team tailored to your project."
+    />
 
-                <meta
-                    property="og:description"
-                    content="Build your development team with experienced developers and technology specialists from SoftBild."
-                />
+    <meta
+        property="og:image"
+        content="https://softbild.com/assets/softbild-ondemand-04-BVCf6z-L.png"
+    />
 
-                <meta
-                    property="og:type"
-                    content="website"
-                />
+    <meta
+        property="og:image:alt"
+        content="Hire Developers and Technology Experts from SoftBild"
+    />
 
-            </Helmet>
+    <meta
+        property="og:url"
+        content="https://softbild.com/HireDeveloper"
+    />
+
+    <meta
+        property="og:type"
+        content="website"
+    />
+
+    <meta
+        property="og:site_name"
+        content="SoftBild"
+    />
+
+    {/* Twitter / X */}
+    <meta
+        name="twitter:card"
+        content="summary_large_image"
+    />
+
+    <meta
+        name="twitter:site"
+        content="@SoftBild"
+    />
+
+    <meta
+        name="twitter:title"
+        content="Hire Developers & Technology Experts | SoftBild"
+    />
+
+    <meta
+        name="twitter:description"
+        content="Hire experienced developers, designers, and technology specialists from SoftBild to build a dedicated development team tailored to your project."
+    />
+
+    <meta
+        name="twitter:image"
+        content="https://softbild.com/assets/softbild-ondemand-04-BVCf6z-L.png"
+    />
+
+    <meta
+        name="twitter:image:alt"
+        content="Hire Developers and Technology Experts from SoftBild"
+    />
+</Helmet>
 
 
             {/* =========================================
