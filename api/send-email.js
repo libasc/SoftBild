@@ -280,7 +280,7 @@ if (formType === "contact") {
                                     font-weight: 600;
                                     vertical-align: top;
                                 ">
-                                    Your Name
+                                    Name
                                 </td>
 
                                 <td style="
