@@ -1,11 +1,30 @@
+import fs from "fs";
+import path from "path";
 import puppeteer from "puppeteer";
 import chromium from "@sparticuz/chromium";
 import { spawn } from "child_process";
-import fs from "fs";
-import path from "path";
 
 const PORT = 4173;
 const BASE_URL = `http://127.0.0.1:${PORT}`;
+
+function getPortfolioRoutes() {
+  const portfolioFile = path.resolve(
+  process.cwd(),
+  "src/pages/portfolio/PortfolioDetail.jsx"
+);
+
+  const content = fs.readFileSync(portfolioFile, "utf8");
+
+  const slugMatches = [
+    ...content.matchAll(/slug:\s*["'`]([^"'`]+)["'`]/g)
+  ];
+
+  return slugMatches.map(
+    (match) => `/Portfolio/${match[1]}`
+  );
+}
+
+const portfolioRoutes = getPortfolioRoutes();
 
 const routes = [
   "/",
@@ -17,8 +36,9 @@ const routes = [
   "/ResourcePricing",
   "/Contact",
   "/Blog",
-];
 
+  ...portfolioRoutes,
+];
 /*
 |--------------------------------------------------------------------------
 | Start Vite Preview

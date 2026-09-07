@@ -137,16 +137,16 @@ function PortfolioDetail() {
 
   integrations: [],
 
-  screenshots: [
-    EleaningImg1,
-    EleaningImg1,
-    EleaningImg1
-  ],
+  // screenshots: [
+  //   EleaningImg1,
+  //   EleaningImg1,
+  //   EleaningImg1
+  // ],
 
   results:
     "The project created a connected School ERP ecosystem that brought schools, teachers, students, and parents onto a centralized digital platform. The solution provided dedicated role-based experiences across mobile and web applications while organizing academic activities, communication, attendance, assignments, assessments, report cards, and financial information.",
 
-  testimonial: null
+  // testimonial: null
 },
 
     {
@@ -338,11 +338,11 @@ function PortfolioDetail() {
     "Third-Party APIs",
   ],
 
-  screenshots: [
-    EleaningImg1,
-    EleaningImg1,
-    EleaningImg1,
-  ],
+  // screenshots: [
+  //   EleaningImg1,
+  //   EleaningImg1,
+  //   EleaningImg1,
+  // ],
 
   results:
     "The project delivered a modern digital agriculture platform designed to improve access, discovery, and interaction across the agriculture ecosystem. The web and mobile application experience provided users with a more organized and intuitive way to explore relevant information, services, and business opportunities while creating a scalable foundation for future platform growth.",
@@ -456,11 +456,11 @@ function PortfolioDetail() {
     "Third-Party APIs",
   ],
 
-  screenshots: [
-    EleaningImg1,
-    EleaningImg1,
-    EleaningImg1,
-  ],
+  // screenshots: [
+  //   EleaningImg1,
+  //   EleaningImg1,
+  //   EleaningImg1,
+  // ],
 
   results:
     "The project delivered a modern Web3 platform that organizes complex digital asset and tokenization workflows into a more accessible and structured user experience. The solution provides a scalable foundation for creating, managing, launching, monitoring, and trading tokenized assets while helping bridge the gap between advanced blockchain technology and user-friendly digital product experiences.",
@@ -477,91 +477,226 @@ function PortfolioDetail() {
   ];
 
   // Find the portfolio based on the URL slug
-  const portfolio = portfolioData.find(
-    (item) => item.slug === slug
-  );
+const portfolio = portfolioData.find(
+  (item) => item.slug === slug
+);
+
+const portfolioUrl = portfolio
+  ? `https://softbild.com/Portfolio/${portfolio.slug}`
+  : "";
+
+const portfolioImageUrl =
+  portfolio?.portfolioCardImage?.startsWith("http")
+    ? portfolio.portfolioCardImage
+    : portfolio?.portfolioCardImage
+      ? `https://softbild.com${portfolio.portfolioCardImage}`
+      : "";
 
   // If portfolio doesn't exist
   if (!portfolio) {
-    return (
-      <>
-        <Helmet>
-          <title>Portfolio Not Found | SoftBild</title>
-          <meta
-            name="description"
-            content="The requested SoftBild portfolio project could not be found."
-          />
-        </Helmet>
-
-        <section className="container-fluid py-100">
-          <div className="container text-center">
-            <h1 className="dark-subtitle">
-              Portfolio Not Found
-            </h1>
-
-            <p className="mt-20">
-              The portfolio project you are looking for does not exist.
-            </p>
-
-            <Link
-              to="/Portfolio"
-              className="sf-btn5 mt-20"
-            >
-              Back to Portfolio
-            </Link>
-          </div>
-        </section>
-      </>
-    );
-  }
-
   return (
     <>
       <Helmet>
-        <title>
-          {portfolio.title} | SoftBild Portfolio
-        </title>
+        <title>Portfolio Project Not Found | SoftBild</title>
 
         <meta
           name="description"
-          content={portfolio.description}
+          content="The requested SoftBild portfolio project could not be found."
         />
 
         <meta
-          name="keywords"
-          content={`${portfolio.title}, SoftBild portfolio, ${portfolio.industry}, software development`}
+          name="robots"
+          content="noindex, nofollow"
         />
 
         <meta
           name="author"
           content="SoftBild"
         />
-
-        <meta
-          name="robots"
-          content="index, follow"
-        />
-
-        <meta
-          property="og:title"
-          content={`${portfolio.title} | SoftBild`}
-        />
-
-        <meta
-          property="og:description"
-          content={portfolio.description}
-        />
-
-        <meta
-          property="og:image"
-          content={portfolio.portfolioCardImage}
-        />
-
-        <meta
-          property="og:type"
-          content="article"
-        />
       </Helmet>
+
+      <section className="container-fluid py-100">
+        <div className="container text-center">
+          <h1 className="dark-subtitle">
+            Portfolio Not Found
+          </h1>
+
+          <p className="mt-20">
+            The portfolio project you are looking for does not exist.
+          </p>
+
+          <Link
+            to="/Portfolio"
+            className="sf-btn5 mt-20"
+          >
+            Back to Portfolio
+          </Link>
+        </div>
+      </section>
+    </>
+  );
+}
+
+  return (
+    <>
+      <Helmet>
+  <title>
+    {portfolio.title} | Software Development Case Study | SoftBild
+  </title>
+
+  <meta
+    name="description"
+    content={portfolio.description}
+  />
+
+  <meta
+    name="author"
+    content="SoftBild"
+  />
+
+  <meta
+    name="robots"
+    content="index, follow"
+  />
+
+  {/* Canonical URL */}
+  <link
+    rel="canonical"
+    href={portfolioUrl}
+  />
+
+  {/* Open Graph */}
+  <meta
+    property="og:title"
+    content={`${portfolio.title} | SoftBild`}
+  />
+
+  <meta
+    property="og:description"
+    content={portfolio.description}
+  />
+
+  <meta
+    property="og:image"
+    content={portfolioImageUrl}
+  />
+
+  <meta
+    property="og:image:secure_url"
+    content={portfolioImageUrl}
+  />
+
+  <meta
+    property="og:image:type"
+    content="image/png"
+  />
+
+  <meta
+    property="og:image:alt"
+    content={`${portfolio.title} - SoftBild Portfolio`}
+  />
+
+  <meta
+    property="og:url"
+    content={portfolioUrl}
+  />
+
+  <meta
+    property="og:type"
+    content="article"
+  />
+
+  <meta
+    property="og:site_name"
+    content="SoftBild"
+  />
+
+  {/* Twitter */}
+  <meta
+    name="twitter:card"
+    content="summary_large_image"
+  />
+
+  <meta
+    name="twitter:site"
+    content="@SoftBild"
+  />
+
+  <meta
+    name="twitter:title"
+    content={`${portfolio.title} | SoftBild`}
+  />
+
+  <meta
+    name="twitter:description"
+    content={portfolio.description}
+  />
+
+  <meta
+    name="twitter:image"
+    content={portfolioImageUrl}
+  />
+
+  <meta
+    name="twitter:image:alt"
+    content={`${portfolio.title} - SoftBild Portfolio`}
+  />
+
+  {/* Portfolio structured data */}
+  <script type="application/ld+json">
+    {JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "CreativeWork",
+      name: portfolio.title,
+      headline: portfolio.title,
+      description: portfolio.description,
+      url: portfolioUrl,
+      image: portfolioImageUrl,
+      creator: {
+        "@type": "Organization",
+        name: "SoftBild",
+        url: "https://softbild.com/"
+      },
+      author: {
+        "@type": "Organization",
+        name: "SoftBild",
+        url: "https://softbild.com/"
+      },
+      about: {
+        "@type": "Thing",
+        name: portfolio.industry
+      }
+    })}
+  </script>
+
+  {/* Breadcrumb structured data */}
+  <script type="application/ld+json">
+    {JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: "https://softbild.com/"
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Portfolio",
+          item: "https://softbild.com/Portfolio"
+        },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: portfolio.title,
+          item: portfolioUrl
+        }
+      ]
+    })}
+  </script>
+</Helmet>
 
 {/* =====================================================
     BREADCRUMB
@@ -569,8 +704,10 @@ function PortfolioDetail() {
 
 <section className="container-fluid portfolio-detail-breadcrumb-section">
   <div className="container">
-
-    <div className="portfolio-breadcrumb">
+    <nav
+  className="portfolio-breadcrumb"
+  aria-label="Breadcrumb"
+>
 
       <Link to="/">
         Home
@@ -587,10 +724,9 @@ function PortfolioDetail() {
       <span className="portfolio-breadcrumb-current">
         {portfolio.title}
       </span>
+      </nav>
 
     </div>
-
-  </div>
 </section>
 
 
@@ -612,7 +748,7 @@ function PortfolioDetail() {
           <div className="portfolio-detail-logo">
             <img
               src={portfolio.portfolioLogo}
-              alt={portfolio.title}
+              alt={`${portfolio.title} logo`}
               className="img-fluid"
             />
           </div>
@@ -630,17 +766,22 @@ function PortfolioDetail() {
           {/* Project Information */}
           <div className="portfolio-detail-meta">
 
-            <div className="portfolio-detail-meta-item">
-              <span>Industry</span>
-              <strong>{portfolio.industry}</strong>
-            </div>
-
-            <div className="portfolio-detail-meta-item">
-              <span>Project Type</span>
-              <strong>{portfolio.projectType}</strong>
-            </div>
-
+          <div className="portfolio-detail-meta-item">
+            <span>Industry</span>
+            <strong>{portfolio.industry}</strong>
           </div>
+
+          <div className="portfolio-detail-meta-item">
+            <span>Project Type</span>
+            <strong>{portfolio.projectType}</strong>
+          </div>
+
+          {/* <div className="portfolio-detail-meta-item">
+            <span>Our Role</span>
+            <strong>{portfolio.role}</strong>
+          </div> */}
+
+        </div>
 
         </div>
 
@@ -654,7 +795,7 @@ function PortfolioDetail() {
 
           <img
             src={portfolio.portfolioCardImage}
-            alt={portfolio.title}
+            alt={`${portfolio.title} project`}
             className="img-fluid"
           />
 
@@ -1046,15 +1187,15 @@ function PortfolioDetail() {
             <div className="col-lg-6 text-center color-overlay1-content">
 
               <h2 className="light-subtitle">
-                We provide best tech solutions for your{" "}
-                <span>business</span>
+                Let's Build the Right{" "}
+                <span>Technology Solution</span> for Your Business
               </h2>
 
               <Link
                 to="/HireDeveloper"
                 className="sf-btn5 mt-20"
               >
-                Enquire
+                Discuss Your Project
               </Link>
 
             </div>

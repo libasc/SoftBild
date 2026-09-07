@@ -37,7 +37,7 @@ function DeleteBlog() {
         <div className="container">
         <form className="row g-3 py-60">
             <div className="col-lg-12">
-                <h3 className='dark-small-subtitle'>Delete Post</h3>
+                <h1 className='dark-small-subtitle'>Delete Post</h1>
             </div>
             <div className="col-md-6">
                 <label className="form-label">Image</label>
