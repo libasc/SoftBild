@@ -52,6 +52,43 @@ const routes = [
 |
 */
 
+function generateSitemap() {
+  const sitemapPath = path.resolve("dist", "sitemap.xml");
+
+  const urls = routes
+    .map((route) => {
+      const url =
+        route === "/"
+          ? "https://softbild.com/"
+          : `https://softbild.com${route}`;
+
+      return `  <url>\n    <loc>${url}</loc>\n  </url>`;
+    })
+    .join("\n");
+
+  const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+>
+${urls}
+</urlset>
+`;
+
+  fs.writeFileSync(
+    sitemapPath,
+    sitemap,
+    "utf8"
+  );
+
+  console.log(
+    `🗺️ Sitemap generated: ${sitemapPath}`
+  );
+
+  console.log(
+    `   URLs included: ${routes.length}`
+  );
+}
+
 function startPreviewServer() {
   const viteBin = path.resolve(
     "node_modules",
@@ -610,6 +647,14 @@ if (isVercel) {
         )}`
       );
     }
+
+    /*
+    |--------------------------------------------------------------------------
+    | Generate sitemap
+    |--------------------------------------------------------------------------
+    */
+
+    generateSitemap();
 
     console.log(
       "🎉 Prerendering completed successfully.\n"
