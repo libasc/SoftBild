@@ -71,7 +71,7 @@ function About(){
                     <div className="col-lg-3"></div>
                     <div className="col-lg-6 text-center color-overlay1-content">
                         <h2 className="light-subtitle">We provide best tech solutions for your <span>business</span></h2>
-                        <Link href="/hire-developer" className="sf-btn5 mt-20">Enquire </Link>
+                        <Link href="/hire-developer" className="sf-btn5 mt-20">Enquire</Link>
                     </div>
                     <div className="col-lg-3"></div>
                 </div>
