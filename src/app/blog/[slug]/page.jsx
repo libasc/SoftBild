@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-import BlogDetails from "../../../pages/blog/BlogDetails";
+import BlogDetails from "../../../components/app-components/blog/BlogDetails";
 import { createClient } from "../../../lib/supabase/server";
 
 export const dynamic = "force-dynamic";

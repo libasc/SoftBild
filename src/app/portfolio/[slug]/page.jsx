@@ -1,4 +1,4 @@
-import PortfolioDetail from "../../../pages/portfolio/PortfolioDetail";
+import PortfolioDetail from "../../../components/app-components/portfolio/PortfolioDetail";
 
 const slugs = [
   "e-learning-platform",

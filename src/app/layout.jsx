@@ -7,7 +7,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import "./globals.css";
 import "../assets/css/Style.css";
 import "../assets/css/responsive.css";
-import "../pages/blog/blog.css";
+import "../components/app-components/blog/blog.css";
 import "../pages/pricing/HireDeveloper.css";
 import "../pages/pricing/ResourcePricing.css";
 import "../components/app-components/header/header.css";

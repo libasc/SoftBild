@@ -15,7 +15,7 @@ const ArtinalImg1 = '/assets/images/softbild-artinal.png';
 const MasterStudyLogo = '/assets/images/master-study-logo.png';
 const MasterStudyImg1 = '/assets/images/softbild-masterstudy.png';
 
-import HomeCta from "../../components/app-components/HomeCta";
+import HomeCta from "../HomeCta";
 
 
 function PortfolioDetail() {

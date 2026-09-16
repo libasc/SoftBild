@@ -1,9 +1,10 @@
 "use client";
+
 import { useEffect, useMemo, useState } from "react";
-const readMoreIcon = '/assets/icons/arrow-right-blue.svg';
-import BlogHeroSection from "../../components/app-components/BlogHeroSection";
-// import blogs from "../../data/blogs";
-import { createClient } from "../../lib/supabase/client";
+const readMoreIcon = "/assets/icons/arrow-right-blue.svg";
+
+import BlogHeroSection from "../BlogHeroSection";
+import { createClient } from "../../../lib/supabase/client";
 
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
