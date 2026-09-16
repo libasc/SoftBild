@@ -1,0 +1,2148 @@
+/* =========================================================
+   HIRE DEVELOPER PAGE
+========================================================= */
+
+.hire-developer-section {
+    position: relative;
+    overflow: hidden;
+    padding: 85px 0 90px;
+    background: #f4fbfc;
+}
+
+
+/* =========================================================
+   LEFT CONTENT
+========================================================= */
+
+.hire-left-content {
+    position: relative;
+    z-index: 2;
+    padding: 8px 25px 0 0;
+}
+
+
+.hire-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+
+    margin-bottom: 18px;
+
+    color: #08aeba;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.6px;
+}
+
+
+.hire-eyebrow-line {
+    width: 35px;
+    height: 2px;
+
+    background: #08b8c4;
+}
+
+
+/* =========================================================
+   MAIN HEADING
+========================================================= */
+
+.hire-main-title {
+    max-width: 600px;
+
+    margin: 0 0 20px;
+
+    color: #172635;
+
+    font-size: 48px;
+    line-height: 1.08;
+    font-weight: 700;
+    letter-spacing: -1.4px;
+}
+
+
+.hire-main-title span {
+    display: block;
+    margin-top: 5px;
+
+    color: #08aeba;
+}
+
+
+.hire-main-description {
+    max-width: 600px;
+
+    margin: 0 0 30px;
+
+    color: #586b75;
+
+    font-size: 16px;
+    line-height: 1.75;
+}
+
+
+/* =========================================================
+   BENEFITS
+========================================================= */
+
+.hire-benefits {
+    display: flex;
+    flex-direction: column;
+
+    gap: 17px;
+
+    max-width: 590px;
+
+    margin-bottom: 32px;
+}
+
+
+.hire-benefit {
+    display: flex;
+    align-items: flex-start;
+
+    gap: 14px;
+}
+
+
+.hire-benefit-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 40px;
+    height: 40px;
+
+    flex-shrink: 0;
+
+    border-radius: 10px;
+
+    background: #dff5f6;
+
+    color: #08aeba;
+
+    font-size: 17px;
+}
+
+
+.hire-benefit h4 {
+    margin: 1px 0 3px;
+    color: #172635;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+
+.hire-benefit p {
+    margin: 0;
+    color: #70808a;
+    font-size: 16px;
+    line-height: 1.55;
+}
+
+
+/* =========================================================
+   TRUST STRIP
+========================================================= */
+
+.hire-trust-strip {
+    display: flex;
+    align-items: center;
+
+    width: 100%;
+
+    margin-bottom: 38px;
+
+    padding: 20px 22px;
+
+    background: #ffffff;
+
+    border: 1px solid #e1ecee;
+    border-radius: 12px;
+
+    box-shadow: 0 8px 25px rgba(23, 38, 53, 0.045);
+}
+
+
+.hire-trust-item {
+    flex: 1;
+
+    text-align: center;
+}
+
+
+.hire-trust-item strong {
+    display: block;
+
+    margin-bottom: 4px;
+
+    color: #172635;
+
+    font-size: 23px;
+    line-height: 1;
+    font-weight: 700;
+}
+
+
+.hire-trust-item span {
+    display: block;
+
+    color: #7b8991;
+
+    font-size: 12px;
+    line-height: 1.3;
+}
+
+
+.hire-trust-divider {
+    width: 1px;
+    height: 38px;
+
+    background: #dce7e9;
+}
+
+
+/* =========================================================
+   PROCESS
+========================================================= */
+
+.hire-process-wrapper {
+    max-width: 600px;
+
+    margin-bottom: 34px;
+}
+
+
+.hire-small-label {
+    display: block;
+    margin-bottom: 7px;
+    color: #08aeba;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+}
+
+
+.hire-process-header h2 {
+    margin: 0 0 6px;
+
+    color: #172635;
+
+    font-size: 24px;
+    font-weight: 700;
+}
+
+
+.hire-process-header p {
+    margin: 0 0 22px;
+
+    color: #71818a;
+
+    font-size: 16px;
+}
+
+
+.hire-process-list {
+    position: relative;
+}
+
+
+.hire-process-list::before {
+    content: "";
+
+    position: absolute;
+
+    top: 19px;
+    bottom: 19px;
+    left: 17px;
+
+    width: 1px;
+
+    background: #cfe3e6;
+}
+
+
+.hire-process-item {
+    position: relative;
+
+    display: flex;
+
+    gap: 15px;
+
+    margin-bottom: 20px;
+}
+
+
+.hire-process-item:last-child {
+    margin-bottom: 0;
+}
+
+
+.hire-process-number {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 35px;
+    height: 35px;
+    flex-shrink: 0;
+    border: 3px solid #f4fbfc;
+    border-radius: 50%;
+    background: var(--sf-gradient1);
+    color: #ffffff;
+
+    font-size: 10px;
+    font-weight: 700;
+
+    box-shadow: 0 0 0 1px #08b8c4;
+}
+
+
+.hire-process-content {
+    padding-top: 1px;
+}
+
+
+.hire-process-content h4 {
+    margin: 0 0 4px;
+    color: #172635;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+
+.hire-process-content p {
+    margin: 0;
+    color: #72818a;
+    font-size: 16px;
+    line-height: 1.55;
+}
+
+
+/* =========================================================
+   CONTACT ROW
+========================================================= */
+
+.hire-contact-row {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 10px;
+
+    max-width: 600px;
+}
+
+
+.hire-contact-box {
+    display: flex;
+    align-items: center;
+
+    gap: 9px;
+
+    padding: 11px;
+
+    background: transparent;
+
+    border: 1px solid #dce9eb;
+    border-radius: 9px;
+
+    text-decoration: none;
+
+    transition: all 0.25s ease;
+}
+
+
+.hire-contact-box:hover {
+    background: #ffffff;
+
+    border-color: #b9dfe2;
+
+    transform: translateY(-2px);
+
+    box-shadow: 0 8px 20px rgba(23, 38, 53, 0.06);
+}
+
+
+.hire-contact-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 32px;
+    height: 32px;
+
+    flex-shrink: 0;
+
+    border-radius: 7px;
+
+    background: #08aeba;
+
+    color: #ffffff;
+
+    font-size: 12px;
+}
+
+
+.hire-contact-box small {
+    display: block;
+
+    margin-bottom: 2px;
+
+    color: #7b8991;
+
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+
+.hire-contact-box strong {
+    display: block;
+
+    color: #172635;
+
+    font-size: 9px;
+    font-weight: 600;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   FORM WRAPPER
+========================================================= */
+
+.hire-form-wrapper {
+    position: relative;
+
+    z-index: 2;
+
+    padding-top: 5px;
+}
+
+
+.hire-form-top-line {
+    position: absolute;
+
+    top: 0;
+    left: 28px;
+
+    width: 55px;
+    height: 3px;
+
+    border-radius: 4px;
+
+    background: #08b8c4;
+
+    z-index: 3;
+}
+
+
+.hire-form-card {
+    position: relative;
+
+    padding: 34px 30px 27px;
+
+    background: #ffffff;
+
+    border: 1px solid #dcecee;
+
+    border-radius: 16px;
+
+    box-shadow:
+        0 20px 55px rgba(23, 38, 53, 0.09),
+        0 3px 10px rgba(23, 38, 53, 0.03);
+}
+
+
+/* =========================================================
+   FORM HEADER
+========================================================= */
+
+.hire-form-header {
+    padding-bottom: 20px;
+
+    margin-bottom: 21px;
+
+    border-bottom: 1px solid #edf2f3;
+}
+
+
+.hire-form-label {
+    display: flex;
+    align-items: center;
+
+    gap: 7px;
+
+    margin-bottom: 9px;
+
+    color: #08aeba;
+
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1.1px;
+}
+
+
+.hire-form-header h2 {
+    margin: 0 0 8px;
+
+    color: #172635;
+
+    font-size: 29px;
+    line-height: 1.15;
+    font-weight: 700;
+    letter-spacing: -0.6px;
+}
+
+
+.hire-form-header h2 span {
+    color: #08aeba;
+}
+
+
+.hire-form-header p {
+    margin: 0;
+    color: #71818a;
+    font-size: 12px;
+    line-height: 1.55;
+}
+
+
+/* =========================================================
+   FORM LABELS
+========================================================= */
+
+.hire-form-card label {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: #263946;
+
+    font-size: 14px;
+    font-weight: 700;
+}
+
+
+.hire-form-card label>span {
+    margin-left: 3px;
+
+    color: #08aeba;
+}
+
+
+.hire-form-card label small {
+    margin-left: 5px;
+
+    color: #8c999f;
+
+    font-size: 8px;
+    font-weight: 400;
+}
+
+
+/* =========================================================
+   INPUTS
+========================================================= */
+
+.hire-form-card .form-control,
+.hire-form-card .form-select {
+    min-height: 43px;
+    padding: 10px 12px;
+    /* border: 1px solid #dce7e9; */
+    /* border-radius: 7px; */
+    /* background-color: #fbfdfd; */
+    /* color: #344650; */
+    /* font-size: 12px; */
+    /* box-shadow: none; */
+    /* transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease; */
+}
+
+
+.hire-form-card .form-control:hover,
+.hire-form-card .form-select:hover {
+    border-color: #c7dfe2;
+
+    background-color: #ffffff;
+}
+
+
+.hire-form-card .form-control:focus,
+.hire-form-card .form-select:focus {
+    border-color: #08b8c4;
+
+    background: #ffffff;
+
+    box-shadow: 0 0 0 3px rgba(8, 184, 196, 0.10);
+}
+
+
+.hire-form-card .form-control::placeholder {
+    color: #a2adb2;
+}
+
+
+.hire-textarea {
+    min-height: 105px !important;
+
+    resize: vertical;
+}
+
+
+/* =========================================================
+   CONSULTATION
+========================================================= */
+
+.hire-consultation {
+    /* margin-top: 25px; */
+
+    padding-top: 20px;
+
+    /* border-top: 1px solid #edf2f3; */
+}
+
+
+.hire-consultation-heading {
+    margin-bottom: 17px;
+}
+
+
+.hire-consultation-heading>div:first-child {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    margin-bottom: 13px;
+}
+
+
+.hire-consultation-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 35px;
+    height: 35px;
+
+    flex-shrink: 0;
+
+    border-radius: 8px;
+
+    background: #e1f6f7;
+
+    color: #08aeba;
+
+    font-size: 14px;
+}
+
+
+.hire-consultation-heading h3 {
+    margin: 0 0 2px;
+
+    color: #172635;
+
+    font-size: 14px;
+    font-weight: 700;
+}
+
+
+.hire-consultation-heading p {
+    margin: 0;
+
+    color: #7b8991;
+
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   BOOKING CHECKBOX
+========================================================= */
+
+.hire-consultation-check {
+    display: flex !important;
+    align-items: center;
+
+    width: fit-content;
+
+    gap: 8px;
+
+    margin: 0 !important;
+
+    cursor: pointer;
+}
+
+
+.hire-consultation-check input {
+    position: absolute;
+
+    opacity: 0;
+
+    pointer-events: none;
+}
+
+
+.hire-consultation-check span {
+    position: relative;
+
+    width: 16px;
+    height: 16px;
+
+    flex-shrink: 0;
+
+    border: 1px solid #b9cdd0;
+
+    border-radius: 4px;
+
+    background: #ffffff;
+}
+
+
+.hire-consultation-check input:checked+span {
+    background: #08b8c4;
+
+    border-color: #08b8c4;
+}
+
+
+.hire-consultation-check input:checked+span::after {
+    content: "✓";
+
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -55%);
+
+    color: #ffffff;
+
+    font-size: 10px;
+    font-weight: 700;
+}
+
+
+.hire-consultation-check strong {
+    color: #08aeba;
+
+    font-size: 14px;
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   DATE/TIME INPUT
+========================================================= */
+
+.hire-input-icon {
+    position: relative;
+}
+
+
+.hire-input-icon>svg {
+    position: absolute;
+
+    top: 50%;
+    right: 12px;
+
+    transform: translateY(-50%);
+
+    color: #71818a;
+
+    font-size: 11px;
+
+    pointer-events: none;
+
+    z-index: 2;
+}
+
+
+.hire-input-icon input {
+    padding-right: 35px !important;
+}
+
+
+/* =========================================================
+   SUBMIT BUTTON
+========================================================= */
+
+.hire-submit-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+
+    width: 100%;
+    min-height: 48px;
+
+    margin-top: 22px;
+
+    padding: 10px 20px;
+
+    border: 0;
+    border-radius: 8px;
+
+    background: #08b8c4;
+
+    color: #ffffff;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    box-shadow: 0 8px 18px rgba(8, 184, 196, 0.18);
+
+    transition: all 0.25s ease;
+}
+
+.hire-submit-btn:disabled {
+    opacity: 0.75;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.submit-spinner {
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+
+    border: 2px solid rgba(255, 255, 255, 0.35);
+    border-top-color: #ffffff;
+    border-radius: 50%;
+
+    animation: submitSpinner 0.7s linear infinite;
+}
+
+@keyframes submitSpinner {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+.hire-submit-btn svg {
+    font-size: 10px;
+
+    transition: transform 0.25s ease;
+}
+
+
+.hire-submit-btn:hover {
+    background: #079fa9;
+
+    color: #ffffff;
+
+    transform: translateY(-1px);
+
+    box-shadow: 0 10px 23px rgba(8, 184, 196, 0.25);
+}
+
+
+.hire-submit-btn:hover svg {
+    transform: translateX(3px);
+}
+
+
+/* =========================================================
+   FORM TRUST
+========================================================= */
+
+.hire-form-trust {
+    display: flex;
+    align-items: flex-start;
+
+    gap: 9px;
+
+    margin-top: 17px;
+
+    padding: 11px;
+
+    background: #f5fbfb;
+
+    border: 1px solid #e4f0f1;
+
+    border-radius: 7px;
+}
+
+
+.hire-trust-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 27px;
+    height: 27px;
+
+    flex-shrink: 0;
+
+    border-radius: 6px;
+
+    background: #dff5f6;
+
+    color: #08aeba;
+
+    font-size: 11px;
+}
+
+
+.hire-form-trust strong {
+    display: block;
+
+    margin-bottom: 2px;
+
+    color: #344650;
+
+    font-size: 9px;
+}
+
+
+.hire-form-trust p {
+    margin: 0;
+
+    color: #829096;
+
+    font-size: 8px;
+    line-height: 1.45;
+}
+
+
+/* =========================================================
+   FORM NOTES
+========================================================= */
+
+.hire-response-note {
+    display: flex;
+    align-items: center;
+
+    gap: 5px;
+
+    margin: 13px 0 5px;
+
+    color: #71818a;
+
+    font-size: 12px;
+}
+
+
+.hire-response-note svg {
+    color: #08aeba;
+}
+
+
+.hire-privacy-note {
+    margin: 0;
+
+    color: #879399;
+
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   BOTTOM CTA
+========================================================= */
+
+.hire-bottom-cta {
+    position: relative;
+
+    padding: 52px 0;
+
+    background:
+        linear-gradient(135deg,
+            #162936 0%,
+            #1d3442 100%);
+
+    overflow: hidden;
+}
+
+
+.hire-bottom-cta::before {
+    content: "";
+
+    position: absolute;
+
+    width: 250px;
+    height: 250px;
+
+    right: -100px;
+    top: -130px;
+
+    border: 1px solid rgba(8, 184, 196, 0.15);
+
+    border-radius: 50%;
+}
+
+
+.hire-bottom-cta::after {
+    content: "";
+
+    position: absolute;
+
+    width: 170px;
+    height: 170px;
+
+    left: -80px;
+    bottom: -100px;
+
+    border: 1px solid rgba(8, 184, 196, 0.12);
+
+    border-radius: 50%;
+}
+
+
+.hire-bottom-cta-inner {
+    position: relative;
+    z-index: 2;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 30px;
+}
+
+
+.hire-bottom-cta-inner>div>span {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: #08b8c4;
+
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1.3px;
+}
+
+
+.hire-bottom-cta-inner h2 {
+    max-width: 650px;
+
+    margin: 0;
+
+    color: #ffffff;
+
+    font-size: 28px;
+    line-height: 1.2;
+    font-weight: 600;
+}
+
+
+.hire-bottom-cta-inner h2 strong {
+    color: #08b8c4;
+
+    font-weight: 700;
+}
+
+
+.hire-cta-button {
+    display: inline-flex;
+    align-items: center;
+
+    gap: 9px;
+
+    flex-shrink: 0;
+
+    padding: 12px 22px;
+
+    border: 1px solid #08b8c4;
+    border-radius: 50px;
+
+    background: #08b8c4;
+
+    color: #ffffff;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    text-decoration: none;
+
+    transition: all 0.25s ease;
+}
+
+
+.hire-cta-button:hover {
+    background: transparent;
+
+    color: #08b8c4;
+
+    transform: translateY(-2px);
+}
+
+
+.hire-cta-button svg {
+    font-size: 9px;
+}
+
+
+
+/* =========================================
+   SUCCESS MODAL
+========================================= */
+
+.hire-success-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background: #0a161985;
+    /* backdrop-filter: blur(7px); */
+    /* -webkit-backdrop-filter: blur(7px); */
+    animation: successOverlayIn 0.25s ease-out;
+}
+
+
+.hire-success-modal {
+    position: relative;
+
+    width: 100%;
+    max-width: 500px;
+
+    overflow: hidden;
+
+    background: #ffffff;
+
+    border-radius: 22px;
+
+    border: 1px solid rgba(15, 118, 110, 0.12);
+
+    box-shadow:
+        0 30px 80px rgba(0, 0, 0, 0.20),
+        0 10px 30px rgba(0, 0, 0, 0.08);
+
+    animation: successModalIn 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+
+/* Close */
+
+.hire-success-close {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+
+    width: 34px;
+    height: 34px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+
+    border: none;
+    border-radius: 50%;
+
+    background: #f3f6f5;
+
+    color: #647174;
+
+    font-size: 23px;
+    line-height: 1;
+
+    cursor: pointer;
+
+    transition: all 0.2s ease;
+}
+
+
+.hire-success-close:hover {
+    background: #e7eeec;
+    color: #0f766e;
+    transform: rotate(90deg);
+}
+
+
+/* Success Icon */
+
+.hire-success-icon {
+    width: 76px;
+    height: 76px;
+
+    margin: 42px auto 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: rgba(15, 118, 110, 0.10);
+
+    border: 8px solid rgba(15, 118, 110, 0.05);
+
+    color: #0f766e;
+
+    font-size: 29px;
+
+    animation: successIconIn 0.45s 0.1s both;
+}
+
+
+/* Content */
+
+.hire-success-content {
+    padding: 23px 40px 27px;
+
+    text-align: center;
+}
+
+
+.hire-success-label {
+    display: block;
+
+    margin-bottom: 10px;
+
+    color: #0f766e;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    letter-spacing: 1.6px;
+}
+
+
+.hire-success-content h2 {
+    margin: 0 0 10px;
+
+    color: #101820;
+
+    font-size: 29px;
+    line-height: 1.25;
+
+    font-weight: 700;
+}
+
+
+.hire-success-main-text {
+    margin: 0 0 9px;
+
+    color: #273438;
+
+    font-size: 16px;
+    line-height: 1.6;
+
+    font-weight: 600;
+}
+
+
+.hire-success-description {
+    max-width: 420px;
+
+    margin: 0 auto;
+
+    color: #6a7779;
+
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+
+/* Footer */
+
+.hire-success-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding: 18px 27px;
+
+    background: #f8faf9;
+
+    border-top: 1px solid #edf1ef;
+}
+
+
+.hire-success-response {
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+
+    color: #687577;
+
+    font-size: 12px;
+    line-height: 1.4;
+}
+
+
+.hire-success-response svg {
+    flex-shrink: 0;
+
+    color: #0f766e;
+
+    font-size: 14px;
+}
+
+
+/* Done Button */
+
+.hire-success-done-btn {
+    flex-shrink: 0;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+
+    padding: 11px 19px;
+
+    border: none;
+    border-radius: 9px;
+
+    background: #0f766e;
+
+    color: #ffffff;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    box-shadow: 0 5px 15px rgba(15, 118, 110, 0.18);
+
+    transition: all 0.2s ease;
+}
+
+
+.hire-success-done-btn:hover {
+    background: #0b625c;
+
+    transform: translateY(-1px);
+
+    box-shadow: 0 7px 18px rgba(15, 118, 110, 0.24);
+}
+
+
+/* =========================================
+   ANIMATIONS
+========================================= */
+
+@keyframes successOverlayIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+
+@keyframes successModalIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.96);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+
+@keyframes successIconIn {
+    from {
+        opacity: 0;
+        transform: scale(0.65);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+/* ==============================
+   CAPTCHA
+================================= */
+
+.captcha-group {
+    margin-top: 4px;
+}
+
+.captcha-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+}
+
+.captcha-question {
+    flex: 1;
+    height: 43px;
+    display: flex;
+    align-items: center;
+    padding: 0 26px;
+    border: 1px solid #d8e2e7;
+    border-radius: 6px;
+    background: #f8fafb;
+    color: #17232d;
+    font-size: 16px !important;
+    font-weight: 600;
+    letter-spacing: 2px;
+    user-select: none;
+    box-sizing: border-box;
+}
+
+.captcha-refresh {
+    width: 78px;
+    height: 43px;
+    flex: 0 0 78px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border: 1px solid #d8e2e7;
+    border-radius: 6px;
+    background: #ffffff;
+    color: #111827;
+    font-size: 24px !important;
+    line-height: 1;
+    cursor: pointer;
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.captcha-refresh:hover:not(:disabled) {
+    background: #f1f8fa;
+    border-color: #1b9aaa;
+}
+
+
+.captcha-refresh:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.captcha-answer {
+    flex: 1;
+    height: 43px;
+    min-width: 0;
+    padding: 0 22px;
+    border: 1px solid #d8e2e7;
+    border-radius: 6px;
+    background: #ffffff;
+    color: #17232d;
+    font-size: 16px !important;
+    font-weight: 500;
+    outline: none;
+    box-sizing: border-box;
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.captcha-answer::placeholder {
+    color: #91a0aa;
+}
+
+.captcha-answer:focus {
+    border-color: #1b9aaa;
+    box-shadow: 0 0 0 3px rgba(27, 154, 170, 0.1);
+}
+
+.captcha-answer:disabled {
+    background: #f5f7f8;
+    cursor: not-allowed;
+}
+
+
+/* =========================================================
+   DATE & TIME PICKER INPUT
+========================================================= */
+
+.hire-date-picker-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.hire-date-picker {
+    display: block;
+    width: 100%;
+}
+
+.hire-date-picker-input {
+    width: 100%;
+    padding: 0 18px 0 52px !important;
+    background: #ffffff !important;
+    cursor: pointer;
+    outline: none;
+    box-sizing: border-box;
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.hire-date-picker-input:hover {
+    border-color: #9bcfd6 !important;
+}
+
+.hire-date-picker-input:focus {
+    border-color: #16a6b5 !important;
+
+    box-shadow:
+        0 0 0 3px rgba(22, 166, 181, 0.1) !important;
+}
+
+.hire-date-picker-input::placeholder {
+    color: #8b9aa3 !important;
+    opacity: 1;
+}
+
+.hire-date-picker-icon {
+    position: absolute;
+
+    left: 18px;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    z-index: 5;
+
+    color: #10a5b5;
+
+    font-size: 18px;
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   DATEPICKER POPUP
+========================================================= */
+
+.react-datepicker-popper {
+    z-index: 9999 !important;
+}
+
+.react-datepicker {
+    display: flex !important;
+
+    border: 1px solid #e1e9ed !important;
+    border-radius: 16px !important;
+
+    overflow: hidden;
+
+    background: #ffffff !important;
+
+    box-shadow:
+        0 20px 50px rgba(20, 45, 60, 0.16),
+        0 6px 18px rgba(20, 45, 60, 0.08) !important;
+
+    font-family: inherit !important;
+}
+
+
+/* =========================================================
+   CALENDAR SECTION
+========================================================= */
+
+.react-datepicker__month-container {
+    padding-bottom: 10px;
+}
+
+.react-datepicker__header {
+    position: relative;
+
+    background: #ffffff !important;
+
+    border-bottom: 1px solid #edf1f3 !important;
+
+    padding: 18px 18px 12px !important;
+}
+
+.react-datepicker__current-month {
+    color: #17232d !important;
+
+    font-size: 17px !important;
+    font-weight: 700 !important;
+
+    line-height: 1.3;
+
+    margin-bottom: 14px;
+}
+
+.react-datepicker__day-names {
+    margin-bottom: 0 !important;
+}
+
+.react-datepicker__day-name {
+    width: 34px !important;
+
+    margin: 3px !important;
+
+    color: #8997a0 !important;
+
+    font-size: 11px !important;
+    font-weight: 700 !important;
+
+    text-transform: uppercase;
+}
+
+.react-datepicker__month {
+    margin: 10px 16px !important;
+}
+
+.react-datepicker__day {
+    width: 34px !important;
+    height: 34px !important;
+
+    margin: 3px !important;
+
+    line-height: 34px !important;
+
+    border-radius: 50% !important;
+
+    color: #34434d !important;
+
+    font-size: 13px !important;
+    font-weight: 500 !important;
+
+    transition:
+        background-color 0.15s ease,
+        color 0.15s ease,
+        transform 0.15s ease;
+}
+
+.react-datepicker__day:hover {
+    background: #e8f7f9 !important;
+
+    color: #078b9a !important;
+}
+
+.react-datepicker__day--selected,
+.react-datepicker__day--keyboard-selected {
+    background: #12a7b6 !important;
+
+    color: #ffffff !important;
+
+    font-weight: 700 !important;
+}
+
+.react-datepicker__day--selected:hover {
+    background: #0d96a4 !important;
+
+    color: #ffffff !important;
+}
+
+.react-datepicker__day--today {
+    color: #fff !important;
+
+    font-weight: 700 !important;
+}
+
+.react-datepicker__day--outside-month {
+    color: #c4ccd1 !important;
+}
+
+.react-datepicker__day--disabled {
+    color: #d0d6da !important;
+
+    cursor: not-allowed !important;
+}
+
+.react-datepicker__day--disabled:hover {
+    background: transparent !important;
+}
+
+
+/* =========================================================
+   MONTH NAVIGATION
+========================================================= */
+
+.react-datepicker__navigation {
+    top: 18px !important;
+
+    width: 30px !important;
+    height: 30px !important;
+}
+
+.react-datepicker__navigation--previous {
+    left: 10px !important;
+}
+
+.react-datepicker__navigation--next {
+    right: 10px !important;
+}
+
+.react-datepicker__navigation-icon::before {
+    border-color: #53646e !important;
+
+    border-width: 2px 2px 0 0 !important;
+
+    width: 7px !important;
+    height: 7px !important;
+}
+
+.react-datepicker__navigation:hover
+.react-datepicker__navigation-icon::before {
+    border-color: #0da0af !important;
+}
+
+
+/* =========================================================
+   TIME SECTION
+========================================================= */
+
+.react-datepicker__time-container {
+    width: 150px !important;
+
+    border-left: 1px solid #edf1f3 !important;
+
+    background: #fbfcfd !important;
+}
+
+.react-datepicker__header--time {
+    padding: 18px 12px 12px !important;
+
+    background: #fbfcfd !important;
+
+    border-bottom: 1px solid #edf1f3 !important;
+
+    color: #17232d !important;
+
+    font-size: 15px !important;
+    font-weight: 700 !important;
+}
+
+.react-datepicker-time__header {
+    color: #17232d !important;
+
+    font-size: 15px !important;
+    font-weight: 700 !important;
+}
+
+.react-datepicker__time {
+    background: #fbfcfd !important;
+}
+
+.react-datepicker__time-box {
+    width: 100% !important;
+}
+
+.react-datepicker__time-list {
+    height: 270px !important;
+
+    overflow-y: auto !important;
+
+    padding: 8px !important;
+
+    box-sizing: border-box;
+
+    scrollbar-width: thin;
+}
+
+
+/* =========================================================
+   TIME OPTIONS
+========================================================= */
+
+.react-datepicker__time-list-item {
+    height: 38px !important;
+
+    margin: 2px 0 !important;
+
+    padding: 0 12px !important;
+
+    border-radius: 8px !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    color: #42525c !important;
+
+    font-size: 13px !important;
+    font-weight: 500 !important;
+
+    transition:
+        background-color 0.15s ease,
+        color 0.15s ease;
+}
+
+.react-datepicker__time-list-item:hover {
+    background: #e7f7f9 !important;
+
+    color: #078b99 !important;
+}
+
+.react-datepicker__time-list-item--selected {
+    background: #12a7b6 !important;
+
+    color: #ffffff !important;
+
+    font-weight: 700 !important;
+}
+
+.react-datepicker__time-list-item--selected:hover {
+    background: #0d96a4 !important;
+
+    color: #ffffff !important;
+}
+
+.react-datepicker__time-list::-webkit-scrollbar {
+    width: 5px;
+}
+
+.react-datepicker__time-list::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.react-datepicker__time-list::-webkit-scrollbar-thumb {
+    background: #cbd8dd;
+    border-radius: 10px;
+}
+
+.react-datepicker__time-list::-webkit-scrollbar-thumb:hover {
+    background: #9fb5bd;
+}
+
+.field-error {
+    color: #dc2626;
+    font-size: 13px;
+    margin-top: 7px;
+    line-height: 1.4;
+}
+
+@media (max-width: 576px) {
+    .react-datepicker {
+        max-width: calc(100vw - 30px);
+
+        transform-origin: top left;
+    }
+
+    .react-datepicker__day,
+    .react-datepicker__day-name {
+        width: 30px !important;
+    }
+
+    .react-datepicker__day {
+        height: 30px !important;
+
+        line-height: 30px !important;
+
+        margin: 2px !important;
+    }
+
+    .react-datepicker__month {
+        margin: 8px 10px !important;
+    }
+
+    .react-datepicker__time-container {
+        width: 125px !important;
+    }
+
+    .react-datepicker__time-list {
+        height: 240px !important;
+    }
+
+    .react-datepicker__time-list-item {
+        height: 36px !important;
+    }
+}
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+    .hire-success-overlay {
+        padding: 16px;
+    }
+
+    .hire-success-modal {
+        border-radius: 19px;
+    }
+
+    .hire-success-icon {
+        width: 68px;
+        height: 68px;
+
+        margin-top: 34px;
+
+        font-size: 26px;
+    }
+
+    .hire-success-content {
+        padding: 20px 24px 23px;
+    }
+
+    .hire-success-content h2 {
+        font-size: 24px;
+    }
+
+    .hire-success-footer {
+        flex-direction: column;
+        align-items: stretch;
+
+        padding: 18px 24px;
+    }
+
+    .hire-success-response {
+        justify-content: center;
+
+        text-align: center;
+    }
+
+    .hire-success-done-btn {
+        width: 100%;
+    }
+}
+
+
+/* =========================================================
+   LARGE TABLET
+========================================================= */
+
+@media (max-width: 1199px) {
+
+    .hire-main-title {
+        font-size: 42px;
+    }
+
+    .hire-form-card {
+        padding: 30px 25px;
+    }
+
+    .hire-form-header h2 {
+        font-size: 26px;
+    }
+
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 991px) {
+
+    .hire-developer-section {
+        padding: 65px 0 70px;
+    }
+
+
+    .hire-left-content {
+        padding-right: 0;
+    }
+
+
+    .hire-main-title {
+        max-width: 700px;
+
+        font-size: 43px;
+    }
+
+
+    .hire-benefits {
+        max-width: 700px;
+    }
+
+
+    .hire-trust-strip {
+        max-width: 700px;
+    }
+
+
+    .hire-process-wrapper {
+        max-width: 700px;
+    }
+
+
+    .hire-contact-row {
+        max-width: 700px;
+    }
+
+
+    .hire-form-wrapper {
+        margin-top: 15px;
+    }
+
+
+    .hire-form-card {
+        padding: 32px;
+    }
+
+
+    .hire-bottom-cta-inner h2 {
+        font-size: 25px;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 767px) {
+
+    .hire-developer-section {
+        padding: 48px 0 55px;
+    }
+
+
+    .hire-main-title {
+        font-size: 34px;
+
+        letter-spacing: -0.8px;
+    }
+
+
+    .hire-trust-strip {
+        display: grid;
+
+        grid-template-columns: repeat(2, 1fr);
+
+        gap: 20px;
+
+        padding: 20px;
+    }
+
+
+    .hire-trust-divider {
+        display: none;
+    }
+
+
+    .hire-trust-item strong {
+        font-size: 24px;
+    }
+
+
+    .hire-form-wrapper {
+        margin-top: 5px;
+    }
+
+
+    .hire-form-card {
+        padding: 26px 20px;
+
+        border-radius: 13px;
+    }
+
+
+    .hire-form-header h2 {
+        font-size: 24px;
+    }
+
+
+    .hire-form-header p {
+        font-size: 14px;
+    }
+
+
+    .hire-contact-row {
+        grid-template-columns: 1fr 1fr;
+    }
+
+
+    .hire-contact-box:last-child {
+        grid-column: span 2;
+    }
+
+
+    .hire-bottom-cta {
+        padding: 42px 0;
+    }
+
+
+    .hire-bottom-cta-inner {
+        display: block;
+    }
+
+
+    .hire-bottom-cta-inner h2 {
+        margin-bottom: 22px;
+
+        font-size: 24px;
+    }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+
+    .hire-main-title {
+        font-size: 30px;
+    }
+
+
+    .hire-eyebrow {
+        font-size: 9px;
+    }
+
+
+    .hire-trust-strip {
+        padding: 16px 12px;
+    }
+
+
+    .hire-trust-item strong {
+        font-size: 24px;
+    }
+
+
+    .hire-trust-item span {
+        font-size: 16px;
+    }
+
+
+    .hire-process-header h2 {
+        font-size: 21px;
+    }
+
+
+    .hire-contact-row {
+        grid-template-columns: 1fr;
+    }
+
+
+    .hire-contact-box:last-child {
+        grid-column: auto;
+    }
+
+
+    .hire-form-card {
+        padding: 23px 16px;
+    }
+
+
+    .hire-form-header h2 {
+        font-size: 22px;
+    }
+
+
+    .hire-consultation-heading h3 {
+        font-size: 13px;
+    }
+
+
+    .hire-bottom-cta-inner h2 {
+        font-size: 22px;
+    }
+
+}

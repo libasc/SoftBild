@@ -1,0 +1,1056 @@
+"use client";
+import { useCallback, useEffect, useState } from "react";
+import PhoneInput from "react-phone-input-2";
+import DatePicker from "react-datepicker";
+
+import ContactHeroSection from "../../components/app-components/ContactHeroSection";
+const contactImage = '/assets/images/SoftBild-contact-img-01.png';
+import HomeCta from "../../components/app-components/HomeCta";
+import Link from "next/link";
+
+const supportIcon = '/assets/icons/email2.svg';
+const salesIcon = '/assets/icons/services-icon1.svg';
+const phoneIcon = '/assets/icons/call1.svg';
+const supportIconWhite = '/assets/icons/services-icon-white1.svg';
+import { FaCheck } from "react-icons/fa";
+
+
+function Contactus() {
+  const [data, setData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    company: "",
+    description: "",
+  });
+
+const [errors, setErrors] = useState({});
+const [isLoading, setIsLoading] = useState(false);
+const [showSuccessModal, setShowSuccessModal] = useState(false);
+
+  // Consultation states
+  const [consultationRequired, setConsultationRequired] = useState(false);
+  const [selectedDateTime, setSelectedDateTime] = useState(null);
+
+  const [selectedTimezone, setSelectedTimezone] = useState(
+    "New York, Washington (UTC-05:00)"
+  );
+
+
+  // CAPTCHA states
+  const [captcha, setCaptcha] = useState(null);
+  const [captchaAnswer, setCaptchaAnswer] = useState("");
+  const [isCaptchaLoading, setIsCaptchaLoading] = useState(false);
+
+
+  /*
+   * ==========================================
+   * LOAD CAPTCHA
+   * ==========================================
+   */
+
+  const loadCaptcha = useCallback(async () => {
+    try {
+      setIsCaptchaLoading(true);
+
+      const response = await fetch("/api/captcha", {
+        method: "GET",
+        credentials: "same-origin",
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.message || "Failed to load CAPTCHA.");
+      }
+
+      setCaptcha({
+        challenge: result.challenge,
+        type: result.type,
+      });
+
+      setCaptchaAnswer("");
+    } catch (error) {
+      console.error("Failed to load CAPTCHA:", error);
+
+      setErrors((prev) => ({
+        ...prev,
+        captchaAnswer: "Unable to load CAPTCHA. Please refresh the page.",
+      }));
+    } finally {
+      setIsCaptchaLoading(false);
+    }
+  }, []);
+
+
+  /*
+   * ==========================================
+   * LOAD CAPTCHA WHEN PAGE OPENS
+   * ==========================================
+   */
+
+  useEffect(() => {
+    loadCaptcha();
+  }, [loadCaptcha]);
+
+
+  /*
+   * ==========================================
+   * PHONE NUMBER
+   * ==========================================
+   */
+
+const handleCountryChange = (value, country) => {
+  setData((prev) => ({
+    ...prev,
+    phone: value,
+  }));
+
+  if (errors.phone) {
+    setErrors((prev) => ({
+      ...prev,
+      phone: "",
+    }));
+  }
+};
+
+
+  /*
+   * ==========================================
+   * FORM VALIDATION
+   * ==========================================
+   */
+
+const validateForm = () => {
+  const newErrors = {};
+
+  // Name Validation
+  if (!data.name.trim()) {
+    newErrors.name = "Your Name is required.";
+  } else if (!/^[a-zA-Z\s]+$/.test(data.name)) {
+    newErrors.name = "Please enter a valid name.";
+  } else if (data.name.length < 2) {
+    newErrors.name = "Your Name must be at least 2 characters.";
+  } else if (data.name.length > 50) {
+    newErrors.name = "Your Name cannot exceed 50 characters.";
+  }
+
+  // Email Validation
+  if (!data.email.trim()) {
+    newErrors.email = "Contact Email is required.";
+  } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
+    newErrors.email = "Please enter a valid email.";
+  }
+
+  // Phone Number Validation
+  if (!data.phone.trim()) {
+    newErrors.phone = "Phone is required.";
+  } else {
+    const phoneWithoutCountryCode = data.phone.replace(
+      /^\+?\d{1,4}\s?/,
+      ""
+    );
+
+    if (!/^\d+$/.test(phoneWithoutCountryCode)) {
+      newErrors.phone = "Phone must contain only digits.";
+    } else if (
+      phoneWithoutCountryCode.length < 4 ||
+      phoneWithoutCountryCode.length > 12
+    ) {
+      newErrors.phone = "Enter a valid Phone Number.";
+    }
+  }
+
+  // Message Validation
+  const wordCount = data.description.trim()
+    ? data.description.trim().split(/\s+/).length
+    : 0;
+
+if (!data.description.trim()) {
+  newErrors.description = "Message is required.";
+} else if (data.description.length > 250) {
+  newErrors.description = "Message cannot exceed 250 characters.";
+}
+
+  // CAPTCHA Validation
+  if (!captchaAnswer.trim()) {
+    newErrors.captchaAnswer = "Please enter the CAPTCHA answer.";
+  }
+
+  // Consultation Validation
+  if (consultationRequired && !selectedDateTime) {
+    newErrors.dateTime =
+      "Please select a date and time for the consultation.";
+  }
+
+  setErrors(newErrors);
+
+  return Object.keys(newErrors).length === 0;
+};
+
+
+  /*
+   * ==========================================
+   * FORM SUBMIT
+   * ==========================================
+   */
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (!validateForm()) {
+      return;
+    }
+
+    setIsLoading(true);
+
+
+    /*
+     * Send Contact Form to NodeMailer API
+     */
+
+const submissionData = {
+  formType: "contact",
+
+  name: data.name,
+  email: data.email,
+  phone: data.phone,
+  company: data.company,
+  message: data.description,
+
+  consultation: consultationRequired,
+
+  dateTime: selectedDateTime
+    ? selectedDateTime.toLocaleString()
+    : "",
+
+  timezone: selectedTimezone,
+
+  captchaAnswer: captchaAnswer,
+};
+
+
+    try {
+      const response = await fetch("/api/send-email", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "same-origin",
+        body: JSON.stringify(submissionData),
+      });
+
+
+      const result = await response.json();
+
+
+      /*
+       * ==========================================
+       * HANDLE API ERROR
+       * ==========================================
+       */
+
+      if (!response.ok) {
+
+        // CAPTCHA error
+        if (
+          result.message &&
+          result.message.toLowerCase().includes("captcha")
+        ) {
+          setErrors((prev) => ({
+            ...prev,
+            captchaAnswer:
+              result.message || "Invalid CAPTCHA. Please try again.",
+          }));
+
+          setCaptchaAnswer("");
+
+          // Generate a new CAPTCHA
+          await loadCaptcha();
+
+        } else {
+          setErrors((prev) => ({
+            ...prev,
+            submit:
+              result.message ||
+              "Failed to send your message. Please try again.",
+          }));
+        }
+
+        return;
+      }
+
+
+      /*
+       * ==========================================
+       * SUCCESS
+       * ==========================================
+       */
+
+      setShowSuccessModal(true);
+
+
+      // Reset form
+      setData({
+        name: "",
+        email: "",
+        phone: "",
+        company: "",
+        description: "",
+      });
+
+      setConsultationRequired(false);
+      setSelectedDateTime(null);
+
+      setErrors({});
+      setCaptchaAnswer("");
+
+      // Generate a fresh CAPTCHA
+      await loadCaptcha();
+
+    } catch (error) {
+      console.error("Failed to send contact form:", error);
+
+      setErrors((prev) => ({
+        ...prev,
+        submit:
+          "Something went wrong while sending your message. Please try again.",
+      }));
+
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+
+  /*
+   * ==========================================
+   * RENDER
+   * ==========================================
+   */
+
+  return (
+    <>
+<ContactHeroSection />
+
+
+      {/* ==========================================
+          CONTACT FORM SECTION
+          ========================================== */}
+
+      <section className="container-fluid py-80 position-relative bg-img-top">
+        <div className="container">
+
+          <div className="contact-section-wrapper">
+
+            <div className="row">
+
+              {/* LEFT SIDE */}
+              <div className="col-lg-6">
+
+                <h2 className="dark-subtitle">
+                  Get in touch
+                </h2>
+
+                <p>
+                  Our friendly team would love to hear from you.
+                </p>
+
+
+                {/* SUBMIT ERROR */}
+                {errors.submit && (
+                  <div
+                    className="alert alert-danger mt-3"
+                    role="alert"
+                  >
+                    {errors.submit}
+                  </div>
+                )}
+
+
+                <form
+                  className="row g-3 mt-3"
+                  onSubmit={handleSubmit}
+                >
+
+                  {/* YOUR NAME */}
+                  <div className="col-md-6">
+                    <label className="form-label">
+                      Your Name<span className="text-danger">*</span>
+                    </label>
+
+                    <input
+                      type="text"
+                      className={`form-control borderInput ${
+                        errors.name ? "is-invalid" : ""
+                      }`}
+                      onChange={(e) => {
+                        setData({
+                          ...data,
+                          name: e.target.value,
+                        });
+
+                        if (errors.name) {
+                          setErrors((prev) => ({
+                            ...prev,
+                            name: "",
+                          }));
+                        }
+                      }}
+                      value={data.name}
+                      maxLength="50"
+                    />
+
+                    {errors.name && (
+                      <div className="invalid-feedback">
+                        {errors.name}
+                      </div>
+                    )}
+                  </div>
+
+
+
+                  {/* CONTACT EMAIL */}
+                  <div className="col-md-6">
+                    <label className="form-label">
+                      Contact Email<span className="text-danger">*</span>
+                    </label>
+
+                    <input
+                      type="email"
+                      className={`form-control borderInput ${
+                        errors.email ? "is-invalid" : ""
+                      }`}
+                      onChange={(e) => {
+                        setData({
+                          ...data,
+                          email: e.target.value,
+                        });
+
+                        if (errors.email) {
+                          setErrors((prev) => ({
+                            ...prev,
+                            email: "",
+                          }));
+                        }
+                      }}
+                      value={data.email}
+                    />
+
+                    {errors.email && (
+                      <div className="invalid-feedback">
+                        {errors.email}
+                      </div>
+                    )}
+                  </div>
+
+
+                  {/* PHONE */}
+                  <div className="col-md-6">
+                    <label className="form-label">
+                      Phone<span className="text-danger">*</span>
+                    </label>
+
+                    <PhoneInput
+                      country="us"
+                      value={data.phone}
+                      onChange={handleCountryChange}
+                      inputClass={`form-control ${
+                        errors.phone ? "is-invalid" : ""
+                      }`}
+                      inputStyle={{
+                        width: "100%",
+                        borderColor: errors.phone
+                          ? "#dc3545"
+                          : "#ced4da",
+                      }}
+                      enableSearch={true}
+                      autoFormat={true}
+                      countryCodeEditable={false}
+                      placeholder="Enter phone number"
+                      inputProps={{
+                        name: "phone",
+                        autoComplete: "tel",
+                      }}
+                    />
+
+                    {errors.phone && (
+                      <div className="invalid-feedback d-block">
+                        {errors.phone}
+                      </div>
+                    )}
+                  </div>
+
+                  {/* COMPANY */}
+                  <div className="col-md-6">
+                    <label className="form-label">
+                      Company
+                    </label>
+
+                    <input
+                      type="text"
+                      className={`form-control borderInput ${
+                        errors.company ? "is-invalid" : ""
+                      }`}
+                      onChange={(e) => {
+                        setData({
+                          ...data,
+                          company: e.target.value,
+                        });
+
+                        if (errors.company) {
+                          setErrors((prev) => ({
+                            ...prev,
+                            company: "",
+                          }));
+                        }
+                      }}
+                      value={data.company}
+                      maxLength="100"
+                    />
+
+                    {errors.company && (
+                      <div className="invalid-feedback">
+                        {errors.company}
+                      </div>
+                    )}
+                  </div>
+
+
+                  {/* MESSAGE */}
+                  <div className="col-12">
+
+                    <label className="form-label">
+                      Message
+                    </label>
+
+                    <textarea
+                      className={`form-control borderInput ${
+                        errors.description ? "is-invalid" : ""
+                      }`}
+                      onChange={(e) =>
+                        setData({
+                          ...data,
+                          description: e.target.value,
+                        })
+                      }
+                      value={data.description}
+                      maxLength="250"
+                      rows="3"
+                    />
+
+                    {errors.description && (
+                      <div className="invalid-feedback">
+                        {errors.description}
+                      </div>
+                    )}
+
+                  </div>
+
+
+                  {/* ==========================================
+                      SCHEDULE CONSULTATION
+                      ========================================== */}
+
+                  <div className="col-12">
+
+                    <div className="form-check">
+
+                      <input
+                        type="checkbox"
+                        id="contactConsultation"
+                        className="form-check-input"
+                        checked={consultationRequired}
+                        onChange={(e) => {
+                          setConsultationRequired(
+                            e.target.checked
+                          );
+
+                          if (!e.target.checked) {
+                            setSelectedDateTime(null);
+
+                            setErrors((prev) => ({
+                              ...prev,
+                              dateTime: "",
+                            }));
+                          }
+                        }}
+                      />
+
+                      <label
+                        htmlFor="contactConsultation"
+                        className="form-check-label"
+                      >
+                        I would like to schedule a consultation
+                      </label>
+
+                    </div>
+
+                  </div>
+
+
+                  {/* DATE & TIME */}
+                  {consultationRequired && (
+  <div className="col-12">
+
+    <div className="row g-3">
+
+      {/* PREFERRED DATE & TIME */}
+      <div className="col-md-6">
+
+        <label
+          htmlFor="dateTime"
+          className="form-label"
+        >
+          Preferred Date & Time
+        </label>
+
+        <DatePicker
+          selected={selectedDateTime}
+          onChange={(date) => {
+            setSelectedDateTime(date);
+
+            if (date) {
+              setErrors((prev) => ({
+                ...prev,
+                dateTime: "",
+              }));
+            }
+          }}
+          showTimeSelect
+          timeIntervals={30}
+          timeFormat="hh:mm aa"
+          dateFormat="dd-MM-yyyy hh:mm aa"
+          minDate={new Date()}
+          placeholderText="dd-mm-yyyy --:--"
+          id="dateTime"
+          name="dateTime"
+          className={`form-control ${
+            errors.dateTime ? "is-invalid" : ""
+          }`}
+          wrapperClassName="hire-date-picker"
+          autoComplete="off"
+          showPopperArrow={false}
+          popperPlacement="bottom-start"
+        />
+
+        {errors.dateTime && (
+          <div className="invalid-feedback d-block">
+            {errors.dateTime}
+          </div>
+        )}
+
+      </div>
+
+
+      {/* TIME ZONE */}
+      <div className="col-md-6">
+
+        <label
+          htmlFor="timezone"
+          className="form-label"
+        >
+          Time Zone
+        </label>
+
+        <select
+          id="timezone"
+          name="timezone"
+          className="form-select"
+          value={selectedTimezone}
+          onChange={(e) =>
+            setSelectedTimezone(e.target.value)
+          }
+        >
+          <option>
+            New York, Washington (UTC-05:00)
+          </option>
+
+          <option>
+            Los Angeles (UTC-08:00)
+          </option>
+
+          <option>
+            Chicago (UTC-06:00)
+          </option>
+
+          <option>
+            London (UTC+00:00)
+          </option>
+
+          <option>
+            Dubai (UTC+04:00)
+          </option>
+
+          <option>
+            India Standard Time (UTC+05:30)
+          </option>
+
+          <option>
+            Singapore (UTC+08:00)
+          </option>
+        </select>
+
+      </div>
+
+    </div>
+
+  </div>
+)}
+
+
+                  {/* ==========================================
+                      CAPTCHA
+                      ========================================== */}
+
+                 {/* CAPTCHA */}
+<div className="col-12">
+
+    <div className="form-group captcha-group mt-3">
+
+        <label htmlFor="captchaAnswer">
+            Security Verification <span>*</span>
+        </label>
+
+        <div className="captcha-row">
+
+            {/* CAPTCHA QUESTION */}
+            <div className="captcha-question form-control">
+                {isCaptchaLoading
+                    ? "Loading..."
+                    : captcha?.challenge || ""}
+            </div>
+
+
+            {/* CAPTCHA ANSWER */}
+            <input
+                type="text"
+                id="captchaAnswer"
+                name="captchaAnswer"
+                value={captchaAnswer}
+                onChange={(e) => {
+                    setCaptchaAnswer(e.target.value);
+
+                    if (errors.captchaAnswer) {
+                        setErrors((prev) => ({
+                            ...prev,
+                            captchaAnswer: "",
+                        }));
+                    }
+                }}
+                placeholder="Enter the answer"
+                autoComplete="off"
+                required
+                disabled={
+                    isCaptchaLoading ||
+                    !captcha?.challenge
+                }
+                className={`captcha-answer form-control ${
+                    errors.captchaAnswer
+                        ? "is-invalid"
+                        : ""
+                }`}
+            />
+
+
+            {/* REFRESH BUTTON */}
+            <button
+                type="button"
+                className="captcha-refresh"
+                onClick={loadCaptcha}
+                disabled={isCaptchaLoading || isLoading}
+                aria-label="Refresh CAPTCHA"
+                title="Refresh CAPTCHA"
+            >
+                ↻
+            </button>
+
+        </div>
+
+
+        {errors.captchaAnswer && (
+            <div className="field-error">
+                {errors.captchaAnswer}
+            </div>
+        )}
+
+    </div>
+
+</div>
+
+
+                  {/* SUBMIT BUTTON */}
+                  <div className="col-12">
+
+                    <button
+                      type="submit"
+                      className="btn btn-primary sf-btn6 mt-20"
+                      disabled={isLoading}
+                    >
+                      {isLoading
+                        ? "Sending..."
+                        : "Send Message"}
+                    </button>
+
+                  </div>
+
+                </form>
+
+              </div>
+
+
+              {/* SPACER */}
+              <div className="col-lg-1"></div>
+
+
+              {/* RIGHT IMAGE */}
+              <div className="col-lg-5 ipad-mt-30 phone-mt-20">
+
+                <div className="contact-image-wrpr">
+
+                  <img
+                    src={contactImage}
+                    alt="Contact Us"
+                    className="img-fluid"
+                  />
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+
+      {/* ==========================================
+          CONTACT INFORMATION CARDS
+          ========================================== */}
+
+      <section className="container-fluid py-80 contact-bg-1">
+
+        <div className="container">
+
+          <div className="row sb-contact-wrapper">
+
+            <div className="col-lg-1"></div>
+
+            <div className="col-lg-10">
+
+              <div className="row">
+
+                {/* SUPPORT */}
+                <div className="col-xl-4 col-lg-4 col-md-4 mb-20">
+
+                  <div className="sb-contact-card1">
+
+                    <div className="sb-contact-card1-content">
+
+                      <div className="sb-contact-card1-inner-content text-center">
+
+                        <div className="contact-icon">
+                          <img
+                            src={supportIcon}
+                            alt="Service Icon"
+                          />
+                        </div>
+
+                        <h3 className="dark-title mb-20">
+                          Support
+                        </h3>
+
+                        <h4 className="mb-10">
+                          Our friendly team is here to help.
+                        </h4>
+
+                        <p>
+                          <Link href="mailto:support@softbild.com">
+                            support@softbild.com
+                          </Link>
+                        </p>
+
+                      </div>
+
+                    </div>
+
+                  </div>
+
+                </div>
+
+
+                {/* SALES */}
+                <div className="col-xl-4 col-lg-4 col-md-4 mb-20">
+
+                  <div className="sb-contact-card1 bg-gradient3">
+
+                    <div className="sb-contact-card1-content">
+
+                      <div className="sb-contact-card1-inner-content text-center">
+
+                        <div className="contact-icon">
+                          <img
+                            src={supportIconWhite}
+                            alt="Service Icon"
+                          />
+                        </div>
+
+                        <h3 className="dark-title mb-20">
+                          Sales
+                        </h3>
+
+                        <h4 className="mb-10 text-white">
+                          Questions or queries? Get in touch!
+                        </h4>
+
+                        <p>
+                          <Link
+                            href="mailto:sales@softbild.com"
+                            className="text-white"
+                          >
+                            sales@softbild.com
+                          </Link>
+                        </p>
+
+                      </div>
+
+                    </div>
+
+                  </div>
+
+                </div>
+
+
+                {/* PHONE */}
+                <div className="col-xl-4 col-lg-4 col-md-4 mb-20 phone-mb-0">
+
+                  <div className="sb-contact-card1">
+
+                    <div className="sb-contact-card1-content">
+
+                      <div className="sb-contact-card1-inner-content text-center">
+
+                        <div className="contact-icon">
+                          <img
+                            src={phoneIcon}
+                            alt="Service Icon"
+                          />
+                        </div>
+
+                        <h3 className="dark-title mb-20">
+                          Phone
+                        </h3>
+
+                        <h4 className="mb-10">
+                          Mon-Fri from 8am to 5pm.
+                        </h4>
+
+                        <p>
+                          <Link href="tel:+971527535786">
+                            +971 (527) 535-786
+                          </Link>
+                        </p>
+
+                      </div>
+
+                    </div>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+
+            <div className="col-lg-1"></div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <HomeCta />
+
+
+      {showSuccessModal && (
+    <div
+        className="hire-success-overlay"
+        onClick={() => setShowSuccessModal(false)}
+    >
+        <div
+            className="hire-success-modal"
+            onClick={(e) => e.stopPropagation()}
+        >
+
+            {/* Close */}
+            <button
+                type="button"
+                className="hire-success-close"
+                onClick={() => setShowSuccessModal(false)}
+                aria-label="Close"
+            >
+                ×
+            </button>
+
+
+            {/* Success Icon */}
+            <div className="hire-success-icon">
+                <FaCheck />
+            </div>
+
+
+            {/* Message */}
+            <div className="hire-success-content">
+                <h2>
+                    Thank You!
+                </h2>
+
+                <p className="hire-success-main-text">
+                    We've received your request successfully.
+                </p>
+
+                <p className="hire-success-description">
+                    Thank you for reaching out to us. Our team will
+                    review your requirements and get in touch with you
+                    shortly to discuss your project and the next steps.
+                </p>
+
+            </div>
+
+
+            {/* Footer */}
+            {/* <div className="hire-success-footer">
+
+                <div className="hire-success-response">
+                    <FaClock />
+                    <span>
+                        Our team typically responds within 24 hours.
+                    </span>
+                </div>
+
+                <button
+                    type="button"
+                    className="hire-success-done-btn"
+                    onClick={() => setShowSuccessModal(false)}
+                >
+                    Done
+                    <FaArrowRight />
+                </button>
+
+            </div> */}
+
+        </div>
+    </div>
+)}
+
+    </>
+  );
+}
+
+
+export default Contactus;
