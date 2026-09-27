@@ -1,20 +1,47 @@
-import handler from "../../../../api/captcha.js";
+import {
+    generateCaptcha,
+    encryptCaptcha,
+    getCaptchaCookie,
+    getCaptchaExpiry,
+} from "../../../../utils/captcha.js";
+
 import { NextResponse } from "next/server";
 
 export const runtime = "nodejs";
 
-export async function GET(request) {
-  let status = 200;
-  let payload = null;
-  let cookie = null;
-  const req = { method: "GET", headers: Object.fromEntries(request.headers.entries()) };
-  const res = {
-    status(code) { status = code; return this; },
-    json(data) { payload = data; return this; },
-    setHeader(name, value) { if (name.toLowerCase() === "set-cookie") cookie = value; },
-  };
-  await handler(req, res);
-  const response = NextResponse.json(payload, { status });
-  if (cookie) response.headers.set("Set-Cookie", cookie);
-  return response;
+export async function GET() {
+    try {
+        const captcha = generateCaptcha();
+
+        const captchaPayload = {
+            answer: captcha.answer,
+            type: captcha.type,
+            expiresAt: getCaptchaExpiry(),
+        };
+
+        const encryptedToken = encryptCaptcha(captchaPayload);
+
+        const response = NextResponse.json({
+            success: true,
+            challenge: captcha.question,
+            type: captcha.type,
+        });
+
+        response.headers.set(
+            "Set-Cookie",
+            getCaptchaCookie(encryptedToken)
+        );
+
+        return response;
+    } catch (error) {
+        console.error("CAPTCHA generation error:", error);
+
+        return NextResponse.json(
+            {
+                success: false,
+                message: "Unable to generate security verification.",
+            },
+            { status: 500 }
+        );
+    }
 }
